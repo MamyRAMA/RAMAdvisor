@@ -5,12 +5,18 @@ from typing import List, Dict, Any, Optional
 import logging
 
 import numpy as np
-from sentence_transformers import SentenceTransformer
-import faiss
+try:
+    from sentence_transformers import SentenceTransformer
+    import faiss
+    FAISS_AVAILABLE = True
+except ImportError:
+    FAISS_AVAILABLE = False
+    logging.warning("FAISS et sentence-transformers non disponibles - mode simple activé")
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import openai
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 # Charger les variables d'environnement
@@ -105,12 +111,13 @@ class AISimulator:
     def __init__(self):
         self.knowledge_base = KnowledgeBase()
         
-        # Configuration OpenAI (optionnel)
-        self.openai_api_key = os.getenv('OPENAI_API_KEY')
-        self.openai_client = None
-        if self.openai_api_key:
-            self.openai_client = openai.OpenAI(api_key=self.openai_api_key)
-            logger.info("OpenAI API configurée")
+        # Configuration Gemini API (Google Cloud)
+        self.gemini_api_key = os.getenv('GEMINI_API_KEY')
+        self.gemini_model = None
+        if self.gemini_api_key:
+            genai.configure(api_key=self.gemini_api_key)
+            self.gemini_model = genai.GenerativeModel('gemini-pro')
+            logger.info("Gemini API configurée")
     
     def initialize(self):
         """Initialise le simulateur."""
@@ -238,8 +245,8 @@ Termine par une clause de non-responsabilité indiquant qu'il s'agit d'une simul
         
         response_text = ""
         
-        # Essayer d'utiliser OpenAI si disponible
-        if self.openai_client and relevant_docs:
+        # Essayer d'utiliser Gemini API si disponible
+        if self.gemini_model and relevant_docs:
             try:
                 prompt = self.build_context_prompt(
                     request.goal,
@@ -249,18 +256,12 @@ Termine par une clause de non-responsabilité indiquant qu'il s'agit d'une simul
                     relevant_docs
                 )
                 
-                response = self.openai_client.chat.completions.create(
-                    model="gpt-3.5-turbo",
-                    messages=[{"role": "user", "content": prompt}],
-                    max_tokens=1000,
-                    temperature=0.7
-                )
-                
-                response_text = response.choices[0].message.content
+                response = self.gemini_model.generate_content(prompt)
+                response_text = response.text
                 confidence_score = min(0.95, confidence_score + 0.2)  # Bonus pour l'IA
                 
             except Exception as e:
-                logger.error(f"Erreur OpenAI: {e}")
+                logger.error(f"Erreur Gemini API: {e}")
                 response_text = self.generate_fallback_response(
                     request.goal,
                     request.initial_amount,

@@ -37,10 +37,12 @@ function initializeInvestmentSimulator() {
         simulateBtn.disabled = true;
         simulateBtn.querySelector('span').textContent = 'Analyse en cours...';
 
-        // Configuration du service RAM Advisor AI cloud
-        const apiUrl = 'https://ramadvisor-backend.onrender.com/simulate';
-        // Fallback pour le développement local
+        // Configuration du service RAM Advisor AI
+        // 🧪 Pour tests locaux, décommentez la ligne suivante :
         // const apiUrl = 'http://localhost:8000/simulate';
+        
+        // 🌐 Pour production cloud (Render) :
+        const apiUrl = 'https://ramadvisor-backend.onrender.com/simulate';
 
         const payload = {
             goal: goal,

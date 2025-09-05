@@ -40,6 +40,19 @@ git push origin main
 4. Cliquez sur **"New +"** → **"Web Service"**
 
 ### 1.3 Configuration du service
+
+⚠️ **Important - Limitation mémoire Render gratuit** :
+Le plan gratuit Render (512 MB RAM) peut ne pas suffire pour sentence-transformers + FAISS.
+
+**Option A - Plan gratuit (limité)** :
+- **Repository** : Sélectionnez `RAMAdvisor`
+- **Name** : `ramadvisor-backend`
+- **Root Directory** : `backend`
+- **Environment** : `Python 3`
+- **Build Command** : `pip install -r requirements-light.txt`
+- **Start Command** : `uvicorn main:app --host 0.0.0.0 --port $PORT`
+
+**Option B - Plan payant (recommandé, 7$/mois)** :
 - **Repository** : Sélectionnez `RAMAdvisor`
 - **Name** : `ramadvisor-backend`
 - **Root Directory** : `backend`
@@ -47,8 +60,10 @@ git push origin main
 - **Build Command** : `pip install -r requirements.txt && python ingest_documents.py`
 - **Start Command** : `uvicorn main:app --host 0.0.0.0 --port $PORT`
 
-### 1.4 Variables d'environnement (optionnel)
-- **OPENAI_API_KEY** : Votre clé OpenAI si vous en avez une
+### 1.4 Variables d'environnement
+- **GEMINI_API_KEY** : Votre clé API Gemini (Google Cloud)
+  - Obtenez-la sur : [Google AI Studio](https://makersuite.google.com/app/apikey)
+  - Gratuit avec quotas généreux pour commencer
 
 ### 1.5 Déployer
 - Cliquez sur **"Create Web Service"**

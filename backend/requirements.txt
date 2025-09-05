@@ -7,7 +7,7 @@ PyPDF2
 pydantic
 python-multipart
 numpy
-openai
+google-generativeai
 python-dotenv
 aiofiles
 requests
