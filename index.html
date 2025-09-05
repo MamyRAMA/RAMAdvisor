@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAM Advisor | Conseil en Investissement Simplifié</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-violet-800">RAM Advisor</a>
+            <div>
+                <a href="#offres" class="text-gray-600 hover:text-violet-800 mx-4">Nos Offres</a>
+                <a href="#contact" class="cta-gradient text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Flow -->
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="bg-white">
+            <div class="container mx-auto px-6 py-24 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">Rendez l'investissement <span class="text-violet-700">simple et accessible</span>.</h1>
+                <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">Nous vous aidons à construire un patrimoine solide sur le long terme grâce à des stratégies claires, transparentes et alignées sur vos objectifs de vie.</p>
+                <div class="mt-8">
+                    <a href="#offres" class="cta-gradient text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg">Découvrir nos offres</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Le Défi -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="card max-w-3xl mx-auto text-center">
+                    <h2 class="text-2xl font-bold section-title">Le Défi de l'Investisseur Moderne</h2>
+                    <p class="mt-2 text-gray-600">Naviguer dans le monde de la finance peut sembler complexe.</p>
+                    <div class="mt-6 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
+                        <div class="stat-number">70%</div>
+                        <p class="text-xl md:text-2xl font-semibold text-left max-w-xs text-gray-700">des épargnants trouvent l'investissement "complexe" ou "intimidant", retardant ainsi leurs projets de vie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Notre Philosophie -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                     <h2 class="text-3xl font-bold section-title">Notre Philosophie : Simple, Transparente, Efficace</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card text-center">
+                        <div class="text-6xl mb-4">🎯</div>
+                        <h3 class="text-xl font-bold section-title">Alignement Total</h3>
+                        <p class="mt-2 text-gray-600">Des stratégies conçues uniquement pour VOS objectifs, sans produits superflus.</p>
+                    </div>
+                    <div class="card text-center">
+                        <div class="text-6xl mb-4">🔍</div>
+                        <h3 class="text-xl font-bold section-title">Transparence Radicale</h3>
+                        <p class="mt-2 text-gray-600">Une approche claire via des ETF à frais réduits. Vous savez toujours où va votre argent.</p>
+                    </div>
+                    <div class="card text-center">
+                        <div class="text-6xl mb-4">🌱</div>
+                        <h3 class="text-xl font-bold section-title">Croissance Durable</h3>
+                        <p class="mt-2 text-gray-600">Construire un patrimoine solide sur le long terme est notre unique priorité.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4. Gemini Investment Simulator Section -->
+        <section id="simulator" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold section-title">✨ Simulez votre projet d'investissement</h2>
+                    <p class="text-gray-600 mt-2">Utilisez notre outil basé sur l'IA pour obtenir une simulation personnalisée et visualiser votre avenir financier.</p>
+                </div>
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                    <div class="space-y-6">
+                        <div>
+                            <label for="goal" class="block text-sm font-medium text-gray-700">Votre objectif</label>
+                            <textarea id="goal" name="goal" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm" placeholder="Ex: Acheter une résidence principale dans 10 ans, préparer ma retraite..."></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="initialAmount" class="block text-sm font-medium text-gray-700">Apport initial (€)</label>
+                                <input type="number" name="initialAmount" id="initialAmount" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm" placeholder="5000">
+                            </div>
+                            <div>
+                                <label for="monthlyAmount" class="block text-sm font-medium text-gray-700">Versement mensuel (€)</label>
+                                <input type="number" name="monthlyAmount" id="monthlyAmount" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm" placeholder="200">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="riskProfile" class="block text-sm font-medium text-gray-700">Profil de risque</label>
+                            <select id="riskProfile" name="riskProfile" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm">
+                                <option>Prudent</option>
+                                <option selected>Équilibré</option>
+                                <option>Audacieux</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button id="simulateBtn" class="w-full cta-gradient text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg flex items-center justify-center">
+                                <span>Lancer la simulation</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="simulationResult" class="hidden mt-8 max-w-2xl mx-auto bg-violet-50 p-6 rounded-xl border border-violet-200">
+                    <div id="loadingSpinner" class="flex items-center justify-center">
+                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-violet-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span class="text-violet-700">Simulation en cours...</span>
+                    </div>
+                    <div id="resultText" class="text-gray-800 gemini-response"></div>
+                     <p id="geminiDisclaimer" class="text-xs text-gray-500 mt-4 text-center">Simulation fournie par l'IA de Google. Ne constitue pas un conseil financier.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Offers Section -->
+        <section id="offres" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold section-title">Deux parcours pour atteindre vos objectifs</h2>
+                    <p class="text-gray-600 mt-2">Que vous souhaitiez un accompagnement clé en main ou devenir totalement autonome, nous avons la solution.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                    <div class="card flex flex-col">
+                        <h3 class="text-2xl font-bold text-violet-800 mb-4">Investissement Accompagné</h3>
+                        <p class="text-gray-700 mb-6 flex-grow">Pour un passage à l'action rapide et sécurisé. Nous construisons ensemble votre portefeuille, prêt à être déployé.</p>
+                        <div class="mb-8 flex-grow flex flex-col justify-center">
+                            <h4 class="font-semibold text-gray-800 text-center mb-2">Exemple d'Allocation Équilibrée</h4>
+                            <div class="chart-container">
+                                <canvas id="accompagnementDonutChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800">Pack "Stratégie & Lancement"</h4>
+                                <p class="text-gray-600 text-sm mt-1">Plan d'allocation personnalisé et guide de mise en œuvre.</p>
+                                <div class="text-right text-xl font-bold text-violet-700 mt-2">295 €</div>
+                            </div>
+                             <div class="bg-gray-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800">Pack "Projet Clé en Main"</h4>
+                                <p class="text-gray-600 text-sm mt-1">Le pack Stratégie avec un accompagnement au lancement et un support prioritaire d'un mois.</p>
+                                <div class="text-right text-xl font-bold text-violet-700 mt-2">495 €</div>
+                            </div>
+                        </div>
+                        <a href="#contact" class="mt-8 text-center w-full bg-violet-100 text-violet-800 font-semibold py-3 px-6 rounded-lg hover:bg-violet-200 transition">Choisir cet accompagnement</a>
+                    </div>
+                    <div class="card flex flex-col">
+                        <h3 class="text-2xl font-bold text-violet-800 mb-4">Coaching Financier Autonomie</h3>
+                        <p class="text-gray-700 mb-6 flex-grow">Devenez le seul maître de vos finances grâce à un programme complet en 4 sessions pour tout maîtriser.</p>
+                        <div class="mb-8 flex-grow flex flex-col justify-center space-y-3">
+                            <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                                <p class="font-semibold text-violet-800">Session 1 : Les Fondations</p>
+                                <p class="text-sm text-gray-600">Budget, épargne et psychologie de l'investisseur.</p>
+                            </div>
+                             <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                                <p class="font-semibold text-violet-800">Session 2 : L'Écosystème</p>
+                                <p class="text-sm text-gray-600">Actions, ETFs et enveloppes fiscales.</p>
+                            </div>
+                             <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                                <p class="font-semibold text-violet-800">Session 3 : La Stratégie</p>
+                                <p class="text-sm text-gray-600">Construire son allocation d'actifs personnelle.</p>
+                            </div>
+                             <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                                <p class="font-semibold text-violet-800">Session 4 : La Pratique</p>
+                                <p class="text-sm text-gray-600">Passage d'ordres et suivi de portefeuille.</p>
+                            </div>
+                        </div>
+                         <div class="bg-gray-50 p-4 rounded-lg border mt-auto">
+                            <h4 class="font-semibold text-gray-800">Cycle de Coaching Individuel</h4>
+                            <p class="text-gray-600 text-sm mt-1">Programme complet en 4 sessions d'une heure.</p>
+                            <div class="text-right text-xl font-bold text-violet-700 mt-2">350 €</div>
+                        </div>
+                        <a href="#contact" class="mt-4 text-center w-full bg-violet-100 text-violet-800 font-semibold py-3 px-6 rounded-lg hover:bg-violet-200 transition">Commencer ma formation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CTA Section -->
+        <section id="contact" class="bg-violet-800">
+             <div class="container mx-auto px-6 py-20">
+                <div class="card bg-violet-700 text-white text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold">Votre Parcours Commence Ici</h2>
+                    <p class="mt-4 text-lg text-violet-200 max-w-2xl mx-auto">Discutons de votre projet lors d'un appel découverte de 20 minutes. C'est gratuit, sans engagement, et le premier pas vers l'atteinte de vos objectifs financiers.</p>
+                    <div class="mt-8">
+                        <a href="mailto:contact@ramadvisor.fr" class="bg-white text-violet-800 font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg inline-block">Réserver mon appel gratuit</a>
+                    </div>
+                </div>
+             </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 RAM Advisor. Tous droits réservés.</p>
+            <p class="text-sm text-gray-400 mt-2">RAM Advisor est une société de conseil en investissement. Nous ne fournissons pas de conseils financiers réglementés.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
