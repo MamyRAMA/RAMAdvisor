@@ -1,0 +1,537 @@
+/* Police principale */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9fafb;
+    color: #1f2937;
+}
+
+/* Boutons CTA avec gradient */
+.cta-gradient {
+    background: linear-gradient(90deg, #6D28D9 0%, #8B5CF6 100%);
+    transition: all 0.3s ease;
+}
+
+.cta-gradient:hover {
+    background: linear-gradient(90deg, #5B21B6 0%, #7C3AED 100%);
+    transform: scale(1.05);
+}
+
+/* Titres de section */
+.section-title {
+    color: #4C1D95;
+}
+
+/* Cards améliorées */
+.card {
+    background-color: #FFFFFF;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem; /* Padding premium augmenté */
+    border: 1px solid #E5E7EB;
+    height: 100%;
+}
+
+/* Statistiques importantes */
+.stat-number {
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 1;
+    color: #6D28D9;
+}
+
+/* Container pour graphiques */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+}
+
+/* Header avec backdrop blur */
+header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+/* Navigation */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6D28D9;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #6D28D9;
+}
+
+/* Sections principales */
+.hero-section {
+    background: white;
+    padding: 6rem 1.5rem;
+    text-align: center;
+}
+
+.mission-section {
+    padding: 5rem 1.5rem;
+    background: #f9fafb;
+}
+
+.simulator-section {
+    padding: 5rem 1.5rem;
+    background: white;
+}
+
+.offers-section {
+    padding: 5rem 1.5rem;
+    background: #f9fafb;
+}
+
+.contact-section {
+    padding: 5rem 1.5rem;
+    background: #6D28D9;
+    color: white;
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Cards des offres */
+.offer-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+}
+
+.offer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6D28D9;
+    margin-bottom: 1rem;
+}
+
+.pack-item {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+}
+
+.pack-price {
+    text-align: right;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #7C3AED;
+    margin-top: 0.5rem;
+}
+
+/* Formulaire simulateur */
+.simulator-form {
+    max-width: 42rem;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.form-input, .form-textarea, .form-select {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+    outline: none;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Résultat simulation */
+.simulation-result {
+    margin-top: 2rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f3f4f6;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+}
+
+.simulation-result.hidden {
+    display: none;
+}
+
+/* Spinner de chargement */
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #7C3AED;
+    margin-right: 0.75rem;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Styles pour la réponse Gemini */
+.gemini-response p {
+    margin-bottom: 1rem;
+}
+
+.gemini-response ul {
+    list-style-position: inside;
+    list-style-type: disc;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.gemini-response li {
+    margin-bottom: 0.5rem;
+}
+
+.gemini-response strong {
+    color: #5B21B6;
+}
+
+/* Footer */
+footer {
+    background: #1f2937;
+    color: white;
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.footer-disclaimer {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-section {
+        padding: 4rem 1rem;
+    }
+    
+    .mission-section, .simulator-section, .offers-section, .contact-section {
+        padding: 3rem 1rem;
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .chart-container {
+        max-width: 250px;
+        height: 250px;
+    }
+}
+
+/* Navigation */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6D28D9;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #6D28D9;
+}
+
+/* Sections principales */
+.hero-section {
+    background: white;
+    padding: 6rem 1.5rem;
+    text-align: center;
+}
+
+.mission-section {
+    padding: 5rem 1.5rem;
+    background: #f9fafb;
+}
+
+.simulator-section {
+    padding: 5rem 1.5rem;
+    background: white;
+}
+
+.offers-section {
+    padding: 5rem 1.5rem;
+    background: #f9fafb;
+}
+
+.contact-section {
+    padding: 5rem 1.5rem;
+    background: #6D28D9;
+    color: white;
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Cards des offres */
+.offer-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+}
+
+.offer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6D28D9;
+    margin-bottom: 1rem;
+}
+
+.pack-item {
+    background: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+}
+
+.pack-price {
+    text-align: right;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #7C3AED;
+    margin-top: 0.5rem;
+}
+
+/* Formulaire simulateur */
+.simulator-form {
+    max-width: 42rem;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.form-input, .form-textarea, .form-select {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+    outline: none;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Résultat simulation */
+.simulation-result {
+    margin-top: 2rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f3f4f6;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+}
+
+.simulation-result.hidden {
+    display: none;
+}
+
+/* Spinner de chargement */
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #7C3AED;
+    margin-right: 0.75rem;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Styles pour la réponse Gemini */
+.gemini-response p {
+    margin-bottom: 1rem;
+}
+
+.gemini-response ul {
+    list-style-position: inside;
+    list-style-type: disc;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.gemini-response li {
+    margin-bottom: 0.5rem;
+}
+
+.gemini-response strong {
+    color: #5B21B6;
+}
+
+/* Footer */
+footer {
+    background: #1f2937;
+    color: white;
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.footer-disclaimer {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-section {
+        padding: 4rem 1rem;
+    }
+    
+    .mission-section, .simulator-section, .offers-section, .contact-section {
+        padding: 3rem 1rem;
+    }
+}
