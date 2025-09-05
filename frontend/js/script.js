@@ -37,8 +37,10 @@ function initializeInvestmentSimulator() {
         simulateBtn.disabled = true;
         simulateBtn.querySelector('span').textContent = 'Analyse en cours...';
 
-        // Configuration du service RAM Advisor AI local
-        const apiUrl = 'http://localhost:8000/simulate';
+        // Configuration du service RAM Advisor AI cloud
+        const apiUrl = 'https://ramadvisor-backend.onrender.com/simulate';
+        // Fallback pour le développement local
+        // const apiUrl = 'http://localhost:8000/simulate';
 
         const payload = {
             goal: goal,
@@ -95,22 +97,27 @@ function initializeInvestmentSimulator() {
         } catch (error) {
             console.error('Erreur lors de l\'appel au service RAM Advisor AI:', error);
             
-            // Message d'erreur plus informatif
+            // Message d'erreur plus informatif pour le cloud
             if (error.message.includes('Failed to fetch')) {
                 resultText.innerHTML = `
-                    <div class="text-orange-600">
-                        <p><strong>⚠️ Service RAM Advisor AI non disponible</strong></p>
-                        <p>Le service d'IA semble être arrêté. Pour le démarrer :</p>
-                        <ol class="list-decimal list-inside mt-2 text-sm">
-                            <li>Ouvrez un terminal dans le dossier <code>ai-service</code></li>
-                            <li>Exécutez <code>start.bat</code> ou <code>python main.py</code></li>
-                            <li>Attendez que le service démarre sur <code>http://localhost:8000</code></li>
-                            <li>Relancez la simulation</li>
-                        </ol>
+                    <div class="p-4 bg-red-100 border border-red-400 rounded-lg">
+                        <h4 class="text-red-800 font-semibold">🚫 Service temporairement indisponible</h4>
+                        <p class="text-red-700 text-sm mt-2">
+                            Le service d'IA est en cours de redémarrage. Veuillez patienter quelques instants et réessayer.
+                        </p>
+                        <p class="text-red-600 text-xs mt-2">
+                            Les services cloud peuvent prendre 30-60 secondes pour redémarrer après une période d'inactivité.
+                        </p>
                     </div>
                 `;
             } else {
-                resultText.textContent = "Désolé, impossible de contacter le service de simulation pour le moment. Veuillez vérifier votre connexion ou réessayer plus tard.";
+                resultText.innerHTML = `
+                    <div class="text-orange-600">
+                        <p><strong>⚠️ Erreur de connexion</strong></p>
+                        <p>Une erreur technique est survenue. Veuillez réessayer dans quelques instants.</p>
+                        <p class="text-sm mt-2 text-gray-600">Erreur: ${error.message}</p>
+                    </div>
+                `;
             }
         } finally {
             // Masquer le chargement et restaurer le bouton
