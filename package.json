@@ -1,0 +1,14 @@
+{
+  "name": "ramadvisor-backend",
+  "version": "1.0.0",
+  "description": "Fonction Serverless pour interroger Gemini AI",
+  "main": "generer-simulation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.1.3"
+  }
+}
