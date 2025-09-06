@@ -17,7 +17,7 @@ exports.handler = async (event) => {
   try {
     // 1. Lire les fichiers de prompt et de base de connaissances
     // Le chemin doit être résolu à partir de l'emplacement du script
-    const promptTemplatePath = path.resolve(__dirname, '../../prompt_template.md');
+    const promptTemplatePath = path.resolve(__dirname, '../../prompt_template_v3.md');
     const knowledgeBasePath = path.resolve(__dirname, '../../knowledge_base.txt');
 
     let promptTemplate = fs.readFileSync(promptTemplatePath, 'utf8');
@@ -38,8 +38,8 @@ exports.handler = async (event) => {
     finalPrompt = finalPrompt.replace('"\[MONTANT_UTILISATEUR\]"', `"${montant}"`);
     finalPrompt = finalPrompt.replace('"\[DUREE_UTILISATEUR\]"', `"${duree}"`);
 
-    // 5. Appeler l'API Gemini
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  // 5. Appeler l'API Gemini (standardisé sur gemini-2.0-flash-lite)
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
     const result = await model.generateContent(finalPrompt);
     const response = await result.response;
     const text = response.text();

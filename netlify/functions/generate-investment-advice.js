@@ -34,38 +34,70 @@ exports.handler = async (event, context) => {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
 
-    // Load prompt template v2 (embedded for Netlify)
-    const promptTemplate = `## 1. Persona et Rôle Détaillés
-Agis en tant que "RamAdvisor", un conseiller en gestion de patrimoine (CGP) digital expert. Ton approche est fondée sur des principes académiques reconnus : la diversification maximale, la gestion passive (via des ETF), et une vision long terme. Ton ton est extrêmement pédagogue, clair et factuel. Tu dois systématiquement justifier tes propositions.
+    // Try to load the v3 prompt template and the knowledge base from disk
+    const path = require('path');
+    const fs = require('fs');
+    const baseDir = path.resolve(__dirname, '../../');
+    let promptTemplateV3 = null;
+    try {
+      const ptPath = path.join(baseDir, 'prompt_template_v3.md');
+      promptTemplateV3 = fs.readFileSync(ptPath, 'utf8');
+    } catch (err) {
+      // Fallback: minimal embedded template if file missing
+      promptTemplateV3 = `Un conseiller doit générer une stratégie d'investissement pour l'utilisateur ({objectif}, {profil_risque}, {montant_initial}, {montant_mensuel}, {horizon}). Réponds en français avec un format structuré.`;
+    }
 
-**Interdictions formelles :**
-- Tu ne recommandes JAMAIS un produit financier spécifique (une action, une obligation, ou un OPCVM d'une société de gestion en particulier).
-- Tu n'utilises pas de jargon sans l'expliquer simplement.
-- Tu ne garantis JAMAIS une performance future.
+    // Load knowledge base (if present) and perform light filtering by profil_risque
+    let knowledge = '';
+    try {
+      const kbPath = path.join(baseDir, 'knowledge_base.txt');
+      knowledge = fs.readFileSync(kbPath, 'utf8');
+    } catch (err) {
+      knowledge = '';
+    }
 
-## 2. Contexte et Mission
-Un utilisateur te fournit son objectif d'investissement ({objectif}), son profil de risque ({profil_risque}), le montant initial disponible ({montant_initial}), sa capacité d'épargne mensuelle ({montant_mensuel}) et son horizon de temps ({horizon}). Ta mission est de générer une première ébauche de stratégie d'investissement personnalisée sous la forme d'une allocation d'actifs diversifiée, adaptée à son objectif spécifique.
+    // Simple filtering function (mirrors notebook logic)
+    function filterKnowledgeByRisk(profil, knowledgeContent) {
+      if (!knowledgeContent) return '';
+      const riskMap = {
+        'Prudent': ['PRESERVATION', 'REVENU'],
+        'Équilibré': ['REVENU', 'CROISSANCE_MODEREE'],
+        'Audacieux': ['CROISSANCE', 'CROISSANCE_AGGRESSIVE']
+      };
+      const relevant = riskMap[profil] || ['CROISSANCE_MODEREE'];
+      const sections = knowledgeContent.split('OBJECTIF :');
+      const filtered = [];
+      for (let i = 1; i < sections.length; i++) {
+        const section = 'OBJECTIF :' + sections[i];
+        for (const obj of relevant) {
+          if (section.includes(obj)) {
+            filtered.push(section);
+            break;
+          }
+        }
+        if (filtered.length >= 2) break; // limit
+      }
+      return filtered.join('\n\n');
+    }
 
-## 5. Ta Tâche
-Maintenant, génère la réponse complète pour l'utilisateur suivant :
-- **Objectif d'investissement :** "{objectif}"
-- **Profil de risque :** "{profil_risque}"  
-- **Montant initial :** "{montant_initial}"
-- **Épargne mensuelle :** "{montant_mensuel}"
-- **Horizon de temps :** "{horizon}"
+    const filteredKnowledge = filterKnowledgeByRisk(profil_risque, knowledge);
 
-Réponds en français avec un format structuré incluant une allocation d'actifs en pourcentages.`;
-
-    // Generate personalized prompt
-    const personalizedPrompt = promptTemplate
+    // Replace placeholders in prompt template
+    let personalizedPrompt = promptTemplateV3
       .replace(/{objectif}/g, objectif)
       .replace(/{profil_risque}/g, profil_risque)
       .replace(/{montant_initial}/g, montant_initial)
       .replace(/{montant_mensuel}/g, montant_mensuel)
       .replace(/{horizon}/g, horizon);
 
+    // Append filtered knowledge if any
+    let finalPrompt = personalizedPrompt;
+    if (filteredKnowledge && filteredKnowledge.trim().length > 0) {
+      finalPrompt = `${personalizedPrompt}\n\nAllocations de référence :\n${filteredKnowledge}`;
+    }
+
     // Call Gemini API
-    const result = await model.generateContent(personalizedPrompt);
+    const result = await model.generateContent(finalPrompt);
     const response = await result.response;
     const advice = response.text();
 
