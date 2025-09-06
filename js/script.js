@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSmoothScroll();
 });
 
-// Simulateur d'investissement avec IA Gemini
+// Simulateur d'investissement avec IA Gemini via Netlify Functions
 function initializeInvestmentSimulator() {
     const simulateBtn = document.getElementById('simulateBtn');
     const simulationResult = document.getElementById('simulationResult');
@@ -37,53 +37,87 @@ function initializeInvestmentSimulator() {
         simulateBtn.disabled = true;
         simulateBtn.querySelector('span').textContent = 'Analyse en cours...';
 
-        // Configuration de l'IA
-        const systemPrompt = `Vous êtes un assistant de simulation financière utile pour RAM Advisor. Votre rôle est de fournir des scénarios illustratifs et éducatifs basés sur les entrées de l'utilisateur. Vous ne devez jamais fournir de conseils financiers. Toutes vos réponses doivent être formulées comme des exemples éducatifs, et non comme des recommandations. Vous devez inclure une clause de non-responsabilité dans votre réponse indiquant qu'il s'agit d'une simulation et non d'un conseil financier, et que les rendements réels peuvent varier. La réponse doit être en français, engageante et facile à comprendre pour un débutant. Formattez la réponse en HTML avec des paragraphes (<p>) et des listes (<ul><li>).`;
-
-        const userQuery = `Sur la base des informations suivantes, générez un paragraphe éducatif décrivant une stratégie d'investissement possible et un résultat potentiel à long terme. Objectif : ${goal}, Investissement initial : ${initialAmount}€, Contribution mensuelle : ${monthlyAmount}€, Profil de risque : ${riskProfile}.`;
-        
-        // Note: L'API Key doit être fournie par Google Sites ou un service externe
-        const apiKey = ""; 
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-        const payload = {
-            contents: [{ parts: [{ text: userQuery }] }],
-            systemInstruction: {
-                parts: [{ text: systemPrompt }]
-            },
-        };
-
         try {
-            const response = await fetch(apiUrl, {
+            // Mapper les profils de risque vers les termes du prompt
+            const riskMapping = {
+                'conservative': 'Prudent',
+                'balanced': 'Équilibré', 
+                'aggressive': 'Audacieux'
+            };
+
+            // Estimer l'horizon basé sur l'objectif
+            const timeHorizonMapping = {
+                'retirement': '20 ans',
+                'house': '10 ans',
+                'education': '15 ans',
+                'travel': '5 ans',
+                'other': '10 ans'
+            };
+
+            const params = {
+                profil_risque: riskMapping[riskProfile] || 'Équilibré',
+                montant: `${initialAmount}€`,
+                horizon: timeHorizonMapping[goal] || '10 ans'
+            };
+
+            // Appel à la fonction Netlify
+            const response = await fetch('/.netlify/functions/generate-investment-advice', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(params)
             });
 
-            if (!response.ok) {
-                throw new Error(`API error: ${response.statusText}`);
-            }
+            const data = await response.json();
 
-            const result = await response.json();
-            const candidate = result.candidates?.[0];
-
-            if (candidate && candidate.content?.parts?.[0]?.text) {
-                const generatedText = candidate.content.parts[0].text;
-                resultText.innerHTML = generatedText;
+            if (data.success) {
+                // Affichage du résultat
+                loadingSpinner.style.display = 'none';
+                resultText.innerHTML = formatInvestmentAdvice(data.advice);
             } else {
-                resultText.textContent = "Désolé, une erreur est survenue lors de la génération de la simulation. Veuillez réessayer.";
+                throw new Error(data.error || 'Erreur lors de la génération du conseil');
             }
 
         } catch (error) {
-            console.error('Erreur lors de l\'appel à l\'API Gemini:', error);
-            resultText.textContent = "Désolé, impossible de contacter le service de simulation pour le moment. Veuillez vérifier votre connexion ou réessayer plus tard.";
-        } finally {
-            // Masquer le chargement et restaurer le bouton
+            console.error('Erreur:', error);
             loadingSpinner.style.display = 'none';
+            resultText.innerHTML = `
+                <div class="text-red-600 p-4 bg-red-50 rounded-lg">
+                    <h3 class="font-semibold">Erreur de simulation</h3>
+                    <p>${error.message}</p>
+                    <p class="text-sm mt-2">Veuillez réessayer plus tard.</p>
+                </div>
+            `;
+        } finally {
             simulateBtn.disabled = false;
             simulateBtn.querySelector('span').textContent = 'Lancer la simulation';
         }
     });
+}
+
+// Fonction pour formater la réponse de Gemini en HTML
+function formatInvestmentAdvice(advice) {
+    // Convertir le markdown en HTML basique
+    let html = advice
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/### (.*?)$/gm, '<h3 class="text-lg font-semibold text-violet-700 mt-4 mb-2">$1</h3>')
+        .replace(/## (.*?)$/gm, '<h2 class="text-xl font-bold text-violet-800 mt-6 mb-3">$1</h2>')
+        .replace(/# (.*?)$/gm, '<h1 class="text-2xl font-bold text-violet-900 mt-8 mb-4">$1</h1>')
+        .replace(/\n\n/g, '</p><p class="mb-3">')
+        .replace(/\|(.*?)\|/g, '<td class="border px-3 py-2">$1</td>');
+
+    // Ajouter les balises de paragraphe
+    html = '<p class="mb-3">' + html + '</p>';
+    
+    // Traitement spécial pour les tableaux
+    if (html.includes('<td')) {
+        html = html.replace(/(<td.*?<\/td>.*?<td.*?<\/td>.*?<td.*?<\/td>)/g, '<tr>$1</tr>');
+        html = html.replace(/(<tr>.*?<\/tr>)/g, '<table class="w-full border-collapse border border-gray-300 my-4">$1</table>');
+    }
+
+    return html;
 }
 
 // Graphique Donut pour l'allocation d'actifs
