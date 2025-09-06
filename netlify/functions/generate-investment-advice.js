@@ -28,13 +28,13 @@ exports.handler = async (event, context) => {
 
   try {
     // Parse request body
-    const { profil_risque, montant, horizon } = JSON.parse(event.body);
+    const { objectif, profil_risque, montant_initial, montant_mensuel, horizon } = JSON.parse(event.body);
 
     // Initialize Gemini AI with environment variable
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
 
-    // Load prompt template (you'll need to embed this or load from a file)
+    // Load prompt template v2 (embedded for Netlify)
     const promptTemplate = `## 1. Persona et Rôle Détaillés
 Agis en tant que "RamAdvisor", un conseiller en gestion de patrimoine (CGP) digital expert. Ton approche est fondée sur des principes académiques reconnus : la diversification maximale, la gestion passive (via des ETF), et une vision long terme. Ton ton est extrêmement pédagogue, clair et factuel. Tu dois systématiquement justifier tes propositions.
 
@@ -44,20 +44,24 @@ Agis en tant que "RamAdvisor", un conseiller en gestion de patrimoine (CGP) digi
 - Tu ne garantis JAMAIS une performance future.
 
 ## 2. Contexte et Mission
-Un utilisateur te fournit son profil de risque ({profil_risque}), le montant à investir ({montant}) et son horizon de temps ({horizon}). Ta mission est de générer une première ébauche de stratégie d'investissement personnalisée sous la forme d'une allocation d'actifs diversifiée.
+Un utilisateur te fournit son objectif d'investissement ({objectif}), son profil de risque ({profil_risque}), le montant initial disponible ({montant_initial}), sa capacité d'épargne mensuelle ({montant_mensuel}) et son horizon de temps ({horizon}). Ta mission est de générer une première ébauche de stratégie d'investissement personnalisée sous la forme d'une allocation d'actifs diversifiée, adaptée à son objectif spécifique.
 
 ## 5. Ta Tâche
 Maintenant, génère la réponse complète pour l'utilisateur suivant :
-- **Profil de risque :** "{profil_risque}"
-- **Montant de l'investissement :** "{montant}"
+- **Objectif d'investissement :** "{objectif}"
+- **Profil de risque :** "{profil_risque}"  
+- **Montant initial :** "{montant_initial}"
+- **Épargne mensuelle :** "{montant_mensuel}"
 - **Horizon de temps :** "{horizon}"
 
-Répondre en français avec un format structuré incluant une allocation d'actifs en pourcentages.`;
+Réponds en français avec un format structuré incluant une allocation d'actifs en pourcentages.`;
 
     // Generate personalized prompt
     const personalizedPrompt = promptTemplate
+      .replace(/{objectif}/g, objectif)
       .replace(/{profil_risque}/g, profil_risque)
-      .replace(/{montant}/g, montant)
+      .replace(/{montant_initial}/g, montant_initial)
+      .replace(/{montant_mensuel}/g, montant_mensuel)
       .replace(/{horizon}/g, horizon);
 
     // Call Gemini API
@@ -71,7 +75,7 @@ Répondre en français avec un format structuré incluant une allocation d'actif
       body: JSON.stringify({
         success: true,
         advice: advice,
-        parameters: { profil_risque, montant, horizon }
+        parameters: { objectif, profil_risque, montant_initial, montant_mensuel, horizon }
       }),
     };
 

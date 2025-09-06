@@ -23,6 +23,7 @@ function initializeInvestmentSimulator() {
         const initialAmount = document.getElementById('initialAmount').value;
         const monthlyAmount = document.getElementById('monthlyAmount').value;
         const riskProfile = document.getElementById('riskProfile').value;
+        const timeHorizon = document.getElementById('timeHorizon').value;
 
         // Validation basique
         if (!goal || !initialAmount || !monthlyAmount) {
@@ -45,19 +46,13 @@ function initializeInvestmentSimulator() {
                 'aggressive': 'Audacieux'
             };
 
-            // Estimer l'horizon basé sur l'objectif
-            const timeHorizonMapping = {
-                'retirement': '20 ans',
-                'house': '10 ans',
-                'education': '15 ans',
-                'travel': '5 ans',
-                'other': '10 ans'
-            };
-
+            // Paramètres pour le prompt template v2
             const params = {
+                objectif: goal, // Objectif tel que saisi par l'utilisateur
                 profil_risque: riskMapping[riskProfile] || 'Équilibré',
-                montant: `${initialAmount}€`,
-                horizon: timeHorizonMapping[goal] || '10 ans'
+                montant_initial: `${initialAmount}€`,
+                montant_mensuel: `${monthlyAmount}€`,
+                horizon: `${timeHorizon} ans`
             };
 
             // Appel à la fonction Netlify
