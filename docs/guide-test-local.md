@@ -1,22 +1,30 @@
-# 🧪 Guide de Test Local - RAM Advisor Cloud
+# 🧪 Guide de Test Local - RAM Advisor Ultra-Light
 
 ## 📋 Vue d'ensemble
 
-Ce guide vous permet de tester votre nouvelle architecture cloud **localement** avant de déployer sur Render et Netlify. C'est une étape cruciale pour éviter les problèmes après déploiement.
+Ce guide vous permet de tester votre backend **ultra-allégé** localement avant de déployer sur Render. Version optimisée sans FastAPI.
 
 ## 🎯 Objectifs du test local
 
-✅ Vérifier que le backend FastAPI fonctionne  
-✅ Vérifier que le frontend communique avec le backend  
+✅ Vérifier que le serveur HTTP natif fonctionne  
+✅ Vérifier que l'API Gemini répond  
 ✅ Tester les fonctionnalités de simulation IA  
-✅ S'assurer que tout est prêt pour le déploiement  
+✅ S'assurer que tout est prêt pour le déploiement gratuit
 
 ---
 
 ## 🛠️ ÉTAPE 1 : Préparation de l'environnement
 
 ### 1.1 Vérifier la structure du projet
-Votre projet doit ressembler à ceci :
+```
+RAMAdvisor/
+├── backend/
+│   ├── main-ultra-light.py          ← Serveur ultra-light
+│   ├── requirements-ultra-light.txt ← Dépendances minimales  
+│   ├── test-ultra-light.ps1         ← Tests automatisés
+│   └── .env.example                 ← Configuration
+├── frontend/                        ← Interface web
+└── docs/                           ← Documentation
 ```
 RAMAdvisor/
 ├── backend/              # Service d'IA
@@ -39,37 +47,53 @@ RAMAdvisor/
 ## 🐍 ÉTAPE 2 : Configuration du Backend Python
 
 ### 2.1 Créer l'environnement virtuel
+### 1.2 Configuration de l'environnement
+
 ```powershell
 # Aller dans le dossier backend
 cd backend
 
-# Créer l'environnement virtuel
-python -m venv venv
-
-# Activer l'environnement virtuel
-.\venv\Scripts\activate
-
-# Vous devriez voir (venv) au début de votre ligne de commande
+# Configurer les variables d'environnement
+cp .env.example .env
+# Éditez .env avec votre GEMINI_API_KEY
 ```
 
-### 2.2 Installer les dépendances
+### 1.3 Installer les dépendances ultra-légères
 
-**🎯 VERSION ALLÉGÉE (Recommandée pour Render gratuit):**
 ```powershell
-# Installer la version légère sans FAISS
-pip install -r requirements-light.txt
+# Installer les 2 dépendances minimales
+pip install -r requirements-ultra-light.txt
 
-# 📊 Consommation mémoire allégée:
-# - FastAPI + uvicorn: ~50 MB
+# 📊 Consommation mémoire ultra-light:
 # - google-generativeai: ~100 MB  
-# - Autres dépendances: ~50 MB
-# - Total: ~200 MB (bien sous la limite de 512 MB!)
+# - python-dotenv: ~5 MB
+# - Serveur HTTP natif: ~30 MB
+# - Total: ~135 MB (très loin de la limite 512 MB!)
 
-# ⏳ Installation plus rapide: 30 secondes - 2 minutes
+# ⏳ Installation ultra-rapide: 10-30 secondes
 ```
 
-**🔬 VERSION COMPLÈTE (Pour tests locaux uniquement):**
+---
+
+## 🚀 ÉTAPE 2 : Démarrage du backend ultra-light
+
+### 2.1 Méthode automatisée (Recommandée)
+
 ```powershell
+# Test complet automatisé
+.\test-ultra-light.ps1
+```
+
+### 2.2 Méthode manuelle
+
+```powershell
+# Démarrer le serveur
+python main-ultra-light.py
+
+# Sortie attendue:
+# INFO:__main__:🚀 RAM Advisor démarré sur le port 8000
+# INFO:__main__:🌐 URL: http://localhost:8000
+```
 # Version complète avec FAISS (pour comparaison)
 pip install -r requirements.txt
 

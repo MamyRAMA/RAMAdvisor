@@ -1,33 +1,32 @@
-# 🚨 Dépannage Render - Problèmes Courants
+# 🚨 Dépannage Render - Version Ultra-Light
 
-## 📊 Analyse de vos logs
+## ✅ Problème Résolu avec Version Ultra-Light
 
-D'après vos logs Render, voici les problèmes identifiés :
+### 🎉 **Solution Adoptée : Backend Ultra-Allégé**
 
-### ❌ **Problème Principal : Out of Memory**
+**Anciens problèmes** :
+- ❌ Out of Memory (used over 512Mi)
+- ❌ sentence-transformers : ~200-300 MB
+- ❌ faiss-cpu : ~100-200 MB  
+- ❌ FastAPI + dépendances : ~100 MB
+- ❌ **Total** : ~500-600 MB (dépassait la limite)
+
+**Nouvelle architecture** :
+- ✅ Serveur HTTP natif Python : ~30 MB
+- ✅ google-generativeai : ~100 MB
+- ✅ python-dotenv : ~5 MB
+- ✅ **Total** : ~135 MB (largement sous la limite !)
+
+## 🔧 Configuration Render Ultra-Light
+
+### Paramètres Render optimisés :
+```yaml
+Root Directory: backend
+Build Command: pip install -r requirements-ultra-light.txt
+Start Command: python main-ultra-light.py
+Environment Variables:
+  - GEMINI_API_KEY: your_key_here
 ```
-==> Out of memory (used over 512Mi)
-```
-
-**Cause** : Votre application utilise plus de RAM que le plan gratuit (512 MB)
-
-**Consommation typique** :
-- sentence-transformers : ~200-300 MB
-- faiss-cpu : ~100-200 MB  
-- FastAPI + dépendances : ~100 MB
-- **Total** : ~500-600 MB (dépasse la limite)
-
-## 🔧 Solutions par ordre de préférence
-
-### Solution 1 : Upgrade vers plan payant (RECOMMANDÉ)
-**Coût** : 7$/mois  
-**Avantages** :
-- ✅ Plus de RAM (512 MB → 512 MB+ selon plan)
-- ✅ Pas de coupures pour inactivité
-- ✅ Fonctionnalités IA complètes
-- ✅ Performances optimales
-
-**Comment faire** :
 1. Dans votre dashboard Render
 2. Allez dans Settings → Plan
 3. Sélectionnez "Starter" (7$/mois)

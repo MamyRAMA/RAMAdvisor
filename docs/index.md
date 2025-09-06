@@ -1,22 +1,41 @@
-# 📚 Index de la Documentation
+# 📚 Documentation RAM Advisor - Version Ultra Allégée
 
-## 🎯 Guide de Démarrage Rapide
+## 🚀 Guide de Démarrage Rapide
 
-### Pour commencer immédiatement :
-1. **Prévisualiser le site** → [Guide de Prévisualisation](guide-previsualisation.md)
-2. **Déployer sur Internet** → [Guide Déploiement Netlify](guide-deploiement-netlify.md)
-3. **Maintenir le site** → [Guide de Maintenance](guide-maintenance.md)
+### Étapes essentielles :
+1. **Configuration Backend** → [Guide Déploiement Ultra-Light](guide-deployment-light.md)
+2. **API Gemini** → [Configuration Gemini API](guide-gemini-api.md) 
+3. **Frontend Web** → [Déploiement Netlify](guide-deploiement-netlify.md)
+4. **Tests** → [Validation Locale](guide-test-local.md)
 
 ---
 
 ## 📖 Documentation Complète
 
-### 🔍 [Guide de Prévisualisation](guide-previsualisation.md)
-**Quand l'utiliser :** Avant chaque session de développement
-- Comment prévisualiser votre site localement
-- Différences entre les méthodes (double-clic vs Live Server)
-- Vérification que les serveurs sont arrêtés
-- Impact mémoire de chaque méthode
+### � [Guide Déploiement Ultra-Light](guide-deployment-light.md)
+**Version optimisée pour Render gratuit**
+- Backend ultra-allégé (150MB)
+- Serveur HTTP natif Python
+- Configuration Render étape par étape
+- Déploiement gratuit complet
+
+### 🤖 [Configuration Gemini API](guide-gemini-api.md)
+**Setup de l'IA Google Gemini**
+- Obtention clé API gratuite
+- Configuration environnement
+- Tests de fonctionnement
+
+### 🌐 [Déploiement Netlify](guide-deploiement-netlify.md)
+**Interface web statique**
+- Déploiement frontend gratuit
+- Configuration domaine
+- Intégration avec backend
+
+### 🧪 [Tests Locaux](guide-test-local.md)
+**Validation avant déploiement**
+- Tests backend ultra-light
+- Vérification API
+- Scripts automatisés
 
 ### 🚀 [Guide Déploiement Netlify](guide-deploiement-netlify.md)
 **Quand l'utiliser :** Pour mettre le site en ligne

@@ -7,9 +7,10 @@ Déployer RAM Advisor sur Render **gratuit** (512 MB) avec Gemini AI uniquement,
 ## ✅ Avantages Version Allégée
 
 - **💰 Gratuit** : Fonctionne sur Render gratuit
-- **⚡ Rapide** : Démarrage en ~30 secondes
-- **🔧 Simple** : Moins de dépendances
+- **⚡ Ultra-rapide** : Démarrage en ~10 secondes
+- **🔧 Ultra-simple** : Seulement 2 dépendances
 - **🤖 IA** : Powered by Gemini (Google)
+- **📦 Serveur HTTP natif** : Pas de FastAPI
 
 ## ⚠️ Limitations
 
@@ -36,8 +37,8 @@ git push origin test-cloud
 2. **Name** : `ramadvisor-backend-light`
 3. **Root Directory** : `backend`
 4. **Environment** : `Python 3`
-5. **Build Command** : `pip install -r requirements-light.txt`
-6. **Start Command** : `python main-light.py`
+5. **Build Command** : `pip install -r requirements-ultra-light.txt`
+6. **Start Command** : `python main-ultra-light.py`
 
 ### Étape 3 : Variables d'environnement
 
@@ -95,14 +96,15 @@ const apiUrl = 'https://ramadvisor-backend-light.onrender.com/simulate';
 ## 📊 Monitoring
 
 ### Consommation mémoire (Render dashboard) :
-- **Cible** : < 400 MB
+- **Cible** : < 200 MB
 - **Limite** : 512 MB
-- **Marge** : ~100 MB
+- **Marge** : ~300 MB
 
 ### Performance attendue :
-- **Démarrage** : 30-60 secondes
-- **Première requête** : 3-5 secondes
-- **Requêtes suivantes** : 1-2 secondes
+- **Démarrage** : 5-15 secondes
+- **Première requête** : 2-3 secondes
+- **Requêtes suivantes** : < 1 seconde
+- **Mémoire utilisée** : ~150MB
 
 ---
 
@@ -120,8 +122,8 @@ Quand vous voulez passer au plan payant (7$/mois) :
 ## 🆘 Dépannage
 
 ### ❌ Out of Memory
-- Vérifiez que vous utilisez `requirements-light.txt`
-- Vérifiez que vous lancez `main-light.py`
+- Vérifiez que vous utilisez `requirements-ultra-light.txt`
+- Vérifiez que vous lancez `main-ultra-light.py`
 
 ### ❌ Gemini API Error
 - Vérifiez la clé dans les variables d'environnement
