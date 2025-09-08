@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "text": "L'investissement à long terme nécessite une stratégie adaptée à votre profil de risque. Pour un profil prudent, privilégiez une allocation conservative avec 60% d'obligations et 30% d'actions. La diversification géographique et sectorielle est essentielle pour réduire les risques.",
+    "source_file": "course.pdf",
+    "page_number": 1,
+    "chunk_index": 0,
+    "embedding": [0.1, 0.2, 0.3, 0.4, 0.5]
+  },
+  {
+    "id": 1,
+    "text": "La volatilité des marchés financiers peut être intimidante pour les investisseurs débutants. Cependant, accepter une certaine volatilité à court terme permet d'obtenir de meilleurs rendements sur le long terme. La régularité des versements (dollar cost averaging) aide à lisser les effets de la volatilité.",
+    "source_file": "course.pdf", 
+    "page_number": 2,
+    "chunk_index": 0,
+    "embedding": [0.2, 0.3, 0.4, 0.5, 0.6]
+  },
+  {
+    "id": 2,
+    "text": "Pour un projet d'achat immobilier, il est recommandé de sécuriser progressivement son capital 2 à 3 ans avant l'échéance. Réduisez l'exposition aux actions et privilégiez des placements moins volatils comme les fonds euros ou les obligations courtes.",
+    "source_file": "course.pdf",
+    "page_number": 3, 
+    "chunk_index": 0,
+    "embedding": [0.3, 0.4, 0.5, 0.6, 0.7]
+  }
+]

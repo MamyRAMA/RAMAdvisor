@@ -1,14 +1,31 @@
-// RAM Advisor - Site Web Amélioré avec Recherche Vectorielle
+/**
+ * Modifications du script principal pour intégrer la recherche vectorielle
+ * 
+ * INSTRUCTIONS:
+ * 1. Ajoutez cette variable globale en haut de votre script.js
+ * 2. Remplacez la fonction d'initialisation DOMContentLoaded
+ * 3. Remplacez votre fonction de simulation d'investissement
+ * 4. Ajoutez les fonctions utilitaires à la fin
+ */
+
+// =============================================================================
+// 1. VARIABLE GLOBALE (à ajouter en haut de script.js)
+// =============================================================================
+
 let vectorSearch = null;
 
+// =============================================================================
+// 2. INITIALISATION MODIFIÉE (remplacer votre DOMContentLoaded)
+// =============================================================================
+
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('RAM Advisor - Site chargé !');
+    console.log('RAM Advisor - Site chargé avec recherche vectorielle !');
     
-    // Initialisation des modules
+    // Initialisation des modules dans l'ordre
     initializeVectorSearch();
     initializeInvestmentSimulator();
-    initializeDoughnutChart();
-    initializeSmoothScroll();
+    initializeDoughnutChart(); // Gardez vos fonctions existantes
+    initializeSmoothScroll();  // Gardez vos fonctions existantes
 });
 
 // Initialisation de la recherche vectorielle
@@ -32,7 +49,10 @@ async function initializeVectorSearch() {
     }
 }
 
-// Simulateur d'investissement avec recherche vectorielle locale
+// =============================================================================
+// 3. SIMULATEUR D'INVESTISSEMENT MODIFIÉ (remplacer votre fonction existante)
+// =============================================================================
+
 function initializeInvestmentSimulator() {
     const simulateBtn = document.getElementById('simulateBtn');
     const simulationResult = document.getElementById('simulationResult');
@@ -117,6 +137,10 @@ function initializeInvestmentSimulator() {
         }
     });
 }
+
+// =============================================================================
+// 4. FONCTIONS UTILITAIRES À AJOUTER
+// =============================================================================
 
 // Génération de simulation locale avec recherche vectorielle
 async function generateLocalSimulation(params) {
@@ -248,257 +272,4 @@ async function generateSmartResponse(params, sources, context) {
     `;
     
     return response;
-}
-
-// Graphique Donut pour l'allocation d'actifs
-function initializeDoughnutChart() {
-    // Fonction pour traitement des labels longs
-    const processLabel = (label) => {
-        if (typeof label !== 'string' || label.length <= 16) return label;
-        const words = label.split(' ');
-        const lines = [];
-        let currentLine = '';
-        for (const word of words) {
-            if ((currentLine + ' ' + word).length > 16 && currentLine.length > 0) {
-                lines.push(currentLine);
-                currentLine = word;
-            } else {
-                currentLine = currentLine ? currentLine + ' ' + word : word;
-            }
-        }
-        if (currentLine) lines.push(currentLine);
-        return lines;
-    };
-
-    // Callback pour les tooltips
-    const tooltipTitleCallback = (tooltipItems) => {
-        const item = tooltipItems[0];
-        let label = item.chart.data.labels[item.dataIndex];
-        return Array.isArray(label) ? label.join(' ') : label;
-    };
-
-    // Configuration des données du graphique
-    const accompagnementData = {
-        labels: ['Actions Monde (ETF)', 'Obligations Europe', 'Matières Premières', 'Liquidités'].map(processLabel),
-        datasets: [{
-            label: 'Allocation de Portefeuille',
-            data: [60, 25, 10, 5],
-            backgroundColor: ['#4C1D95', '#6D28D9', '#8B5CF6', '#A78BFA'],
-            borderColor: '#FFFFFF',
-            borderWidth: 3,
-            hoverOffset: 4
-        }]
-    };
-
-    // Configuration du graphique
-    const accompagnementConfig = {
-        type: 'doughnut',
-        data: accompagnementData,
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { 
-                    display: false 
-                },
-                tooltip: { 
-                    callbacks: { 
-                        title: tooltipTitleCallback 
-                    } 
-                }
-            }
-        }
-    };
-
-    // Création du graphique
-    const accompagnementDonutChartCtx = document.getElementById('accompagnementDonutChart')?.getContext('2d');
-    if (accompagnementDonutChartCtx) {
-        new Chart(accompagnementDonutChartCtx, accompagnementConfig);
-    }
-}
-
-// Navigation avec défilement fluide
-function initializeSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
-
-// Fonctions utilitaires pour les calculs d'investissement
-function calculateDetailedProjections(initialAmount, monthlyAmount, riskProfile) {
-    // Taux de rendement selon le profil de risque
-    const annualReturns = {
-        'Prudent': 0.04,
-        'Équilibré': 0.06,
-        'Dynamique': 0.08,
-        'Agressif': 0.10
-    };
-    
-    const annualReturn = annualReturns[riskProfile] || 0.06;
-    const monthlyReturn = annualReturn / 12;
-    
-    // Calculs pour 10 et 20 ans
-    const projections = {
-        year10: calculateCompoundGrowth(initialAmount, monthlyAmount, monthlyReturn, 120),
-        year20: calculateCompoundGrowth(initialAmount, monthlyAmount, monthlyReturn, 240)
-    };
-    
-    // Allocation suggérée selon le profil
-    const allocations = {
-        'Prudent': [
-            { asset: 'Obligations', percentage: 60 },
-            { asset: 'Actions', percentage: 30 },
-            { asset: 'Liquidités', percentage: 10 }
-        ],
-        'Équilibré': [
-            { asset: 'Actions', percentage: 50 },
-            { asset: 'Obligations', percentage: 40 },
-            { asset: 'Liquidités', percentage: 10 }
-        ],
-        'Dynamique': [
-            { asset: 'Actions', percentage: 70 },
-            { asset: 'Obligations', percentage: 20 },
-            { asset: 'Alternatives', percentage: 10 }
-        ],
-        'Agressif': [
-            { asset: 'Actions', percentage: 80 },
-            { asset: 'Alternatives', percentage: 15 },
-            { asset: 'Liquidités', percentage: 5 }
-        ]
-    };
-    
-    return {
-        ...projections,
-        allocation: allocations[riskProfile] || allocations['Équilibré']
-    };
-}
-
-function calculateCompoundGrowth(initial, monthly, monthlyRate, months) {
-    let value = initial;
-    for (let i = 0; i < months; i++) {
-        value = (value + monthly) * (1 + monthlyRate);
-    }
-    
-    const totalInvested = initial + (monthly * months);
-    const gains = value - totalInvested;
-    
-    return {
-        value: Math.round(value),
-        totalInvested: Math.round(totalInvested),
-        gains: Math.round(gains)
-    };
-}
-
-function analyzeContextForRecommendations(context, riskProfile, goal) {
-    const recommendations = {
-        strategy: '',
-        insights: []
-    };
-    
-    // Analyse du contexte pour extraire des recommandations
-    if (context) {
-        const contextLower = context.toLowerCase();
-        
-        // Stratégie basée sur l'objectif et le profil
-        if (goal.toLowerCase().includes('retraite')) {
-            recommendations.strategy = `Pour votre objectif de retraite avec un profil ${riskProfile}, privilégiez une approche progressive diminuant le risque avec l'âge.`;
-            recommendations.insights.push('Commencez par des investissements dynamiques puis réduisez progressivement le risque');
-            recommendations.insights.push('Considérez les avantages fiscaux du PER (Plan Épargne Retraite)');
-        } else if (goal.toLowerCase().includes('achat') || goal.toLowerCase().includes('immobilier')) {
-            recommendations.strategy = `Pour un projet immobilier, sécurisez progressivement votre capital à l'approche de l'échéance.`;
-            recommendations.insights.push('Privilégiez la sécurisation du capital 2-3 ans avant l\'achat');
-        } else {
-            recommendations.strategy = `Avec un profil ${riskProfile}, diversifiez vos investissements pour optimiser le rapport rendement/risque.`;
-        }
-        
-        // Insights basés sur le contenu
-        if (contextLower.includes('diversification')) {
-            recommendations.insights.push('La diversification est la clé pour réduire les risques sans sacrifier le rendement');
-        }
-        if (contextLower.includes('volatilité') || contextLower.includes('risque')) {
-            recommendations.insights.push('Accepter une certaine volatilité à court terme peut améliorer les rendements à long terme');
-        }
-        if (contextLower.includes('frais') || contextLower.includes('coût')) {
-            recommendations.insights.push('Minimisez les frais de gestion qui réduisent significativement la performance long terme');
-        }
-    }
-    
-    // Recommandations génériques selon le profil
-    const profileInsights = {
-        'Prudent': [
-            'Privilégiez la sécurité du capital avec des rendements modérés mais stables',
-            'Les fonds euros et obligations d\'État conviennent à votre profil'
-        ],
-        'Équilibré': [
-            'Un bon équilibre entre croissance et sécurité correspond à votre profil',
-            'Les ETF diversifiés sont adaptés pour une exposition mondiale'
-        ],
-        'Dynamique': [
-            'Vous pouvez accepter plus de volatilité pour un potentiel de gains supérieur',
-            'Les actions et ETF actions constituent la base de votre allocation'
-        ],
-        'Agressif': [
-            'Maximisez votre exposition aux actifs de croissance',
-            'Considérez les marchés émergents et secteurs innovants'
-        ]
-    };
-    
-    if (recommendations.insights.length < 3) {
-        recommendations.insights.push(...(profileInsights[riskProfile] || []));
-    }
-    
-    return recommendations;
-}
-
-function generateFallbackSimulation(params) {
-    const { goal, initialAmount, monthlyAmount, riskProfile } = params;
-    const projections = calculateDetailedProjections(initialAmount, monthlyAmount, riskProfile);
-    
-    return `
-        <div class="p-4">
-            <h4 class="font-semibold mb-2">Simulation de base pour ${goal}</h4>
-            <p><strong>Profil:</strong> ${riskProfile}</p>
-            <p><strong>Projection 10 ans:</strong> ${formatCurrency(projections.year10.value)}</p>
-            <p><strong>Projection 20 ans:</strong> ${formatCurrency(projections.year20.value)}</p>
-            <p class="text-sm text-gray-600 mt-2">
-                Cette simulation utilise des hypothèses de rendement standard. 
-                Pour une analyse personnalisée, la base de connaissances doit être chargée.
-            </p>
-        </div>
-    `;
-}
-
-// Fonctions utilitaires générales
-function formatCurrency(amount) {
-    return new Intl.NumberFormat('fr-FR', {
-        style: 'currency',
-        currency: 'EUR'
-    }).format(amount);
-}
-
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
-
-// Animation au scroll (optionnel)
-function observeElements() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in');
-            }
-        });
-    });
-
-    document.querySelectorAll('.card').forEach(el => observer.observe(el));
 }

@@ -1,0 +1,7 @@
+{
+  "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dim": 384,
+  "total_chunks": 6,
+  "source_file": "course.pdf",
+  "generated_at": "2025-09-08T10:00:00.000Z"
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAM Advisor | Conseil en Investissement avec RAG</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- ÉTAPE 1: Ajouter le module de recherche vectorielle AVANT script.js -->
+    <script src="js/vector-search.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-violet-800">RAM Advisor</a>
+            <div>
+                <a href="#offres" class="text-gray-600 hover:text-violet-800 mx-4">Nos Offres</a>
+                <a href="#contact" class="bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-violet-900 via-purple-800 to-indigo-900 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-6">
+                Investissez intelligemment<br>
+                <span class="text-violet-300">avec l'IA</span>
+            </h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Notre simulateur utilise une base de connaissances avancée pour vous proposer des stratégies d'investissement personnalisées.
+            </p>
+        </div>
+    </section>
+
+    <!-- ÉTAPE 2: Section de simulation avec IDs requis -->
+    <section id="simulator" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12 text-violet-800">
+                    🚀 Simulateur d'Investissement Intelligent
+                </h2>
+                
+                <!-- Formulaire de simulation -->
+                <div class="bg-gradient-to-r from-violet-50 to-purple-50 p-8 rounded-2xl shadow-lg mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- IMPORTANT: IDs exacts requis par le script -->
+                        <div>
+                            <label for="goal" class="block text-sm font-medium text-gray-700 mb-2">
+                                🎯 Objectif d'investissement
+                            </label>
+                            <input 
+                                type="text" 
+                                id="goal" 
+                                placeholder="Ex: Préparer ma retraite, Acheter une maison..."
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label for="riskProfile" class="block text-sm font-medium text-gray-700 mb-2">
+                                ⚖️ Profil de risque
+                            </label>
+                            <select 
+                                id="riskProfile" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
+                            >
+                                <option value="Prudent">Prudent - Sécurité avant tout</option>
+                                <option value="Équilibré" selected>Équilibré - Compromis risque/rendement</option>
+                                <option value="Dynamique">Dynamique - Accepte plus de risque</option>
+                                <option value="Agressif">Agressif - Maximise le potentiel</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="initialAmount" class="block text-sm font-medium text-gray-700 mb-2">
+                                💰 Apport initial (€)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="initialAmount" 
+                                placeholder="Ex: 5000"
+                                min="0"
+                                step="100"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label for="monthlyAmount" class="block text-sm font-medium text-gray-700 mb-2">
+                                📅 Versement mensuel (€)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="monthlyAmount" 
+                                placeholder="Ex: 300"
+                                min="0"
+                                step="50"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
+                            >
+                        </div>
+                    </div>
+                    
+                    <!-- IMPORTANT: Bouton avec ID et structure exacts -->
+                    <div class="text-center">
+                        <button 
+                            id="simulateBtn"
+                            class="bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+                        >
+                            <span>🧠 Lancer la simulation IA</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- ÉTAPE 3: Zone de résultat avec structure exacte -->
+                <div id="simulationResult" class="hidden">
+                    <!-- Spinner de chargement -->
+                    <div id="loadingSpinner" style="display: none;" class="flex justify-center items-center py-8">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-600"></div>
+                        <span class="ml-3 text-violet-600 font-semibold">Analyse en cours...</span>
+                    </div>
+                    
+                    <!-- Zone de texte du résultat -->
+                    <div id="resultText" class="bg-white rounded-lg shadow-lg p-6">
+                        <!-- Le contenu sera injecté ici par JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section informative -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h3 class="text-2xl font-bold mb-6 text-violet-800">
+                    🧠 Powered by AI Knowledge Base
+                </h3>
+                <p class="text-gray-600 mb-8">
+                    Notre simulateur utilise une base de connaissances avancée en investissement, 
+                    analysée par intelligence artificielle pour vous fournir des recommandations personnalisées.
+                </p>
+                
+                <!-- Statistiques dynamiques (optionnel) -->
+                <div id="knowledge-stats" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h4 class="text-2xl font-bold text-violet-600" id="stat-chunks">-</h4>
+                        <p class="text-gray-600">Fragments de connaissance</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h4 class="text-2xl font-bold text-violet-600" id="stat-pages">-</h4>
+                        <p class="text-gray-600">Pages analysées</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h4 class="text-2xl font-bold text-violet-600" id="stat-source">-</h4>
+                        <p class="text-gray-600">Source de données</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-violet-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 RAM Advisor. Tous droits réservés.</p>
+            <p class="text-sm text-violet-300 mt-2">
+                Simulateur d'investissement alimenté par IA - À des fins éducatives uniquement.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ÉTAPE 4: Scripts dans l'ordre correct -->
+    <script>
+        // Script optionnel pour afficher les statistiques de la base de connaissances
+        document.addEventListener('DOMContentLoaded', function() {
+            // Attendre que vectorSearch soit initialisé
+            setTimeout(() => {
+                if (window.vectorSearch && window.vectorSearch.isInitialized) {
+                    const stats = window.vectorSearch.getStats();
+                    if (stats) {
+                        document.getElementById('stat-chunks').textContent = stats.totalChunks;
+                        document.getElementById('stat-pages').textContent = stats.totalPages;
+                        document.getElementById('stat-source').textContent = stats.sourceFile;
+                    }
+                }
+            }, 2000);
+        });
+    </script>
+    
+    <!-- Votre script principal (avec les modifications intégrées) -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>

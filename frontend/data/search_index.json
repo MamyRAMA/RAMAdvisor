@@ -1,0 +1,22 @@
+{
+  "chunks": [
+    {
+      "id": 0,
+      "text_preview": "L'investissement à long terme nécessite une stratégie adaptée à votre profil de risque...",
+      "keywords": ["investissement", "risque", "allocation", "diversification"],
+      "page": 1
+    },
+    {
+      "id": 1, 
+      "text_preview": "La volatilité des marchés financiers peut être intimidante pour les investisseurs...",
+      "keywords": ["volatilité", "rendement", "investissement"],
+      "page": 2
+    },
+    {
+      "id": 2,
+      "text_preview": "Pour un projet d'achat immobilier, il est recommandé de sécuriser progressivement...",
+      "keywords": ["immobilier", "capital", "obligations"],
+      "page": 3
+    }
+  ]
+}
