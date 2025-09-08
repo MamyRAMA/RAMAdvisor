@@ -1,3 +1,7 @@
+// Archive copy of generer-simulation.js
+// This file was moved from the repository root to archive/ to avoid confusion
+// and preserved for historical reference.
+// Original content follows:
 // Importation des modules nécessaires
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require('fs');
@@ -34,9 +38,9 @@ exports.handler = async (event) => {
     const { profil, montant, duree } = JSON.parse(event.body);
 
     // 4. Remplacer les variables dans le prompt avec les données de l'utilisateur
-    let finalPrompt = promptTemplate.replace('"\[PROFIL_UTILISATEUR\]"', `"${profil}"`);
-    finalPrompt = finalPrompt.replace('"\[MONTANT_UTILISATEUR\]"', `"${montant}"`);
-    finalPrompt = finalPrompt.replace('"\[DUREE_UTILISATEUR\]"', `"${duree}"`);
+    let finalPrompt = promptTemplate.replace('"\\[PROFIL_UTILISATEUR\\]"', `"${profil}"`);
+    finalPrompt = finalPrompt.replace('"\\[MONTANT_UTILISATEUR\\]"', `"${montant}"`);
+    finalPrompt = finalPrompt.replace('"\\[DUREE_UTILISATEUR\\]"', `"${duree}"`);
 
   // 5. Appeler l'API Gemini (standardisé sur gemini-2.0-flash-lite)
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
