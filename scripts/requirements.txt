@@ -1,0 +1,14 @@
+# Dépendances pour génération d'embeddings CFA
+# Installation: pip install -r requirements.txt
+
+# Sentence Transformers pour les embeddings sémantiques
+sentence-transformers>=2.3.0
+
+# PyPDF2 pour extraction de texte des PDFs  
+PyPDF2>=3.0.1
+
+# NumPy pour calculs vectoriels (version compatible Python 3.13)
+numpy>=1.26.0
+
+# Python standard library (inclus par défaut):
+# - pathlib, logging, dataclasses, json, re, os, typing

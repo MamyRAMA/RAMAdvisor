@@ -1,0 +1,16 @@
+{
+  "total_chunks": 1709,
+  "categories_distribution": {
+    "Uncategorized": 63,
+    "Investment Strategy": 280,
+    "Client Management": 790,
+    "Risk Management": 272,
+    "Asset Allocation": 102,
+    "Tax Planning": 131,
+    "Estate Planning": 29,
+    "Alternative Investments": 13,
+    "Performance": 29
+  },
+  "average_chunk_length": 496.0696313633704,
+  "total_keywords": 23
+}

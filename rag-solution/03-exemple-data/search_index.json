@@ -1,0 +1,40 @@
+{
+  "chunks": [
+    {
+      "id": 0,
+      "text_preview": "L'investissement à long terme nécessite une stratégie adaptée à votre profil de risque...",
+      "keywords": ["investissement", "risque", "allocation", "diversification", "prudent"],
+      "page": 1
+    },
+    {
+      "id": 1, 
+      "text_preview": "La volatilité des marchés financiers peut être intimidante pour les investisseurs...",
+      "keywords": ["volatilité", "rendement", "investissement", "dollar cost averaging"],
+      "page": 2
+    },
+    {
+      "id": 2,
+      "text_preview": "Pour un projet d'achat immobilier, il est recommandé de sécuriser progressivement...",
+      "keywords": ["immobilier", "capital", "obligations", "sécuriser"],
+      "page": 3
+    },
+    {
+      "id": 3,
+      "text_preview": "La diversification est un principe fondamental de l'investissement...",
+      "keywords": ["diversification", "portefeuille", "allocation", "risque"],
+      "page": 4
+    },
+    {
+      "id": 4,
+      "text_preview": "Les frais de gestion ont un impact significatif sur la performance à long terme...",
+      "keywords": ["frais", "performance", "etf", "gestion"],
+      "page": 5
+    },
+    {
+      "id": 5,
+      "text_preview": "Pour préparer sa retraite, il est essentiel de commencer tôt et de profiter...",
+      "keywords": ["retraite", "épargne", "per", "intérêts composés"],
+      "page": 6
+    }
+  ]
+}
