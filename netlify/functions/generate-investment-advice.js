@@ -81,19 +81,33 @@ exports.handler = async (event, context) => {
     let promptTemplateV3 = null;
     try {
       const ptPath = path.join(baseDir, 'prompt_template_v3.md');
+      console.log(`🔍 Tentative de chargement Template V3: ${ptPath}`);
       promptTemplateV3 = fs.readFileSync(ptPath, 'utf8');
+      console.log(`✅ Template V3 chargé: ${promptTemplateV3.length} caractères`);
     } catch (err) {
       // Fallback: minimal embedded template if file missing
-      promptTemplateV3 = `Un conseiller professionnel CFA doit générer une stratégie d'investissement personnalisée pour l'utilisateur. 
+      console.warn('⚠️ Template V3 non trouvé, utilisation du fallback:', err.message);
+      promptTemplateV3 = `Agis en tant que conseiller en gestion de patrimoine expert. Génère une stratégie d'investissement personnalisée structurée.
 
-PARAMÈTRES CLIENT:
+INFORMATIONS CLIENT:
 - Objectif: {objectif}
 - Profil de risque: {profil_risque}
 - Montant initial: {montant_initial}
 - Épargne mensuelle: {montant_mensuel}
 - Horizon d'investissement: {horizon}
 
-Réponds en français avec un format structuré et professionnel, en intégrant les meilleures pratiques de gestion privée.`;
+Réponds en français avec un format structuré et professionnel incluant:
+1. Une introduction personnalisée
+2. Une analyse de l'objectif
+3. Une évaluation de l'atypicité (score 1-10)
+4. Les principes clés de la stratégie
+5. Un tableau d'allocation d'actifs
+6. Un plan d'investissement progressif
+7. Des exemples de supports génériques
+8. Un avertissement important
+9. Une proposition d'accompagnement
+
+Ne jamais mentionner tes sources de connaissance.`;
     }
 
     // 🎓 INTÉGRATION RAG CFA - Récupération de la connaissance pertinente
@@ -111,8 +125,11 @@ Réponds en français avec un format structuré et professionnel, en intégrant 
     let standardKnowledge = '';
     try {
       const kbPath = path.join(baseDir, 'knowledge_base.txt');
+      console.log(`🔍 Chargement knowledge base: ${kbPath}`);
       standardKnowledge = fs.readFileSync(kbPath, 'utf8');
+      console.log(`✅ Knowledge base chargée: ${standardKnowledge.length} caractères`);
     } catch (err) {
+      console.warn('⚠️ Knowledge base non trouvée:', err.message);
       standardKnowledge = '';
     }
 
