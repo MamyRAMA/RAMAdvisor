@@ -39,21 +39,23 @@ function initializeInvestmentSimulator() {
         simulateBtn.querySelector('span').textContent = 'Analyse en cours...';
 
         try {
-            // Mapper les profils de risque vers les termes du prompt
+            // Mapper les profils de risque vers les termes exacts du template V3
             const riskMapping = {
                 'conservative': 'Prudent',
                 'balanced': 'Équilibré', 
                 'aggressive': 'Audacieux'
             };
 
-            // Paramètres pour le prompt template v2
+            // Paramètres IDENTIQUES au notebook (même format exact)
             const params = {
-                objectif: goal, // Objectif tel que saisi par l'utilisateur
+                objectif: goal,
                 profil_risque: riskMapping[riskProfile] || 'Équilibré',
                 montant_initial: `${initialAmount}€`,
                 montant_mensuel: `${monthlyAmount}€`,
                 horizon: `${timeHorizon} ans`
             };
+
+            console.log('📊 Envoi des paramètres au site:', params);
 
             // Appel à la fonction Netlify
             const response = await fetch('/.netlify/functions/generate-investment-advice', {
