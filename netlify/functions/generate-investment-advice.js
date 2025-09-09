@@ -153,24 +153,17 @@ Réponds en français avec un format structuré et professionnel, en intégrant 
     // Construire le prompt final avec les différentes sources de connaissance
     let finalPrompt = personalizedPrompt;
     
-    // Priorité 1: Connaissance CFA (si disponible)
+    // Priorité 1: Connaissance professionnelle enrichie (si disponible)
     if (cfaKnowledge && cfaKnowledge.trim().length > 50) {
       finalPrompt += `\n\n${cfaKnowledge}`;
-      console.log('📚 Utilisation de la connaissance CFA professionnelle');
+      console.log('📚 Utilisation de la connaissance professionnelle enrichie');
     }
     
     // Priorité 2: Connaissance standard filtrée (en complément ou fallback)
     if (filteredStandardKnowledge && filteredStandardKnowledge.trim().length > 0) {
-      finalPrompt += `\n\nAllocations de référence complémentaires:\n${filteredStandardKnowledge}`;
+      finalPrompt += `\n\nAllocations de référence:\n${filteredStandardKnowledge}`;
       console.log('📋 Ajout de la connaissance standard filtrée');
     }
-
-    // Ajouter des instructions spécifiques pour l'utilisation de la connaissance CFA
-    finalPrompt += `\n\nINSTRUCTIONS:
-- Utilise prioritairement la connaissance CFA pour tes recommandations
-- Adapte les conseils au profil de risque spécifique
-- Fournis des allocations précises et justifiées
-- Inclus des considérations de gestion privée professionnelle`;
 
     console.log(`📝 Prompt final construit: ${finalPrompt.length} caractères`);
 
