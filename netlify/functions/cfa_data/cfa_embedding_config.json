@@ -1,0 +1,17 @@
+{
+  "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dim": 384,
+  "total_chunks": 1709,
+  "source_file": "course.pdf",
+  "generated_at": "1757372883.863",
+  "categories": [
+    "Asset Allocation",
+    "Risk Management",
+    "Investment Strategy",
+    "Client Management",
+    "Performance",
+    "Tax Planning",
+    "Estate Planning",
+    "Alternative Investments"
+  ]
+}

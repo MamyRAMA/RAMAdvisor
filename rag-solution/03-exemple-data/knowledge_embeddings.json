@@ -1,0 +1,50 @@
+[
+  {
+    "id": 0,
+    "text": "L'investissement à long terme nécessite une stratégie adaptée à votre profil de risque. Pour un profil prudent, privilégiez une allocation conservative avec 60% d'obligations et 30% d'actions. La diversification géographique et sectorielle est essentielle pour réduire les risques tout en maintenant un potentiel de rendement acceptable.",
+    "source_file": "course.pdf",
+    "page_number": 1,
+    "chunk_index": 0,
+    "embedding": [0.1, 0.2, 0.3, 0.4, 0.5, -0.1, 0.8, 0.2, 0.6, 0.4, 0.3, 0.7, 0.1, 0.5, 0.9, 0.2, 0.6, 0.3, 0.8, 0.1]
+  },
+  {
+    "id": 1,
+    "text": "La volatilité des marchés financiers peut être intimidante pour les investisseurs débutants. Cependant, accepter une certaine volatilité à court terme permet d'obtenir de meilleurs rendements sur le long terme. La régularité des versements (dollar cost averaging) aide à lisser les effets de la volatilité en achetant plus d'unités quand les prix sont bas et moins quand ils sont élevés.",
+    "source_file": "course.pdf", 
+    "page_number": 2,
+    "chunk_index": 0,
+    "embedding": [0.2, 0.3, 0.4, 0.5, 0.6, 0.1, 0.7, 0.3, 0.5, 0.8, 0.2, 0.6, 0.4, 0.9, 0.1, 0.7, 0.3, 0.5, 0.2, 0.8]
+  },
+  {
+    "id": 2,
+    "text": "Pour un projet d'achat immobilier, il est recommandé de sécuriser progressivement son capital 2 à 3 ans avant l'échéance. Réduisez l'exposition aux actions et privilégiez des placements moins volatils comme les fonds euros ou les obligations courtes. Cette approche garantit la disponibilité du capital au moment voulu.",
+    "source_file": "course.pdf",
+    "page_number": 3, 
+    "chunk_index": 0,
+    "embedding": [0.3, 0.4, 0.5, 0.6, 0.7, 0.2, 0.6, 0.4, 0.8, 0.1, 0.5, 0.9, 0.3, 0.7, 0.2, 0.6, 0.4, 0.8, 0.1, 0.5]
+  },
+  {
+    "id": 3,
+    "text": "La diversification est un principe fondamental de l'investissement. Ne mettez jamais tous vos œufs dans le même panier. Une allocation équilibrée entre actions, obligations, et éventuellement des investissements alternatifs (immobilier, matières premières) permet de réduire le risque global du portefeuille sans sacrifier le rendement potentiel.",
+    "source_file": "course.pdf",
+    "page_number": 4,
+    "chunk_index": 0,
+    "embedding": [0.4, 0.5, 0.6, 0.7, 0.8, 0.3, 0.5, 0.7, 0.2, 0.9, 0.4, 0.6, 0.8, 0.1, 0.5, 0.3, 0.7, 0.2, 0.9, 0.4]
+  },
+  {
+    "id": 4,
+    "text": "Les frais de gestion ont un impact significatif sur la performance à long terme. Un écart de 1% de frais annuels peut réduire votre capital final de 20% sur 20 ans. Privilégiez les ETF et fonds indiciels aux frais réduits plutôt que les fonds actifs coûteux, sauf si ces derniers justifient leur surperformance nette de frais.",
+    "source_file": "course.pdf",
+    "page_number": 5,
+    "chunk_index": 0,
+    "embedding": [0.5, 0.6, 0.7, 0.8, 0.9, 0.4, 0.3, 0.8, 0.1, 0.6, 0.7, 0.2, 0.5, 0.9, 0.3, 0.8, 0.1, 0.6, 0.4, 0.7]
+  },
+  {
+    "id": 5,
+    "text": "Pour préparer sa retraite, il est essentiel de commencer tôt et de profiter de la puissance des intérêts composés. Un investissement de 200€ par mois pendant 30 ans à 6% de rendement annuel peut générer plus de 200 000€. Le Plan Épargne Retraite (PER) offre des avantages fiscaux intéressants pour cette préparation.",
+    "source_file": "course.pdf",
+    "page_number": 6,
+    "chunk_index": 0,
+    "embedding": [0.6, 0.7, 0.8, 0.9, 0.1, 0.5, 0.2, 0.9, 0.4, 0.7, 0.8, 0.1, 0.6, 0.3, 0.5, 0.9, 0.2, 0.7, 0.4, 0.8]
+  }
+]

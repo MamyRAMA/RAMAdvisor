@@ -1,0 +1,13 @@
+# Dépendances pour la génération d'embeddings statiques
+
+# Sentence Transformers pour les embeddings
+sentence-transformers==2.2.2
+
+# PyPDF2 pour l'extraction de texte des PDFs
+PyPDF2==3.0.1
+
+# NumPy pour les calculs vectoriels
+numpy==1.24.3
+
+# Modules standards Python (déjà inclus)
+# pathlib, logging, dataclasses, json, re, os
