@@ -1,34 +1,45 @@
-# RAM Advisor - Site Web
+# RAM Advisor├── 📄 prompt_template_v3.md # Template pour les réponses IA- Site Web
 
-## � Déploiement
+## 🚀 Déploiement
 
 Ce site est optimisé pour être déployé sur **Netlify**.
 
 ### Structure du projet :
 
 ```
-📁 web/
+📁 RAMAdvisor/
 ├── 📄 index.html          # Page principale du site
 ├── 📄 README.md           # Ce fichier
-├── 📄 web.code-workspace  # Configuration VS Code
-├── 📁 assets/             # Ressources statiques
+├── 📄 knowledge_base.txt  # Base de connaissances pour l'IA
+├── � prompt_template_v3.md # Template pour les réponses IA
+├── 📄 netlify.toml        # Configuration de déploiement Netlify
 ├── 📁 css/
 │   └── 📄 style.css       # Styles personnalisés
 ├── 📁 js/
 │   └── 📄 script.js       # JavaScript du site
+├── 📁 netlify/
+│   └── 📁 functions/      # Fonctions serverless Netlify
+│       ├── 📄 generate-investment-advice.js # API principal
+│       ├── 📄 ultra-optimized-cfa-search.js # Recherche vectorielle
+│       ├── 📄 french-to-english-translator.js # Traducteur multilingue
+│       ├── 📁 archive/    # Anciennes versions archivées
+│       └── 📁 cfa_data/   # Embeddings et données vectorielles
 ├── 📁 pages/
 │   └── 📄 exemple.html    # Pages additionnelles
-└── 📁 archive/            # Fichiers non utilisés pour le déploiement
-    ├── 📁 docs-et-media/  # Documents et vidéos
-    └── 📁 google-sites-versions/ # Versions pour Google Sites
+├── 📁 scripts/            # Scripts de traitement des données
+├── 📁 rag-solution/       # Solution RAG documentée
+└── 📁 docs/               # Documentation
 ```
 
-## � Fichiers nécessaires pour le déploiement :
+## 📋 Fichiers nécessaires pour le déploiement :
 
 - ✅ `index.html` (page principale)
 - ✅ `css/style.css` (styles)
 - ✅ `js/script.js` (JavaScript)
-- ✅ `assets/` (images, etc.)
+- ✅ `knowledge_base.txt` (base de connaissances)
+- ✅ `prompt_template_v3.md` (template IA)
+- ✅ `netlify/functions/` (fonctions serverless)
+- ✅ `netlify.toml` (configuration Netlify)
 - ✅ `pages/` (pages additionnelles)
 
 ## 🌐 Déploiement sur Netlify :
@@ -47,6 +58,8 @@ Ce site est optimisé pour être déployé sur **Netlify**.
 - JavaScript Vanilla
 - Chart.js pour les graphiques
 - Google Fonts (Inter)
+- Google Gemini API (IA générative)
+- RAG (Retrieval Augmented Generation) avec embeddings vectoriels
 
 ## 📧 Contact :
 
@@ -72,12 +85,15 @@ Email : contact@ramadvisor.fr
 ## 🔧 Technologies utilisées
 - HTML5 sémantique
 - Tailwind CSS (CDN)
-- JavaScript vanilla
+- JavaScript ES6+
 - Google Fonts (Inter)
-- API Google Gemini
+- API Google Gemini (modèle gemini-2.0-flash)
+- Netlify Functions (serverless)
+- Système RAG (Retrieval Augmented Generation)
 
 ## 📝 Notes importantes
-- Le site remplace "ACME Conseil" par "RAM Advisor"
-- L'API Gemini nécessite une clé pour fonctionner
+- L'API Gemini nécessite une clé pour fonctionner (à configurer dans Netlify)
 - Responsive design pour mobile/desktop
-- Code optimisé pour Google Sites et hébergement classique
+- Le notebook de test `test_clients_diversifies_v2.ipynb` permet de valider le système
+- Utilise le template de prompt V3 avec système d'atypicité avancé
+- Solution RAG implémentée dans les fonctions Netlify
