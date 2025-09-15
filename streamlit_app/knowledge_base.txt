@@ -1,0 +1,431 @@
+BASE DE CONNAISSANCES STRATÉGIQUE - ALLOCATIONS TYPES DE PORTEFEUILLES
+Source : Principes de la gestion de patrimoine privée (CFA Institute)
+Auteur : RamAdvisor AI Simulation
+Version : 1.0
+OBJECTIF : PRESERVATION DU CAPITAL
+Description : Priorité absolue à la protection du capital contre les pertes. La croissance est un objectif très secondaire. Adapté aux investisseurs ayant une aversion totale au risque ou des besoins de liquidité imminents.
+Typologie : PRESERVATION-1Y
+
+Objectif : Préservation du capital
+
+Profil de Risque : Très faible
+
+Horizon de Temps : 1 an
+
+Liquidité Requise : Très élevée
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 70%
+
+Obligations d'État (court terme < 2 ans) : 30%
+
+Actions : 0%
+
+Immobilier : 0%
+
+Actifs Alternatifs : 0%
+
+Typologie : PRESERVATION-3Y
+
+Objectif : Préservation du capital
+
+Profil de Risque : Très faible
+
+Horizon de Temps : 3 ans
+
+Liquidité Requise : Élevée
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 40%
+
+Obligations d'État (court terme) : 50%
+
+Obligations d'Entreprise (haute qualité) : 10%
+
+Actions : 0%
+
+Immobilier : 0%
+
+Actifs Alternatifs : 0%
+
+Typologie : PRESERVATION-5Y
+
+Objectif : Préservation du capital avec une légère appréciation
+
+Profil de Risque : Faible
+
+Horizon de Temps : 5 ans
+
+Liquidité Requise : Modérée à élevée
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 20%
+
+Obligations d'État : 40%
+
+Obligations d'Entreprise (haute qualité) : 25%
+
+Actions (grandes capitalisations, faible volatilité) : 15%
+
+Immobilier : 0%
+
+Actifs Alternatifs : 0%
+
+OBJECTIF : REVENU
+Description : Priorité à la génération de revenus réguliers (dividendes, coupons) tout en préservant le capital de manière raisonnable.
+Typologie : REVENU-3Y
+
+Objectif : Revenu régulier
+
+Profil de Risque : Faible
+
+Horizon de Temps : 3 ans
+
+Liquidité Requise : Élevée
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 15%
+
+Obligations d'État : 40%
+
+Obligations d'Entreprise (haute qualité) : 35%
+
+Actions (dividendes élevés) : 10%
+
+Immobilier (SCPI de rendement) : 0%
+
+Actifs Alternatifs : 0%
+
+Typologie : REVENU-5Y
+
+Objectif : Revenu régulier
+
+Profil de Risque : Faible à modéré
+
+Horizon de Temps : 5 ans
+
+Liquidité Requise : Modérée
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 10%
+
+Obligations d'État : 30%
+
+Obligations d'Entreprise (haute qualité) : 30%
+
+Actions (dividendes élevés) : 20%
+
+Immobilier (SCPI de rendement) : 10%
+
+Actifs Alternatifs : 0%
+
+Typologie : REVENU-10Y
+
+Objectif : Revenu et croissance modérée du capital
+
+Profil de Risque : Modéré
+
+Horizon de Temps : 10 ans
+
+Liquidité Requise : Faible à modérée
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 5%
+
+Obligations d'État et Entreprise : 40%
+
+Actions (dividendes élevés et croissance) : 35%
+
+Immobilier (SCPI) : 15%
+
+Actifs Alternatifs : 5%
+
+Typologie : REVENU-15Y
+
+Objectif : Revenu et croissance du capital
+
+Profil de Risque : Modéré
+
+Horizon de Temps : 15 ans
+
+Liquidité Requise : Faible
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 5%
+
+Obligations : 35%
+
+Actions (dividendes et croissance) : 40%
+
+Immobilier (SCPI) : 15%
+
+Actifs Alternatifs : 5%
+
+OBJECTIF : ÉQUILIBRÉ
+Description : Recherche d'un compromis entre la croissance du capital et la génération de revenus, avec une tolérance au risque modérée. C'est le portefeuille polyvalent par excellence.
+Typologie : ÉQUILIBRÉ-5Y
+
+Objectif : Croissance et revenu
+
+Profil de Risque : Modéré
+
+Horizon de Temps : 5 ans
+
+Liquidité Requise : Modérée
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 10%
+
+Obligations : 40%
+
+Actions (Globales diversifiées) : 40%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 5%
+
+Typologie : ÉQUILIBRÉ-10Y
+
+Objectif : Croissance et revenu
+
+Profil de Risque : Modéré
+
+Horizon de Temps : 10 ans
+
+Liquidité Requise : Faible
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 5%
+
+Obligations : 35%
+
+Actions (Globales diversifiées) : 50%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 5%
+
+Typologie : ÉQUILIBRÉ-15Y
+
+Objectif : Croissance et revenu
+
+Profil de Risque : Modéré à dynamique
+
+Horizon de Temps : 15 ans
+
+Liquidité Requise : Très faible
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 5%
+
+Obligations : 30%
+
+Actions (Globales diversifiées) : 55%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 5%
+
+Typologie : ÉQUILIBRÉ-30Y
+
+Objectif : Croissance et revenu
+
+Profil de Risque : Modéré à dynamique
+
+Horizon de Temps : 30 ans
+
+Liquidité Requise : Nulle
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 2%
+
+Obligations : 28%
+
+Actions (Globales diversifiées) : 60%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 5%
+
+OBJECTIF : CROISSANCE
+Description : Priorité à l'appréciation du capital sur le long terme. L'investisseur accepte une volatilité plus élevée pour un potentiel de rendement supérieur.
+Typologie : CROISSANCE-5Y
+
+Objectif : Appréciation du capital
+
+Profil de Risque : Dynamique
+
+Horizon de Temps : 5 ans
+
+Liquidité Requise : Faible à modérée
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 5%
+
+Obligations : 25%
+
+Actions (Globales, incl. émergents) : 60%
+
+Immobilier : 5%
+
+Actifs Alternatifs (Private Equity, etc.) : 5%
+
+Typologie : CROISSANCE-10Y
+
+Objectif : Appréciation du capital
+
+Profil de Risque : Dynamique
+
+Horizon de Temps : 10 ans
+
+Liquidité Requise : Très faible
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 5%
+
+Obligations : 20%
+
+Actions (Globales, incl. émergents) : 65%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 5%
+
+Typologie : CROISSANCE-15Y
+
+Objectif : Appréciation du capital
+
+Profil de Risque : Dynamique / Agressif
+
+Horizon de Temps : 15 ans
+
+Liquidité Requise : Nulle
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 3%
+
+Obligations : 12%
+
+Actions (Globales, incl. émergents, small caps) : 70%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 10%
+
+Typologie : CROISSANCE-30Y
+
+Objectif : Appréciation maximale du capital
+
+Profil de Risque : Dynamique / Agressif
+
+Horizon de Temps : 30 ans
+
+Liquidité Requise : Nulle
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 2%
+
+Obligations : 8%
+
+Actions (Globales, incl. émergents, small caps) : 75%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 10%
+
+OBJECTIF : CROISSANCE AGRESSIVE / SPÉCULATIF
+Description : Recherche de rendements très élevés en acceptant une volatilité et un risque de perte en capital significatifs. Réservé aux investisseurs très avertis avec un horizon long.
+Typologie : AGRESSIF-10Y
+
+Objectif : Appréciation maximale du capital
+
+Profil de Risque : Très élevé / Spéculatif
+
+Horizon de Temps : 10 ans
+
+Liquidité Requise : Nulle
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 5%
+
+Obligations : 5%
+
+Actions (Globales, thématiques, technologiques, émergents) : 75%
+
+Actifs Alternatifs (Private Equity, Venture Capital) : 15%
+
+Typologie : AGRESSIF-15Y
+
+Objectif : Appréciation maximale du capital
+
+Profil de Risque : Très élevé / Spéculatif
+
+Horizon de Temps : 15 ans
+
+Liquidité Requise : Nulle
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 2%
+
+Obligations (Haut rendement) : 3%
+
+Actions (Globales, thématiques, technologiques, émergents) : 80%
+
+Actifs Alternatifs (Private Equity, Venture Capital, Crypto-actifs) : 15%
+
+Typologie : AGRESSIF-30Y
+
+Objectif : Appréciation maximale du capital
+
+Profil de Risque : Très élevé / Spéculatif
+
+Horizon de Temps : 30 ans
+
+Liquidité Requise : Nulle
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 2%
+
+Obligations (Haut rendement) : 0%
+
+Actions (Globales, thématiques, technologiques, émergents, small caps) : 83%
+
+Actifs Alternatifs (Private Equity, Venture Capital, Crypto-actifs) : 15%
+
+NOTE ADDITIONNELLE SUR LES HORIZONS COURTS POUR PROFILS DYNAMIQUES
+Les profils dynamiques avec des horizons courts (1-3 ans) sont atypiques et risqués. Ils correspondent à des stratégies opportunistes ou spéculatives.
+Typologie : OPPORTUNISTE-1Y
+
+Objectif : Gain rapide spéculatif
+
+Profil de Risque : Extrêmement élevé
+
+Horizon de Temps : 1 an
+
+Liquidité Requise : Faible (le capital est à risque)
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 20%
+
+Actions (Thématiques, forte volatilité) : 60%
+
+Actifs Alternatifs (Crypto-actifs) : 20%
