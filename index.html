@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2R4TVLS');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAM Advisor | Conseil en Investissement Simplifié</title>
@@ -20,7 +23,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50 text-gray-800">
-
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2R4TVLS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+     
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -120,6 +126,8 @@
                             <div>
                                 <label for="timeHorizon" class="block text-sm font-medium text-gray-700">Horizon de temps</label>
                                 <select id="timeHorizon" name="timeHorizon" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm">
+                                    <option value="1">1 an</option>
+                                    <option value="2">2 ans</option>
                                     <option value="3">3 ans</option>
                                     <option value="5">5 ans</option>
                                     <option value="8">8 ans</option>
@@ -146,7 +154,7 @@
                         <span class="text-violet-700">Simulation en cours...</span>
                     </div>
                     <div id="resultText" class="text-gray-800 gemini-response"></div>
-                     <p id="geminiDisclaimer" class="text-xs text-gray-500 mt-4 text-center">Simulation fournie par l'IA de Google. Ne constitue pas un conseil financier.</p>
+                     <p id="geminiDisclaimer" class="text-xs text-gray-500 mt-4 text-center">Simulation fournie par l'IA de RAM Advisor. Ne constitue pas un conseil financier.</p>
                 </div>
             </div>
         </section>
