@@ -515,6 +515,36 @@ footer {
     margin-top: 0.5rem;
 }
 
+/* Tooltips pour section performances */
+.tooltip-perf {
+    position: relative;
+    display: inline-flex;
+}
+
+.tooltiptext-perf {
+    visibility: hidden;
+    width: 240px;
+    background-color: #ffffff;
+    color: #333;
+    text-align: left;
+    border-radius: 8px;
+    padding: 10px;
+    position: absolute;
+    z-index: 40;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    font-size: 12px;
+    border: 1px solid #eef2f7;
+    transform: translateY(6px);
+    top: 100%;
+    right: 0;
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+.tooltip-perf:hover .tooltiptext-perf {
+    visibility: visible;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-container {
@@ -533,5 +563,12 @@ footer {
     
     .mission-section, .simulator-section, .offers-section, .contact-section {
         padding: 3rem 1rem;
+    }
+    
+    .tooltiptext-perf {
+        width: 200px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(6px);
     }
 }
