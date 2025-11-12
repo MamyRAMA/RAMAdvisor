@@ -344,7 +344,11 @@ function initializePerformanceSection() {
             if (!ds) return; 
             const meta = chart.getDatasetMeta(0);
             ctx.save(); 
-            ctx.font = 'bold 18px Inter, sans-serif'; 
+            
+            // Taille adaptative selon la largeur d'écran
+            const fontSize = window.innerWidth < 640 ? 12 : 18; // 12px mobile, 18px desktop
+            ctx.font = `bold ${fontSize}px Inter, sans-serif`;
+            
             ctx.textAlign = 'center';
             meta.data.forEach((bar, idx) => { 
                 const v = ds.data[idx]; 
@@ -425,7 +429,7 @@ function initializePerformanceSection() {
                             display: true, 
                             font: { 
                                 weight: 'bold',
-                                size: isMobile ? 7 : 9 // Taille réduite sur mobile
+                                size: isMobile ? 7 : 12 // Taille réduite sur mobile
                             },
                             maxRotation: isMobile ? 45 : 0, // Rotation à 45° sur mobile
                             minRotation: isMobile ? 45 : 0,
@@ -496,7 +500,7 @@ function initializePerformanceSection() {
     window.addEventListener('resize', () => {
         if (chart) {
             const isMobile = window.innerWidth < 640;
-            chart.options.scales.x.ticks.font.size = isMobile ? 6 : 8;
+            chart.options.scales.x.ticks.font.size = isMobile ? 7 : 12;
             chart.options.scales.x.ticks.maxRotation = isMobile ? 45 : 0;
             chart.options.scales.x.ticks.minRotation = isMobile ? 45 : 0;
             chart.update('none'); // 'none' pour éviter les animations au redimensionnement
