@@ -425,7 +425,7 @@ function initializePerformanceSection() {
                             display: true, 
                             font: { 
                                 weight: 'bold',
-                                size: isMobile ? 9 : 12 // Taille réduite sur mobile
+                                size: isMobile ? 7 : 9 // Taille réduite sur mobile
                             },
                             maxRotation: isMobile ? 45 : 0, // Rotation à 45° sur mobile
                             minRotation: isMobile ? 45 : 0,
@@ -496,7 +496,7 @@ function initializePerformanceSection() {
     window.addEventListener('resize', () => {
         if (chart) {
             const isMobile = window.innerWidth < 640;
-            chart.options.scales.x.ticks.font.size = isMobile ? 7 : 9;
+            chart.options.scales.x.ticks.font.size = isMobile ? 6 : 8;
             chart.options.scales.x.ticks.maxRotation = isMobile ? 45 : 0;
             chart.options.scales.x.ticks.minRotation = isMobile ? 45 : 0;
             chart.update('none'); // 'none' pour éviter les animations au redimensionnement
