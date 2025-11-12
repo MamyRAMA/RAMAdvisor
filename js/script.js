@@ -254,11 +254,11 @@ function initializePerformanceSection() {
 
     // ==== PONDÉRATIONS INLINE POUR TOOLTIP & EN-TÊTES ====
     const ALLOC = {
-        Securise:  { Actions: 0.03,  ObligationsEntreprises: 0.30, ObligationsGouvernements: 0.47, Securite: 0.20 },
-        Prudent:   { Actions: 0.24,  ObligationsEntreprises: 0.31, ObligationsGouvernements: 0.35, Securite: 0.10 },
-        Equilibre: { Actions: 0.45,  ObligationsEntreprises: 0.25, ObligationsGouvernements: 0.25, Securite: 0.05 },
-        Dynamique: { Actions: 0.725, ObligationsEntreprises: 0.14, ObligationsGouvernements: 0.11, Securite: 0.025 },
-        Offensif:  { Actions: 0.94,  ObligationsEntreprises: 0.02, ObligationsGouvernements: 0.02, Securite: 0.02 }
+        Securise:  { Actions: 0.03,  ObligationsEntreprises: 0.30, ObligationsGouvernements: 0.47, Liquidites: 0.20 },
+        Prudent:   { Actions: 0.24,  ObligationsEntreprises: 0.31, ObligationsGouvernements: 0.35, Liquidites: 0.10 },
+        Equilibre: { Actions: 0.45,  ObligationsEntreprises: 0.25, ObligationsGouvernements: 0.25, Liquidites: 0.05 },
+        Dynamique: { Actions: 0.725, ObligationsEntreprises: 0.14, ObligationsGouvernements: 0.11, Liquidites: 0.025 },
+        Offensif:  { Actions: 0.94,  ObligationsEntreprises: 0.02, ObligationsGouvernements: 0.02, Liquidites: 0.02 }
     };
 
     // Renseigne les (i) du header de tableau
@@ -269,7 +269,7 @@ function initializePerformanceSection() {
         const fmt = (x) => (x * 100).toFixed(0) + ' %';
         const tooltipEl = tip.querySelector('.tooltiptext-perf');
         if (tooltipEl) {
-            tooltipEl.innerHTML = `<em>Répartition cible de l'allocation :</em><br>Actions : ${fmt(a.Actions)}<br>Oblig. Entreprises : ${fmt(a.ObligationsEntreprises)}<br>Oblig. Gouvernements : ${fmt(a.ObligationsGouvernements)}<br>Sécurité : ${fmt(a.Securite)}`;
+            tooltipEl.innerHTML = `<em>Répartition cible de l'allocation :</em><br>Actions : ${fmt(a.Actions)}<br>Oblig. Entreprises : ${fmt(a.ObligationsEntreprises)}<br>Oblig. Gouvernements : ${fmt(a.ObligationsGouvernements)}<br>Liquidités : ${fmt(a.Liquidites)}`;
         }
     });
 
@@ -374,6 +374,9 @@ function initializePerformanceSection() {
         const suggestedMax = maxVal * 1.2;
         const colors = PROFILE_KEYS.map((_, i) => colorForIndex(i, PROFILE_KEYS.length));
 
+        // Configuration responsive adaptée selon la taille d'écran
+        const isMobile = window.innerWidth < 640;
+        
         chart = new Chart(ctx, {
             type: 'bar',
             data: { 
@@ -392,6 +395,7 @@ function initializePerformanceSection() {
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false, // Permet au graphique de s'adapter au conteneur
                 layout: { padding: { top: 28 } },
                 plugins: {
                     legend: { display: false },
@@ -408,7 +412,7 @@ function initializePerformanceSection() {
                                     `Actions : ${fmt(a.Actions ?? 0)}`, 
                                     `Oblig. Entreprises : ${fmt(a.ObligationsEntreprises ?? 0)}`, 
                                     `Oblig. Gouvernements : ${fmt(a.ObligationsGouvernements ?? 0)}`, 
-                                    `Sécurité : ${fmt(a.Securite ?? 0)}` 
+                                    `Liquidités : ${fmt(a.Liquidites ?? 0)}` 
                                 ]; 
                             }
                         }
@@ -417,7 +421,16 @@ function initializePerformanceSection() {
                 scales: {
                     x: { 
                         grid: { display: false, drawBorder: false }, 
-                        ticks: { display: true, font: { weight: 'bold' } }, 
+                        ticks: { 
+                            display: true, 
+                            font: { 
+                                weight: 'bold',
+                                size: isMobile ? 9 : 12 // Taille réduite sur mobile
+                            },
+                            maxRotation: isMobile ? 45 : 0, // Rotation à 45° sur mobile
+                            minRotation: isMobile ? 45 : 0,
+                            autoSkip: false
+                        }, 
                         border: { display: false } 
                     },
                     y: { 
@@ -477,4 +490,16 @@ function initializePerformanceSection() {
     
     update();
     startYearSelect.addEventListener('change', update);
+    
+    // Event listener pour le redimensionnement de la fenêtre
+    // Permet d'adapter le graphique lors de la rotation d'écran ou changement de taille
+    window.addEventListener('resize', () => {
+        if (chart) {
+            const isMobile = window.innerWidth < 640;
+            chart.options.scales.x.ticks.font.size = isMobile ? 9 : 12;
+            chart.options.scales.x.ticks.maxRotation = isMobile ? 45 : 0;
+            chart.options.scales.x.ticks.minRotation = isMobile ? 45 : 0;
+            chart.update('none'); // 'none' pour éviter les animations au redimensionnement
+        }
+    });
 }
