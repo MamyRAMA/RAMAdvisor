@@ -57,15 +57,7 @@ function initializeInvestmentSimulator() {
 
             console.log('📊 Envoi des paramètres au site:', params);
 
-            // Détecter si on est en local ou en production
-            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            
-            if (isLocalhost) {
-                // En local, afficher un message informatif
-                throw new Error('Le simulateur IA nécessite un déploiement sur Netlify pour fonctionner. En local, seuls les graphiques et l\'interface sont testables.');
-            }
-
-            // Appel à la fonction Netlify (uniquement en production)
+            // Appel à la fonction Netlify
             const response = await fetch('/.netlify/functions/generate-investment-advice', {
                 method: 'POST',
                 headers: {
@@ -73,12 +65,6 @@ function initializeInvestmentSimulator() {
                 },
                 body: JSON.stringify(params)
             });
-
-            // Vérifier si la réponse est bien du JSON
-            const contentType = response.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) {
-                throw new Error('Le serveur a retourné une réponse invalide. Assurez-vous que le site est déployé sur Netlify.');
-            }
 
             const data = await response.json();
 
@@ -94,15 +80,11 @@ function initializeInvestmentSimulator() {
             console.error('Erreur:', error);
             loadingSpinner.style.display = 'none';
             
-            // Message plus informatif selon le contexte
-            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            const localMessage = isLocalhost ? '<p class="text-sm mt-2 bg-blue-50 p-2 rounded">💡 <strong>Mode local détecté :</strong> Le simulateur IA fonctionne uniquement sur le site déployé (Netlify). Vous pouvez tester les autres fonctionnalités du site en local.</p>' : '<p class="text-sm mt-2">Veuillez réessayer plus tard.</p>';
-            
             resultText.innerHTML = `
                 <div class="text-red-600 p-4 bg-red-50 rounded-lg">
-                    <h3 class="font-semibold">Simulateur IA non disponible</h3>
+                    <h3 class="font-semibold">Erreur lors de la simulation</h3>
                     <p>${error.message}</p>
-                    ${localMessage}
+                    <p class="text-sm mt-2">Veuillez réessayer plus tard.</p>
                 </div>
             `;
         } finally {
