@@ -6,7 +6,28 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeInvestmentSimulator();
     initializeDoughnutChart();
     initializeSmoothScroll();
+    initializeMobileMenu();
 });
+
+// Menu mobile hamburger
+function initializeMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (!mobileMenuBtn || !mobileMenu) return; // Protection si les éléments n'existent pas
+    
+    mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Fermer le menu quand on clique sur un lien
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+}
 
 // Simulateur d'investissement avec IA Gemini via Netlify Functions
 function initializeInvestmentSimulator() {

@@ -34,14 +34,36 @@
     <!-- End Google Tag Manager (noscript) -->
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-violet-800">RAM Advisor</a>
-            <div class="flex items-center space-x-4">
-                <a href="#offres" class="text-gray-600 hover:text-violet-800">Nos Offres</a>
-                <a href="pages/etf.html" class="text-gray-600 hover:text-violet-800">ETF</a>
-                <a href="pages/durabilite.html" class="text-gray-600 hover:text-violet-800">Durabilité</a>
-                <a href="#simulator" class="text-gray-600 hover:text-violet-800">Simulateur</a>
-                <a href="#contact" class="cta-gradient text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Contact</a>
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-violet-800">RAM Advisor</a>
+                
+                <!-- Menu desktop (masqué sur mobile) -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#offres" class="text-gray-600 hover:text-violet-800">Nos Offres</a>
+                    <a href="#performances" class="text-gray-600 hover:text-violet-800">Performances</a>
+                    <a href="pages/etf.html" class="text-gray-600 hover:text-violet-800">ETFs</a>
+                    <a href="pages/durabilite.html" class="text-gray-600 hover:text-violet-800">Durabilité</a>
+                    <a href="#simulator" class="text-gray-600 hover:text-violet-800">Simulateur</a>
+                    <a href="#contact" class="cta-gradient text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Contact</a>
+                </div>
+
+                <!-- Bouton hamburger (visible sur mobile uniquement) -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-violet-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menu mobile (masqué par défaut) -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+                <a href="#offres" class="block text-gray-600 hover:text-violet-800 py-2">Nos Offres</a>
+                <a href="#performances" class="block text-gray-600 hover:text-violet-800 py-2">Performances</a>
+                <a href="pages/etf.html" class="block text-gray-600 hover:text-violet-800 py-2">ETF</a>
+                <a href="pages/durabilite.html" class="block text-gray-600 hover:text-violet-800 py-2">Durabilité</a>
+                <a href="#simulator" class="block text-gray-600 hover:text-violet-800 py-2">Simulateur</a>
+                <a href="#contact" class="block cta-gradient text-white font-semibold py-2 px-4 rounded-lg shadow-md text-center">Contact</a>
             </div>
         </nav>
     </header>
@@ -69,6 +91,13 @@
                         <div class="stat-number">70%</div>
                         <p class="text-xl md:text-2xl font-semibold text-left max-w-xs text-gray-700">des épargnants trouvent l'investissement "complexe" ou "intimidant", retardant ainsi leurs projets de vie.</p>
                     </div>
+                    <!-- CTA Mobile stratégique après prise de conscience -->
+                    <div class="mt-8 md:hidden">
+                        <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="inline-block cta-gradient text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105">
+                            💬 Parlons de votre situation
+                        </a>
+                        <p class="text-xs text-gray-500 mt-2">Appel gratuit de 15 min</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -80,27 +109,35 @@
                      <h2 class="text-3xl font-bold section-title">Notre Philosophie : Simple, Transparente, Efficace</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="card text-center">
+                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
                         <div class="text-6xl mb-4">🎯</div>
                         <h3 class="text-xl font-bold section-title">Alignement Total</h3>
                         <p class="mt-2 text-gray-600">Des stratégies conçues uniquement pour VOS objectifs, sans produits superflus.</p>
                     </div>
-                    <div class="card text-center">
+                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
                         <div class="text-6xl mb-4">🔍</div>
                         <h3 class="text-xl font-bold section-title">Transparence Radicale</h3>
                         <p class="mt-2 text-gray-600">Une approche claire via des ETF à frais réduits. Vous savez toujours où va votre argent.</p>
                     </div>
-                    <div class="card text-center">
+                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
                         <div class="text-6xl mb-4">🌱</div>
                         <h3 class="text-xl font-bold section-title">Croissance Durable</h3>
                         <p class="mt-2 text-gray-600">Construire un patrimoine solide sur le long terme est notre unique priorité.</p>
                     </div>
                 </div>
+                
+                <!-- CTA Desktop subtil après philosophie -->
+                <div class="mt-12 text-center hidden md:block">
+                    <p class="text-sm text-gray-600 mb-3">📊 Curieux de voir nos résultats concrets ?</p>
+                    <a href="#performances" class="text-violet-700 hover:text-violet-900 font-semibold underline decoration-2 underline-offset-4 transition-colors">
+                        Découvrir nos performances →
+                    </a>
+                </div>
             </div>
         </section>
         
         <!-- 4. Section Performances -->
-        <section class="py-20 bg-white">
+        <section id="performances" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold section-title">Nos Performances</h2>
@@ -213,6 +250,49 @@
                             <span class="text-gray-500 text-xs block mt-1">Cette présentation vise à illustrer la cohérence et la robustesse de notre approche dans le temps, sans constituer une garantie de performance future.</span>
                         </div>
                     </div>
+
+                    <!-- CTA Mobile après preuve de performances -->
+                    <div class="mt-6 md:hidden text-center">
+                        <div class="card bg-violet-50 border-2 border-violet-200">
+                            <p class="text-sm font-semibold text-violet-900 mb-3">🎯 Prêt à bâtir votre patrimoine ?</p>
+                            <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="inline-block cta-gradient text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 w-full">
+                                Réserver mon appel gratuit
+                            </a>
+                            <p class="text-xs text-gray-600 mt-2">Sans engagement • 15 minutes</p>
+                        </div>
+                    </div>
+
+                    <!-- CTA Desktop avec social proof après performances -->
+                    <div class="mt-8 hidden md:block">
+                        <div class="card bg-gradient-to-r from-violet-50 to-blue-50 border-l-4 border-violet-600">
+                            <div class="flex items-start justify-between gap-6">
+                                <div class="flex-1">
+                                    <h4 class="text-lg font-bold text-gray-900 mb-2">Intéressé par nos stratégies d'investissement ?</h4>
+                                    <p class="text-sm text-gray-700 mb-3">Discutons de vos objectifs lors d'un appel découverte de 15 minutes. Nous analyserons ensemble votre situation et vous proposerons une stratégie personnalisée.</p>
+                                    <div class="flex items-center gap-4 text-xs text-gray-600">
+                                        <span class="flex items-center gap-1">
+                                            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                            Sans engagement
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                            100% gratuit
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                            Conseils personnalisés
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="cta-gradient text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 whitespace-nowrap inline-block">
+                                        Réserver mon appel
+                                    </a>
+                                    <p class="text-xs text-center text-gray-500 mt-2">📅 Agenda en ligne</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -223,6 +303,8 @@
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold section-title">✨ Simulez votre projet d'investissement</h2>
                     <p class="text-gray-600 mt-2">Utilisez notre outil basé sur l'IA pour obtenir une simulation personnalisée et visualiser votre avenir financier.</p>
+                    <!-- Social proof subtil desktop -->
+                    <p class="text-xs text-gray-500 mt-3 hidden md:block">🔥 Plus de 150 simulations effectuées ce mois-ci</p>
                 </div>
                 <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
                     <div class="space-y-6">
@@ -353,7 +435,7 @@
              <div class="container mx-auto px-6 py-20">
                 <div class="card bg-violet-700 text-white text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl font-bold">Votre Parcours Commence Ici</h2>
-                    <p class="mt-4 text-lg text-violet-200 max-w-2xl mx-auto">Discutons de votre projet lors d'un appel découverte de 20 minutes. C'est gratuit, sans engagement, et le premier pas vers l'atteinte de vos objectifs financiers.</p>
+                    <p class="mt-4 text-lg text-violet-200 max-w-2xl mx-auto">Discutons de votre projet lors d'un appel découverte de 15 minutes. C'est gratuit, sans engagement, et le premier pas vers l'atteinte de vos objectifs financiers.</p>
                     <div class="mt-8">
                         <a href="https://calendly.com/mamy-ramadvisor/introduction" class="bg-white text-violet-800 font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg inline-block">Réserver mon appel gratuit</a>
                     </div>
@@ -362,8 +444,21 @@
         </section>
     </main>
 
+    <!-- Bouton CTA Flottant Mobile (Sticky Bottom) -->
+    <div id="mobileCTA" class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white shadow-2xl border-t-4 border-violet-600 px-4 py-3 transform transition-transform duration-300">
+        <div class="flex items-center justify-between gap-3">
+            <div class="flex-1">
+                <p class="text-xs font-semibold text-gray-900">🚀 Prenez le contrôle</p>
+                <p class="text-xs text-gray-600">Appel gratuit • Sans engagement</p>
+            </div>
+            <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="cta-gradient text-white font-bold py-3 px-5 rounded-full shadow-lg text-sm whitespace-nowrap">
+                Réserver
+            </a>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white">
+    <footer class="bg-gray-800 text-white pb-20 md:pb-8">
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col items-center gap-6">
                 <!-- Badge LinkedIn -->
