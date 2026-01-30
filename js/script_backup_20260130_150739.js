@@ -296,14 +296,14 @@ function initializePerformanceSection() {
 
     // ==== DONNÉES DE PERFORMANCE INLINE ====
     const rows = [
-        { Annee: 2026, Securise: 0.0064471,   Prudent: 0.01234136,  Equilibre: 0.01829692,  Dynamique: 0.02729146,  Offensif: 0.03543707 },
-        { Annee: 2025, Securise: 0.08568205,  Prudent: 0.08131781,  Equilibre: 0.12340154,  Dynamique: 0.17386906,  Offensif: 0.21112693 },
-        { Annee: 2024, Securise: 0.08133363,  Prudent: 0.15100089,  Equilibre: 0.22223624,  Dynamique: 0.30726911,  Offensif: 0.36950369 },
-        { Annee: 2023, Securise: 0.15160772,  Prudent: 0.25944625,  Equilibre: 0.36498796,  Dynamique: 0.48109138,  Offensif: 0.56130067 },
-        { Annee: 2020, Securise: 0.05517134,  Prudent: 0.20767187,  Equilibre: 0.36774369,  Dynamique: 0.55185902,  Offensif: 0.67835683 },
-        { Annee: 2015, Securise: 0.15921548,  Prudent: 0.46446447,  Equilibre: 0.76970817,  Dynamique: 1.11264089,  Offensif: 1.35202102 },
-        { Annee: 2010, Securise: 0.46693833,  Prudent: 1.05622609,  Equilibre: 1.62095322,  Dynamique: 2.21278209,  Offensif: 2.60628681 },
-        { Annee: 2006, Securise: 0.63821678,  Prudent: 1.13607216,  Equilibre: 1.61470764,  Dynamique: 2.15759698,  Offensif: 2.54789493 }
+        { Annee: 2025, Securise: 0.030761549, Prudent: 0.061882622, Equilibre: 0.091874908, Dynamique: 0.127789697, Offensif: 0.153831025 },
+        { Annee: 2024, Securise: 0.074779637, Prudent: 0.12965576,  Equilibre: 0.187288937, Dynamique: 0.255756613, Offensif: 0.305145209 },
+        { Annee: 2023, Securise: 0.144512061, Prudent: 0.23535374,  Equilibre: 0.325348399, Dynamique: 0.422709525, Offensif: 0.488530368 },
+        { Annee: 2022, Securise: 0.029137542, Prudent: 0.094175675, Equilibre: 0.165238473, Dynamique: 0.245795216, Offensif: 0.298551397 },
+        { Annee: 2020, Securise: 0.048320175, Prudent: 0.182481602, Equilibre: 0.32581244,  Dynamique: 0.489650296, Offensif: 0.600602267 },
+        { Annee: 2015, Securise: 0.08962308,  Prudent: 0.264413442, Equilibre: 0.44356053,  Dynamique: 0.646226222, Offensif: 0.786223966 },
+        { Annee: 2010, Securise: 0.150977033, Prudent: 0.430437914, Equilibre: 0.712048509, Dynamique: 1.025921363, Offensif: 1.242866839 },
+        { Annee: 2005, Securise: 0.455687568, Prudent: 1.005198393, Equilibre: 1.533610699, Dynamique: 2.081376814, Offensif: 2.441289123 }
     ].sort((a, b) => a.Annee - b.Annee);
 
     // ==== CONSTANTES / HELPERS ====
