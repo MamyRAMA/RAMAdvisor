@@ -2,6 +2,8 @@ import streamlit as st
 import google.generativeai as genai
 import os
 from pathlib import Path
+
+MODEL_NAME = os.getenv('GEMINI_MODEL', 'gemini-flash-lite-latest')
 import time
 
 # Configuration de la page
@@ -149,7 +151,7 @@ def generate_investment_advice(client_data):
             final_prompt += f"\n\nAllocations de référence:\n{filtered_knowledge}"
         
         # 4. Appel Gemini avec le même modèle que le site
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel(MODEL_NAME)
         response = model.generate_content(final_prompt)
         
         return response.text, None
@@ -168,7 +170,7 @@ def main():
         st.header("🔧 Configuration")
         
         # Vérifier d'abord si une clé API est dans l'environnement
-        env_api_key = os.getenv('GEMINI_API_KEY')
+        env_api_key = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY')
         
         if env_api_key:
             # Si clé API dans .env, l'utiliser automatiquement

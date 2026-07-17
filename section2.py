@@ -4,7 +4,8 @@ import os
 from pathlib import Path
 
 # Configuration API Gemini
-API_KEY = os.getenv('GEMINI_API_KEY')
+API_KEY = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY')
+MODEL_NAME = os.getenv('GEMINI_MODEL', 'gemini-flash-lite-latest')
 if not API_KEY:
     try:
         from getpass import getpass
@@ -17,7 +18,7 @@ genai.configure(api_key=API_KEY)
 
 # Test de la clé API
 try:
-    model = genai.GenerativeModel("gemini-2.0-flash")
+    model = genai.GenerativeModel(MODEL_NAME)
     test_response = model.generate_content("Réponds simplement 'OK' si tu me reçois.")
     print("✅ Clé API Gemini fonctionne correctement")
     print(f"   Réponse test: {test_response.text}")
@@ -77,7 +78,7 @@ def generate_advice_like_website(client_data):
         final_prompt += f"\n\nAllocations de référence:\n{filtered_knowledge}"
     
     # 4. Appel Gemini avec le même modèle que le site
-    model = genai.GenerativeModel("gemini-2.0-flash")
+    model = genai.GenerativeModel(MODEL_NAME)
     response = model.generate_content(final_prompt)
     
     return response.text, len(final_prompt)

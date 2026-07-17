@@ -1,4 +1,4 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenAI } = require("@google/genai");
 const UltraOptimizedCFASearch = require("./ultra-optimized-cfa-search");
 
 // Instance globale pour la recherche CFA ultra-optimisée
@@ -71,9 +71,22 @@ exports.handler = async (event, context) => {
     console.log(`📊 Nouvelle demande: ${profil_risque} - ${objectif}`);
 
     // Initialize Gemini AI with environment variable
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-    //const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" }); // input 0.30/ output 2.50
+    const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+    const modelName = process.env.GEMINI_MODEL || "gemini-flash-lite-latest";
+
+    if (!apiKey) {
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({
+          success: false,
+          error: "Configuration manquante: GEMINI_API_KEY (ou GOOGLE_API_KEY)"
+        }),
+      };
+    }
+
+    const genAI = new GoogleGenAI({ apiKey });
+    console.log(`🤖 Modèle Gemini utilisé: ${modelName}`);
     // Try to load the v3 prompt template and the knowledge base from disk
     const path = require('path');
     const fs = require('fs');
@@ -314,9 +327,11 @@ Ne jamais mentionner tes sources de connaissance.`;
     console.log(`📝 Prompt final construit: ${finalPrompt.length} caractères`);
 
     // Call Gemini API
-    const result = await model.generateContent(finalPrompt);
-    const response = await result.response;
-    const advice = response.text();
+    const response = await genAI.models.generateContent({
+      model: modelName,
+      contents: finalPrompt,
+    });
+    const advice = response.text || '';
 
     return {
       statusCode: 200,

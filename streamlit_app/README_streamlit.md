@@ -75,7 +75,7 @@ streamlit_app/
 ### Logique identique au site web
 - **Template V3** : Utilise le même `prompt_template_v3.md`
 - **Knowledge base** : Filtrage intelligent selon le profil de risque
-- **API Gemini** : Même modèle `gemini-2.0-flash`
+- **API Gemini** : Même modèle configurable que le site (`GEMINI_MODEL`, défaut: `gemini-flash-lite-latest`)
 - **Validation** : Mêmes critères de qualité des réponses
 
 ### Interface utilisateur

@@ -87,7 +87,7 @@ Email : contact@ramadvisor.fr
 - Tailwind CSS (CDN)
 - JavaScript ES6+
 - Google Fonts (Inter)
-- API Google Gemini (modèle gemini-2.0-flash)
+- API Google Gemini (modèle configurable via GEMINI_MODEL, défaut: gemini-flash-lite-latest)
 - Netlify Functions (serverless)
 - Système RAG (Retrieval Augmented Generation)
 
