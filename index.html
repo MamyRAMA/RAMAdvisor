@@ -10,46 +10,77 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>RAM Advisor | Conseil en Investissement Simplifié</title>
-    
+
+    <title>RAM Advisor | Gestion de patrimoine démocratisée — Portefeuilles ETF sur mesure</title>
+    <meta name="description" content="Le niveau d'exigence de la gestion privée, sans le ticket d'entrée du million. Conseil indépendant en portefeuilles ETF, honoraires fixes, zéro rétrocession. Par un analyste certifié CFA & CAIA.">
+    <link rel="canonical" href="https://ramadvisor.fr/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="RAM Advisor | Gestion de patrimoine démocratisée">
+    <meta property="og:description" content="Portefeuilles ETF sur mesure, méthode de gestion privée, honoraires fixes et transparents. Appel découverte gratuit de 15 minutes.">
+    <meta property="og:url" content="https://ramadvisor.fr/">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Données structurées : service financier + FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "RAM Advisor",
+      "description": "Conseil indépendant en investissement pour particuliers : portefeuilles ETF sur mesure, coaching financier et éducation à l'investissement.",
+      "url": "https://ramadvisor.fr/",
+      "email": "contact@ramadvisor.fr",
+      "areaServed": "FR",
+      "priceRange": "295€ - 985€",
+      "founder": {
+        "@type": "Person",
+        "name": "Mamy Rama",
+        "hasCredential": ["CFA", "CAIA", "Certificate in ESG Investing"]
+      }
+    }
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2R4TVLS"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="#" class="text-2xl font-bold text-violet-800">RAM Advisor</a>
-                
+
                 <!-- Menu desktop (masqué sur mobile) -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="#offres" class="text-gray-600 hover:text-violet-800">Nos Offres</a>
+                    <a href="#methode" class="text-gray-600 hover:text-violet-800">Notre Méthode</a>
                     <a href="#performances" class="text-gray-600 hover:text-violet-800">Performances</a>
+                    <a href="#offres" class="text-gray-600 hover:text-violet-800">Nos Offres</a>
                     <a href="pages/etf.html" class="text-gray-600 hover:text-violet-800">ETFs</a>
                     <a href="pages/durabilite.html" class="text-gray-600 hover:text-violet-800">Durabilité</a>
                     <a href="#simulator" class="text-gray-600 hover:text-violet-800">Simulateur</a>
-                    <a href="#contact" class="cta-gradient text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Contact</a>
+                    <a href="#faq" class="text-gray-600 hover:text-violet-800">FAQ</a>
+                    <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="cta-gradient text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Appel gratuit</a>
                 </div>
 
                 <!-- Bouton hamburger (visible sur mobile uniquement) -->
-                <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-violet-800 focus:outline-none">
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-violet-800 focus:outline-none" aria-label="Ouvrir le menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -58,12 +89,14 @@
 
             <!-- Menu mobile (masqué par défaut) -->
             <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-3">
-                <a href="#offres" class="block text-gray-600 hover:text-violet-800 py-2">Nos Offres</a>
+                <a href="#methode" class="block text-gray-600 hover:text-violet-800 py-2">Notre Méthode</a>
                 <a href="#performances" class="block text-gray-600 hover:text-violet-800 py-2">Performances</a>
+                <a href="#offres" class="block text-gray-600 hover:text-violet-800 py-2">Nos Offres</a>
                 <a href="pages/etf.html" class="block text-gray-600 hover:text-violet-800 py-2">ETFs</a>
                 <a href="pages/durabilite.html" class="block text-gray-600 hover:text-violet-800 py-2">Durabilité</a>
                 <a href="#simulator" class="block text-gray-600 hover:text-violet-800 py-2">Simulateur</a>
-                <a href="#contact" class="block cta-gradient text-white font-semibold py-2 px-4 rounded-lg shadow-md text-center">Contact</a>
+                <a href="#faq" class="block text-gray-600 hover:text-violet-800 py-2">FAQ</a>
+                <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="block cta-gradient text-white font-semibold py-2 px-4 rounded-lg shadow-md text-center">Appel gratuit</a>
             </div>
         </nav>
     </header>
@@ -72,11 +105,30 @@
     <main>
         <!-- 1. Hero Section -->
         <section class="bg-white">
-            <div class="container mx-auto px-6 py-24 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">Rendez l'investissement <span class="text-violet-700">simple et accessible</span>.</h1>
-                <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">Nous vous aidons à construire un patrimoine solide sur le long terme grâce à des stratégies claires, transparentes et alignées sur vos objectifs de vie.</p>
-                <div class="mt-8">
-                    <a href="#offres" class="cta-gradient text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg">Découvrir nos offres</a>
+            <div class="container mx-auto px-6 pt-20 pb-16 text-center">
+                <p class="section-eyebrow">Conseil en investissement indépendant · Honoraires fixes · Zéro rétrocession</p>
+                <h1 class="mt-4 text-4xl md:text-6xl font-bold text-gray-900 leading-tight">La gestion privée, <span class="text-violet-700">sans le ticket d'entrée du million</span>.</h1>
+                <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">RAM Advisor applique à votre patrimoine la même méthode que les banques privées réservent à leurs grands clients : objectifs de vie, allocation sur mesure, portefeuilles ETF à frais réduits. En toute indépendance, pour un tarif fixe et connu d'avance.</p>
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="cta-gradient text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg">Réserver mon appel gratuit</a>
+                    <a href="#simulator" class="text-violet-700 font-semibold py-3 px-8 rounded-full border-2 border-violet-200 hover:border-violet-400 transition text-lg">✨ Tester le simulateur IA</a>
+                </div>
+                <p class="mt-3 text-xs text-gray-500">15 minutes · Sans engagement · Réponse à toutes vos questions</p>
+
+                <!-- Barre de confiance -->
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-sm">
+                    <div class="trust-item">
+                        <span class="font-bold text-violet-800">CFA® &amp; CAIA®</span>
+                        <span class="text-gray-600">Analyste certifié, standards des grandes institutions</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="font-bold text-violet-800">100% indépendant</span>
+                        <span class="text-gray-600">Rémunéré uniquement par vous, jamais par les produits</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="font-bold text-violet-800">ETF à frais réduits</span>
+                        <span class="text-gray-600">~0,2% de frais courants contre ~2% en gestion bancaire classique</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -85,11 +137,24 @@
         <section class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="card max-w-3xl mx-auto text-center">
-                    <h2 class="text-2xl font-bold section-title">Le Défi de l'Investisseur Moderne</h2>
-                    <p class="mt-2 text-gray-600">Naviguer dans le monde de la finance peut sembler complexe.</p>
+                    <h2 class="text-2xl font-bold section-title">Votre banque ne vous dit pas tout</h2>
                     <div class="mt-6 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
                         <div class="stat-number">70%</div>
-                        <p class="text-xl md:text-2xl font-semibold text-left max-w-xs text-gray-700">des épargnants trouvent l'investissement "complexe" ou "intimidant", retardant ainsi leurs projets de vie.</p>
+                        <p class="text-xl md:text-2xl font-semibold text-left max-w-xs text-gray-700">des épargnants trouvent l'investissement "complexe" ou "intimidant", et retardent leurs projets de vie.</p>
+                    </div>
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-left text-sm">
+                        <div class="pain-point">
+                            <p class="font-semibold text-gray-900">💸 Des frais invisibles</p>
+                            <p class="text-gray-600 mt-1">2% de frais annuels sur 100 000 € = plus de 60 000 € de rendement perdus en 20 ans.</p>
+                        </div>
+                        <div class="pain-point">
+                            <p class="font-semibold text-gray-900">🎭 Des conseils intéressés</p>
+                            <p class="text-gray-600 mt-1">Un "conseiller" rémunéré par les produits qu'il vend n'est pas votre conseiller : c'est un vendeur.</p>
+                        </div>
+                        <div class="pain-point">
+                            <p class="font-semibold text-gray-900">🚪 La vraie gestion privée est fermée</p>
+                            <p class="text-gray-600 mt-1">L'accompagnement patrimonial sérieux commence souvent à 1 M€ d'encours. Et en dessous ?</p>
+                        </div>
                     </div>
                     <!-- CTA Mobile stratégique après prise de conscience -->
                     <div class="mt-8 md:hidden">
@@ -102,30 +167,56 @@
             </div>
         </section>
 
-        <!-- 3. Notre Philosophie -->
-        <section class="py-20 bg-white">
+        <!-- 3. Notre Méthode (processus de gestion privée démocratisé) -->
+        <section id="methode" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                     <h2 class="text-3xl font-bold section-title">Notre Philosophie : Simple, Transparente, Efficace</h2>
+                    <p class="section-eyebrow">La méthode des banques privées, appliquée à votre échelle</p>
+                    <h2 class="mt-2 text-3xl font-bold section-title">Un processus patrimonial complet, en 4 étapes</h2>
+                    <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Pas de produit miracle : une démarche structurée, celle enseignée dans les référentiels internationaux de gestion de fortune (CFA Institute), adaptée aux patrimoines de 10 000 € à 500 000 €.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-6xl mb-4">🎯</div>
-                        <h3 class="text-xl font-bold section-title">Alignement Total</h3>
-                        <p class="mt-2 text-gray-600">Des stratégies conçues uniquement pour VOS objectifs, sans produits superflus.</p>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    <div class="card method-step">
+                        <div class="step-number">1</div>
+                        <h3 class="text-lg font-bold section-title mt-3">Découverte</h3>
+                        <p class="mt-2 text-gray-600 text-sm">Un appel gratuit de 15 minutes pour comprendre votre situation, vos projets de vie et vérifier que nous pouvons vous aider.</p>
                     </div>
-                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-6xl mb-4">🔍</div>
-                        <h3 class="text-xl font-bold section-title">Transparence Radicale</h3>
-                        <p class="mt-2 text-gray-600">Une approche claire via des ETF à frais réduits. Vous savez toujours où va votre argent.</p>
+                    <div class="card method-step">
+                        <div class="step-number">2</div>
+                        <h3 class="text-lg font-bold section-title mt-3">Diagnostic &amp; profil</h3>
+                        <p class="mt-2 text-gray-600 text-sm">Bilan patrimonial, capacité et tolérance au risque, horizon par objectif. Le tout formalisé dans votre <strong>Politique d'Investissement Personnelle</strong> — comme en gestion de fortune.</p>
                     </div>
-                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-6xl mb-4">🌱</div>
-                        <h3 class="text-xl font-bold section-title">Croissance Durable</h3>
-                        <p class="mt-2 text-gray-600">Construire un patrimoine solide sur le long terme est notre unique priorité.</p>
+                    <div class="card method-step">
+                        <div class="step-number">3</div>
+                        <h3 class="text-lg font-bold section-title mt-3">Allocation sur mesure</h3>
+                        <p class="mt-2 text-gray-600 text-sm">Portefeuille ETF diversifié aligné sur chaque objectif, optimisé pour les enveloppes françaises (PEA, assurance-vie, CTO) et les frais.</p>
+                    </div>
+                    <div class="card method-step">
+                        <div class="step-number">4</div>
+                        <h3 class="text-lg font-bold section-title mt-3">Mise en œuvre &amp; suivi</h3>
+                        <p class="mt-2 text-gray-600 text-sm">Guide de passage d'ordres pas à pas, règles de rééquilibrage, et accompagnement dans la durée si vous le souhaitez — ou autonomie complète.</p>
                     </div>
                 </div>
-                
+
+                <!-- Philosophie condensée -->
+                <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-5xl mb-3">🎯</div>
+                        <h3 class="text-lg font-bold section-title">Alignement total</h3>
+                        <p class="mt-2 text-gray-600 text-sm">Honoraires fixes payés par vous seul. Aucune commission sur les produits recommandés : notre seul intérêt est le vôtre.</p>
+                    </div>
+                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-5xl mb-3">🔍</div>
+                        <h3 class="text-lg font-bold section-title">Transparence radicale</h3>
+                        <p class="mt-2 text-gray-600 text-sm">ETF liquides et lisibles, frais affichés, méthodologie documentée. Vous savez toujours où va votre argent, et pourquoi.</p>
+                    </div>
+                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-5xl mb-3">🌱</div>
+                        <h3 class="text-lg font-bold section-title">Long terme &amp; discipline</h3>
+                        <p class="mt-2 text-gray-600 text-sm">La performance vient de la discipline, pas des paris. Nous vous aidons aussi à tenir le cap dans les baisses de marché — c'est là que tout se joue.</p>
+                    </div>
+                </div>
+
                 <!-- CTA Desktop subtil après philosophie -->
                 <div class="mt-12 text-center hidden md:block">
                     <p class="text-sm text-gray-600 mb-3">📊 Curieux de voir nos résultats concrets ?</p>
@@ -135,15 +226,15 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 4. Section Performances -->
-        <section id="performances" class="py-20 bg-white">
+        <section id="performances" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold section-title">Nos Performances</h2>
-                    <p class="text-gray-600 mt-2">Découvrez les performances cumulées de nos différents profils d'investissement.</p>
+                    <p class="text-gray-600 mt-2">Performances cumulées de nos cinq profils d'investissement, du plus défensif au plus offensif.</p>
                 </div>
-                
+
                 <div class="max-w-6xl mx-auto space-y-6">
                     <!-- Contrôles -->
                     <div class="card">
@@ -184,7 +275,7 @@
                                     <tr>
                                         <th class="text-left p-3 font-semibold">Depuis</th>
                                         <th class="text-right p-3 font-semibold">
-                                            Sécurisé 
+                                            Sécurisé
                                             <span class="tooltip-perf align-middle cursor-pointer ml-1 inline-flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 hover:text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                     <circle cx="12" cy="12" r="9"/>
@@ -195,7 +286,7 @@
                                             </span>
                                         </th>
                                         <th class="text-right p-3 font-semibold">
-                                            Prudent 
+                                            Prudent
                                             <span class="tooltip-perf align-middle cursor-pointer ml-1 inline-flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 hover:text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                     <circle cx="12" cy="12" r="9"/>
@@ -206,7 +297,7 @@
                                             </span>
                                         </th>
                                         <th class="text-right p-3 font-semibold">
-                                            Équilibré 
+                                            Équilibré
                                             <span class="tooltip-perf align-middle cursor-pointer ml-1 inline-flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 hover:text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                     <circle cx="12" cy="12" r="9"/>
@@ -217,7 +308,7 @@
                                             </span>
                                         </th>
                                         <th class="text-right p-3 font-semibold">
-                                            Dynamique 
+                                            Dynamique
                                             <span class="tooltip-perf align-middle cursor-pointer ml-1 inline-flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 hover:text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                     <circle cx="12" cy="12" r="9"/>
@@ -228,7 +319,7 @@
                                             </span>
                                         </th>
                                         <th class="text-right p-3 font-semibold">
-                                            Offensif 
+                                            Offensif
                                             <span class="tooltip-perf align-middle cursor-pointer ml-1 inline-flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 hover:text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                     <circle cx="12" cy="12" r="9"/>
@@ -267,8 +358,8 @@
                         <div class="card bg-gradient-to-r from-violet-50 to-blue-50 border-l-4 border-violet-600">
                             <div class="flex items-start justify-between gap-6">
                                 <div class="flex-1">
-                                    <h4 class="text-lg font-bold text-gray-900 mb-2">Intéressé par nos stratégies d'investissement ?</h4>
-                                    <p class="text-sm text-gray-700 mb-3">Discutons de vos objectifs lors d'un appel découverte de 15 minutes. Nous analyserons ensemble votre situation et vous proposerons un parcours personnalisé.</p>
+                                    <h4 class="text-lg font-bold text-gray-900 mb-2">Quel profil correspond à vos objectifs ?</h4>
+                                    <p class="text-sm text-gray-700 mb-3">Discutons-en lors d'un appel découverte de 15 minutes. Nous analyserons ensemble votre situation et vous repartirez avec au minimum une idée claire de votre profil d'investisseur.</p>
                                     <div class="flex items-center gap-4 text-xs text-gray-600">
                                         <span class="flex items-center gap-1">
                                             <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
@@ -296,13 +387,13 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 5. Gemini Investment Simulator Section -->
-        <section id="simulator" class="py-20 bg-gray-50">
+        <section id="simulator" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold section-title">✨ Simulez votre projet d'investissement</h2>
-                    <p class="text-gray-600 mt-2">Utilisez notre outil basé sur l'IA pour obtenir une simulation personnalisée et visualiser votre avenir financier.</p>
+                    <p class="text-gray-600 mt-2">Notre IA, entraînée sur les référentiels de gestion de fortune du CFA Institute, construit une première stratégie adaptée à votre objectif. Gratuit et immédiat.</p>
                     <!-- Social proof subtil desktop -->
                     <p class="text-xs text-gray-500 mt-3 hidden md:block">🔥 Plus de 150 simulations effectuées ce mois-ci</p>
                 </div>
@@ -362,20 +453,38 @@
                         <span class="text-violet-700">Simulation en cours...</span>
                     </div>
                     <div id="resultText" class="text-gray-800 gemini-response"></div>
-                     <p id="geminiDisclaimer" class="text-xs text-gray-500 mt-4 text-center">Simulation fournie par l'IA de RAM Advisor. Ne constitue pas un conseil financier.</p>
+                    <p id="geminiDisclaimer" class="text-xs text-gray-500 mt-4 text-center">Simulation fournie par l'IA de RAM Advisor. Ne constitue pas un conseil financier.</p>
+                    <!-- CTA post-simulation : le moment le plus chaud du parcours -->
+                    <div id="postSimCTA" class="hidden mt-6 text-center border-t border-violet-200 pt-6">
+                        <p class="text-sm font-semibold text-gray-900 mb-3">Envie de transformer cette simulation en plan d'action concret et personnalisé ?</p>
+                        <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="inline-block cta-gradient text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105">
+                            En discuter avec un expert certifié
+                        </a>
+                        <p class="text-xs text-gray-500 mt-2">Appel gratuit de 15 min · Sans engagement</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 6. Offers Section -->
-        <section id="offres" class="py-20 bg-white">
+        <section id="offres" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
+                <div class="text-center mb-6">
                     <h2 class="text-3xl font-bold section-title">Deux parcours pour atteindre vos objectifs</h2>
-                    <p class="text-gray-600 mt-2">Que vous souhaitiez un accompagnement clé en main ou devenir totalement autonome, nous avons la solution.</p>
+                    <p class="text-gray-600 mt-2">Un accompagnement clé en main, ou l'autonomie complète par la formation. Dans les deux cas : un tarif fixe, connu d'avance, sans frais récurrents cachés.</p>
                 </div>
+
+                <!-- Ancrage prix : comparaison avec la gestion classique -->
+                <div class="max-w-3xl mx-auto mb-12">
+                    <div class="card bg-white border-l-4 border-violet-600 text-sm text-gray-700">
+                        <p class="font-semibold text-gray-900 mb-1">💡 Pour situer nos tarifs</p>
+                        <p>Une gestion bancaire classique à ~2% de frais annuels vous coûte <strong>2 000 € par an</strong> pour 100 000 € investis — chaque année, performance ou pas. Chez RAM Advisor, vous payez <strong>une fois</strong> un honoraire fixe, puis votre portefeuille ETF ne supporte plus que ~0,2% de frais courants.</p>
+                    </div>
+                </div>
+
                 <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                    <div class="card flex flex-col">
+                    <div class="card flex flex-col relative offer-highlight">
+                        <span class="popular-badge">⭐ Le plus choisi</span>
                         <h3 class="text-2xl font-bold text-violet-800 mb-4">Investissement Accompagné</h3>
                         <p class="text-gray-700 mb-6 flex-grow">Pour un passage à l'action rapide et sécurisé. Nous construisons ensemble votre portefeuille, prêt à être déployé.</p>
                         <div class="mb-8 flex-grow flex flex-col justify-center">
@@ -386,22 +495,31 @@
                         </div>
                         <div class="space-y-4">
                             <div class="bg-gray-50 p-4 rounded-lg border">
-                                <h4 class="font-semibold text-gray-800">Pack "Stratégie & Lancement"</h4>
-                                <p class="text-gray-600 text-sm mt-1">Plan d'allocation personnalisé et guide de mise en œuvre.</p>
+                                <h4 class="font-semibold text-gray-800">Pack "Stratégie &amp; Lancement"</h4>
+                                <ul class="check-list mt-2">
+                                    <li>Diagnostic patrimonial et profil de risque</li>
+                                    <li>Politique d'Investissement Personnelle écrite</li>
+                                    <li>Allocation ETF sur mesure + guide de mise en œuvre</li>
+                                </ul>
                                 <div class="text-right text-xl font-bold text-violet-700 mt-2">295 €</div>
                             </div>
-                             <div class="bg-gray-50 p-4 rounded-lg border">
+                            <div class="bg-violet-50 p-4 rounded-lg border-2 border-violet-300">
                                 <h4 class="font-semibold text-gray-800">Pack "Projet Clé en Main"</h4>
-                                <p class="text-gray-600 text-sm mt-1">Le pack Stratégie avec un accompagnement au lancement et un support prioritaire d'un mois.</p>
-                                <div class="text-right text-xl font-bold text-violet-700 mt-2">495 €</div>
+                                <ul class="check-list mt-2">
+                                    <li>Tout le pack Stratégie &amp; Lancement</li>
+                                    <li>Accompagnement au lancement (ouverture de comptes, premiers ordres)</li>
+                                    <li>Support prioritaire pendant 1 mois</li>
+                                </ul>
+                                <div class="text-right mt-2"><span class="text-xl font-bold text-violet-700">495 €</span></div>
                             </div>
                             <div class="bg-gray-100 p-4 rounded-lg border border-gray-300 opacity-75">
-                                <h4 class="font-semibold text-gray-500">Pack "Premium"</h4>
-                                <p class="text-gray-400 text-sm mt-1 italic">Actuellement indisponible</p>
+                                <h4 class="font-semibold text-gray-500">Pack "Premium" — suivi annuel complet</h4>
+                                <p class="text-gray-400 text-sm mt-1 italic">Liste d'attente — réservé en priorité aux clients existants</p>
                                 <div class="text-right text-xl text-gray-400 mt-2"><span class="font-normal">à partir de</span> <span class="font-bold">985 €</span></div>
                             </div>
                         </div>
-                        <a href="#contact" class="mt-8 text-center w-full bg-violet-100 text-violet-800 font-semibold py-3 px-6 rounded-lg hover:bg-violet-200 transition">Choisir cet accompagnement</a>
+                        <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="mt-8 text-center w-full cta-gradient text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:scale-[1.02] transition">Démarrer par un appel gratuit</a>
+                        <p class="text-xs text-gray-500 text-center mt-2">L'appel découverte permet de valider le pack adapté avant tout paiement.</p>
                     </div>
                     <div class="card flex flex-col">
                         <h3 class="text-2xl font-bold text-violet-800 mb-4">Coaching Financier Autonomie</h3>
@@ -409,43 +527,116 @@
                         <div class="mb-8 flex-grow flex flex-col justify-center space-y-3">
                             <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
                                 <p class="font-semibold text-violet-800">Session 1 : Les Fondations</p>
-                                <p class="text-sm text-gray-600">Budget, épargne et psychologie de l'investisseur.</p>
+                                <p class="text-sm text-gray-600">Budget, épargne de précaution et psychologie de l'investisseur.</p>
                             </div>
-                             <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                            <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
                                 <p class="font-semibold text-violet-800">Session 2 : L'Écosystème</p>
-                                <p class="text-sm text-gray-600">Actions, ETFs et enveloppes fiscales.</p>
+                                <p class="text-sm text-gray-600">Actions, ETFs et enveloppes fiscales (PEA, assurance-vie, CTO).</p>
                             </div>
-                             <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                            <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
                                 <p class="font-semibold text-violet-800">Session 3 : La Stratégie</p>
                                 <p class="text-sm text-gray-600">Construire son allocation d'actifs personnelle.</p>
                             </div>
-                             <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                            <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
                                 <p class="font-semibold text-violet-800">Session 4 : La Pratique</p>
-                                <p class="text-sm text-gray-600">Passage d'ordres et suivi de portefeuille.</p>
+                                <p class="text-sm text-gray-600">Passage d'ordres, suivi de portefeuille et rééquilibrage.</p>
                             </div>
                         </div>
-                         <div class="bg-gray-50 p-4 rounded-lg border mt-auto">
+                        <div class="bg-gray-50 p-4 rounded-lg border mt-auto">
                             <h4 class="font-semibold text-gray-800">Cycle de Coaching Individuel</h4>
-                            <p class="text-gray-600 text-sm mt-1">Programme complet en 4 sessions d'une heure.</p>
+                            <p class="text-gray-600 text-sm mt-1">Programme complet en 4 sessions individuelles d'une heure — un savoir-faire pour toute la vie.</p>
                             <div class="text-right text-xl font-bold text-violet-700 mt-2">350 €</div>
                         </div>
-                        <a href="#contact" class="mt-4 text-center w-full bg-violet-100 text-violet-800 font-semibold py-3 px-6 rounded-lg hover:bg-violet-200 transition">Commencer ma formation</a>
+                        <a href="https://calendly.com/mamy-ramadvisor/introduction" target="_blank" rel="noopener noreferrer" class="mt-4 text-center w-full bg-violet-100 text-violet-800 font-semibold py-3 px-6 rounded-lg hover:bg-violet-200 transition">Commencer ma formation</a>
+                        <p class="text-xs text-gray-500 text-center mt-2">Premier échange gratuit pour valider que le format vous convient.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 7. CTA Section -->
+        <!-- 7. À propos / Crédibilité -->
+        <section id="apropos" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto card">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                        <div class="text-center">
+                            <div class="w-28 h-28 mx-auto rounded-full bg-violet-100 flex items-center justify-center text-4xl font-bold text-violet-700">MR</div>
+                            <p class="mt-3 font-bold text-gray-900">Mamy Rama</p>
+                            <p class="text-sm text-gray-600">Fondateur, RAM Advisor</p>
+                            <div class="mt-3 flex flex-wrap justify-center gap-2">
+                                <span class="cert-badge">CFA®</span>
+                                <span class="cert-badge">CAIA®</span>
+                                <span class="cert-badge">Certificat ESG</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <h2 class="text-2xl font-bold section-title">Pourquoi me confier vos objectifs ?</h2>
+                            <p class="mt-3 text-gray-700">Les certifications CFA (Chartered Financial Analyst) et CAIA (Chartered Alternative Investment Analyst) sont les standards d'exigence des gérants institutionnels et des banques privées. J'ai créé RAM Advisor avec une conviction : cette rigueur ne devrait pas être réservée aux patrimoines à 7 chiffres.</p>
+                            <p class="mt-3 text-gray-700">Concrètement, vous bénéficiez de la même démarche qu'un client de gestion de fortune — bilan patrimonial, politique d'investissement écrite, allocation par objectifs, discipline de rééquilibrage — avec des supports simples, liquides et à frais réduits : les ETF.</p>
+                            <div class="mt-4">
+                                <!-- Badge LinkedIn -->
+                                <div class="badge-base LI-profile-badge" data-locale="fr_FR" data-size="medium" data-theme="light" data-type="HORIZONTAL" data-vanity="mamy-rama-cfa-caia-esg" data-version="v1">
+                                    <a class="badge-base__link LI-simple-link" href="https://fr.linkedin.com/in/mamy-rama-cfa-caia-esg?trk=profile-badge">Profil LinkedIn</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FAQ -->
+        <section id="faq" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold section-title">Questions fréquentes</h2>
+                    <p class="text-gray-600 mt-2">Les réponses honnêtes aux questions que vous vous posez (à raison) avant de nous confier vos projets.</p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <details class="faq-item">
+                        <summary>À partir de quel montant RAM Advisor est-il pertinent ?</summary>
+                        <p>Dès environ 10 000 € d'épargne investissable (ou une capacité d'épargne mensuelle régulière), un portefeuille ETF diversifié et une stratégie écrite ont du sens. Il n'y a pas de ticket d'entrée : l'appel découverte permet justement de vérifier gratuitement si nos services vous seront réellement utiles — et nous vous le dirons franchement si ce n'est pas le cas.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Gérez-vous mon argent à ma place ?</summary>
+                        <p>Non, et c'est une protection pour vous : vos fonds restent en permanence sur VOS comptes (PEA, assurance-vie, compte-titres), chez le courtier ou l'assureur de votre choix. Nous concevons la stratégie et vous guidons dans sa mise en œuvre ; vous gardez le contrôle total de votre argent.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Comment êtes-vous rémunéré ? Y a-t-il des frais cachés ?</summary>
+                        <p>Uniquement par les honoraires fixes affichés sur cette page, payés par vous. Nous ne touchons aucune rétrocession, commission ou avantage des produits ou courtiers évoqués. C'est ce qui garantit qu'une recommandation n'a qu'une seule raison d'exister : elle est bonne pour vous.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Pourquoi des ETF plutôt que des fonds classiques ?</summary>
+                        <p>Les ETF répliquent des indices diversifiés pour ~0,1% à 0,3% de frais annuels, contre 1,5% à 2,5% pour la plupart des fonds distribués en agence bancaire. Sur 20 ans, cet écart de frais représente souvent plusieurs dizaines de milliers d'euros. La recherche académique est constante : peu de fonds actifs battent durablement leur indice après frais.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Que se passe-t-il quand les marchés baissent ?</summary>
+                        <p>Les baisses font partie du plan, pas de l'imprévu. Votre allocation est calibrée dès le départ pour que la part risquée corresponde à votre horizon et à votre tolérance réelle — c'est tout l'objet de la Politique d'Investissement Personnelle. Et c'est précisément dans ces périodes qu'un cadre écrit et un conseiller indépendant vous évitent les erreurs les plus coûteuses : vendre au pire moment.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Est-ce compatible avec l'investissement responsable (ESG) ?</summary>
+                        <p>Oui. Titulaire du Certificate in ESG Investing, nous pouvons décliner chaque profil en version durable (ETF ESG/ISR) si c'est important pour vous, en expliquant honnêtement ce que ces labels couvrent — et ce qu'ils ne couvrent pas. Voir notre page <a href="pages/durabilite.html" class="text-violet-700 underline">Durabilité</a>.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Quelle différence avec un CGP traditionnel ou ma banque ?</summary>
+                        <p>Trois différences : (1) l'indépendance — pas de produits "maison" ni de rétrocessions ; (2) le coût — un honoraire fixe unique plutôt que des frais en pourcentage prélevés chaque année ; (3) la pédagogie — notre objectif est que vous compreniez votre stratégie, voire que vous deveniez totalement autonome grâce au coaching.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. CTA Section -->
         <section id="contact" class="bg-violet-800">
-             <div class="container mx-auto px-6 py-20">
+            <div class="container mx-auto px-6 py-20">
                 <div class="card bg-violet-700 text-white text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl font-bold">Votre Parcours Commence Ici</h2>
-                    <p class="mt-4 text-lg text-violet-200 max-w-2xl mx-auto">Discutons de votre projet lors d'un appel découverte de 15 minutes. C'est gratuit, sans engagement, et le premier pas vers l'atteinte de vos objectifs financiers.</p>
+                    <p class="mt-4 text-lg text-violet-200 max-w-2xl mx-auto">15 minutes pour faire le point sur vos projets, gratuitement et sans engagement. Au pire, vous repartez avec une vision plus claire de votre situation. Au mieux, avec un plan.</p>
                     <div class="mt-8">
                         <a href="https://calendly.com/mamy-ramadvisor/introduction" class="bg-white text-violet-800 font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg inline-block">Réserver mon appel gratuit</a>
                     </div>
+                    <p class="mt-4 text-sm text-violet-200">Ou écrivez-nous : <a href="mailto:contact@ramadvisor.fr" class="underline">contact@ramadvisor.fr</a></p>
                 </div>
-             </div>
+            </div>
         </section>
     </main>
 
@@ -466,23 +657,22 @@
     <footer class="bg-gray-800 text-white pb-20 md:pb-8">
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col items-center gap-6">
-                <!-- Badge LinkedIn -->
-                <div class="badge-base LI-profile-badge" data-locale="fr_FR" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="mamy-rama-cfa-caia-esg" data-version="v1">
-                    <a class="badge-base__link LI-simple-link" href="https://fr.linkedin.com/in/mamy-rama-cfa-caia-esg?trk=profile-badge"></a>
-                </div>
-                
                 <!-- Informations légales -->
-                <div class="text-center">
-                    <p>&copy; 2025 RAM Advisor. Tous droits réservés.</p>
-                    <p class="text-sm text-gray-400 mt-2">RAM Advisor est une société de conseil en investissement. Nous ne fournissons pas de conseils financiers réglementés.</p>
+                <div class="text-center max-w-2xl">
+                    <p>&copy; 2026 RAM Advisor. Tous droits réservés.</p>
+                    <p class="text-sm text-gray-400 mt-2">RAM Advisor propose des prestations d'éducation financière et d'aide à la décision. Nous ne fournissons pas de conseils financiers réglementés et ne détenons jamais les fonds de nos clients.</p>
+                    <p class="text-xs text-gray-500 mt-2">Investir comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures.</p>
+                    <p class="text-xs text-gray-500 mt-2"><a href="mailto:contact@ramadvisor.fr" class="underline">contact@ramadvisor.fr</a></p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Données de performances (générées depuis performances/performance_data.xlsx — voir scripts/update_performance_data.py) -->
+    <script src="js/performance-data.js"></script>
     <!-- JavaScript -->
     <script src="js/script.js"></script>
-    
+
     <!-- LinkedIn Badge Script -->
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 

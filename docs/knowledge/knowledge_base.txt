@@ -1,9 +1,13 @@
 BASE DE CONNAISSANCES STRATÉGIQUE - ALLOCATIONS TYPES DE PORTEFEUILLES
-Source : Principes de la gestion de patrimoine privée (CFA Institute)
+Source : Principes de la gestion de patrimoine privée (CFA Institute — Courses 1 à 5 : Foundations of Private Wealth Management, Wealth Planning and Client Engagement, Investment and Risk Management for HNW Clients, Wealth Advisory Strategies, Practical Skills in Private Wealth Management)
 Auteur : RamAdvisor AI Simulation
-Version : 1.0
+Version : 2.0
+
+NOTE DE STRUCTURE : chaque section commence par "OBJECTIF :" et contient des typologies d'allocation, des règles de mise en œuvre via ETF adaptées au cadre français (PEA, assurance-vie, CTO), et des points de vigilance comportementaux issus de la gestion privée.
+
 OBJECTIF : PRESERVATION DU CAPITAL
 Description : Priorité absolue à la protection du capital contre les pertes. La croissance est un objectif très secondaire. Adapté aux investisseurs ayant une aversion totale au risque ou des besoins de liquidité imminents.
+Principe de gestion privée : pour un objectif à court terme, le risque principal n'est pas la volatilité mais l'indisponibilité des fonds au moment voulu. La capacité de risque (déterminée par l'horizon) prime toujours sur l'appétence au risque déclarée.
 Typologie : PRESERVATION-1Y
 
 Objectif : Préservation du capital
@@ -74,8 +78,16 @@ Immobilier : 0%
 
 Actifs Alternatifs : 0%
 
+Mise en œuvre ETF (cadre français) :
+- Liquidités : livrets réglementés (Livret A, LDDS) en priorité pour l'épargne de précaution, puis ETF monétaires (€STR) sur CTO ou fonds en euros d'assurance-vie.
+- Obligations courtes : ETF obligations d'État zone euro 0-3 ans, ou fonds en euros (capital garanti par l'assureur, adapté aux horizons courts).
+- Toujours conserver 3 à 6 mois de dépenses en épargne de précaution AVANT tout investissement.
+
+Vigilance comportementale : sur un horizon court, ne pas céder à la tentation de "rattraper" un rendement faible en prenant du risque actions. Le coût d'un retrait forcé en marché baissier dépasse largement le gain espéré.
+
 OBJECTIF : REVENU
 Description : Priorité à la génération de revenus réguliers (dividendes, coupons) tout en préservant le capital de manière raisonnable.
+Principe de gestion privée : raisonner en "rendement total" (revenus + appréciation) plutôt qu'en dividendes seuls. Un besoin de revenu peut aussi être couvert par des retraits programmés d'un portefeuille diversifié, souvent plus efficaces fiscalement en France (l'assurance-vie après 8 ans bénéficie d'abattements annuels sur les rachats).
 Typologie : REVENU-3Y
 
 Objectif : Revenu régulier
@@ -168,98 +180,17 @@ Immobilier (SCPI) : 15%
 
 Actifs Alternatifs : 5%
 
-OBJECTIF : ÉQUILIBRÉ
-Description : Recherche d'un compromis entre la croissance du capital et la génération de revenus, avec une tolérance au risque modérée. C'est le portefeuille polyvalent par excellence.
-Typologie : ÉQUILIBRÉ-5Y
+Mise en œuvre ETF (cadre français) :
+- Actions à dividendes : ETF distribuant (aristocrates du dividende, high dividend monde/Europe) sur CTO ou assurance-vie ; en phase de constitution, préférer les ETF capitalisants (pas de frottement fiscal annuel).
+- Obligations : ETF agrégat euro (État + entreprises investment grade) ; le fonds en euros reste une alternative simple pour la poche sécurisée.
+- Immobilier : SCPI en assurance-vie ou en direct ; attention aux frais d'entrée (8-10% en direct) qui imposent un horizon long.
+- Règle de retrait prudente pour un capital devant durer : environ 3,5 à 4% du portefeuille par an, ajustée à l'inflation, à réévaluer chaque année.
 
-Objectif : Croissance et revenu
-
-Profil de Risque : Modéré
-
-Horizon de Temps : 5 ans
-
-Liquidité Requise : Modérée
-
-Allocation Modèle :
-
-Liquidités / Fonds Monétaires : 10%
-
-Obligations : 40%
-
-Actions (Globales diversifiées) : 40%
-
-Immobilier : 5%
-
-Actifs Alternatifs : 5%
-
-Typologie : ÉQUILIBRÉ-10Y
-
-Objectif : Croissance et revenu
-
-Profil de Risque : Modéré
-
-Horizon de Temps : 10 ans
-
-Liquidité Requise : Faible
-
-Allocation Modèle :
-
-Liquidités / Fonds Monétaires : 5%
-
-Obligations : 35%
-
-Actions (Globales diversifiées) : 50%
-
-Immobilier : 5%
-
-Actifs Alternatifs : 5%
-
-Typologie : ÉQUILIBRÉ-15Y
-
-Objectif : Croissance et revenu
-
-Profil de Risque : Modéré à dynamique
-
-Horizon de Temps : 15 ans
-
-Liquidité Requise : Très faible
-
-Allocation Modèle :
-
-Liquidités / Fonds Monétaires : 5%
-
-Obligations : 30%
-
-Actions (Globales diversifiées) : 55%
-
-Immobilier : 5%
-
-Actifs Alternatifs : 5%
-
-Typologie : ÉQUILIBRÉ-30Y
-
-Objectif : Croissance et revenu
-
-Profil de Risque : Modéré à dynamique
-
-Horizon de Temps : 30 ans
-
-Liquidité Requise : Nulle
-
-Allocation Modèle :
-
-Liquidités / Fonds Monétaires : 2%
-
-Obligations : 28%
-
-Actions (Globales diversifiées) : 60%
-
-Immobilier : 5%
-
-Actifs Alternatifs : 5%
+Vigilance comportementale : ne pas "courir après le rendement" (obligations à haut risque, actions à dividende très élevé mais fragile). Un rendement affiché anormalement élevé est le symptôme d'un risque élevé, pas un cadeau.
 
 OBJECTIF : CROISSANCE
 Description : Priorité à l'appréciation du capital sur le long terme. L'investisseur accepte une volatilité plus élevée pour un potentiel de rendement supérieur.
+Principe de gestion privée : sur 10 ans et plus, le principal risque n'est plus la volatilité mais l'érosion par l'inflation et la sous-exposition aux actifs de croissance. La discipline d'investissement programmé (versements mensuels, "dollar cost averaging") lisse les points d'entrée et neutralise une grande partie du risque de timing.
 Typologie : CROISSANCE-5Y
 
 Objectif : Appréciation du capital
@@ -348,8 +279,17 @@ Immobilier : 5%
 
 Actifs Alternatifs : 10%
 
-OBJECTIF : CROISSANCE AGRESSIVE / SPÉCULATIF
+Mise en œuvre ETF (cadre français) :
+- Cœur de portefeuille : ETF actions monde (type MSCI World ou ACWI) capitalisant, en priorité dans un PEA (plafond 150 000 € de versements, exonération d'impôt sur les plus-values après 5 ans, hors prélèvements sociaux) via des ETF éligibles à réplication synthétique.
+- Compléments : ETF marchés émergents et small caps en poche satellite (10-20% de la part actions au maximum).
+- Au-delà du plafond PEA : assurance-vie (fiscalité adoucie après 8 ans, transmission avantageuse) puis CTO (flat tax 30%).
+- Rééquilibrage : une fois par an, ou quand une classe d'actifs dévie de plus de 5 points de son poids cible. Utiliser les versements mensuels pour rééquilibrer sans vendre (efficient fiscalement).
+
+Vigilance comportementale : la plus grande destruction de valeur des particuliers vient de la vente en panique dans les baisses (écart comportemental estimé à 1-2% de rendement annuel perdu). Une allocation soutenable dans les baisses vaut mieux qu'une allocation optimale sur le papier. Se référer à sa politique d'investissement écrite avant toute décision sous stress.
+
+OBJECTIF : CROISSANCE AGRESSIVE / SPÉCULATIF (CROISSANCE_AGGRESSIVE)
 Description : Recherche de rendements très élevés en acceptant une volatilité et un risque de perte en capital significatifs. Réservé aux investisseurs très avertis avec un horizon long.
+Principe de gestion privée : même les profils les plus offensifs conservent une base diversifiée ; la poche spéculative (thématiques, crypto-actifs) doit rester dimensionnée pour qu'une perte totale ne compromette aucun objectif de vie. Vérifier systématiquement la cohérence entre patrimoine total, dettes et exposition au risque.
 Typologie : AGRESSIF-10Y
 
 Objectif : Appréciation maximale du capital
@@ -418,9 +358,9 @@ Objectif : Gain rapide spéculatif
 
 Profil de Risque : Extrêmement élevé
 
-Horizon de Temps : 1 an
-
 Liquidité Requise : Faible (le capital est à risque)
+
+Horizon de Temps : 1 an
 
 Allocation Modèle :
 
@@ -429,3 +369,110 @@ Liquidités / Fonds Monétaires : 20%
 Actions (Thématiques, forte volatilité) : 60%
 
 Actifs Alternatifs (Crypto-actifs) : 20%
+
+Mise en œuvre ETF (cadre français) :
+- Base diversifiée : ETF monde en PEA comme socle, même pour un profil spéculatif.
+- Poche thématique : ETF sectoriels (technologie, semi-conducteurs, santé) et émergents ; limiter chaque thématique à 5-10% du portefeuille.
+- Crypto-actifs : uniquement en pleine conscience d'un risque de perte totale, jamais à crédit, et plafonnés à un montant dont la perte n'affecterait pas les objectifs de vie.
+
+Vigilance comportementale : excès de confiance et biais de récence sont les deux ennemis du profil agressif. Fixer À L'AVANCE des règles écrites de prise de profit et de taille maximale de position, et s'y tenir.
+
+OBJECTIF : ÉQUILIBRÉ (CROISSANCE_MODEREE)
+Description : Recherche d'un compromis entre la croissance du capital et la génération de revenus, avec une tolérance au risque modérée. C'est le portefeuille polyvalent par excellence.
+Principe de gestion privée : l'approche par objectifs ("goals-based investing") recommande de séparer mentalement le patrimoine en poches — sécurité (besoins essentiels), stabilité (projets à moyen terme), croissance (long terme) — chacune avec son allocation propre. Le profil équilibré est souvent la résultante de cette combinaison.
+Typologie : ÉQUILIBRÉ-5Y
+
+Objectif : Croissance et revenu
+
+Profil de Risque : Modéré
+
+Horizon de Temps : 5 ans
+
+Liquidité Requise : Modérée
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 10%
+
+Obligations : 40%
+
+Actions (Globales diversifiées) : 40%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 5%
+
+Typologie : ÉQUILIBRÉ-10Y
+
+Objectif : Croissance et revenu
+
+Profil de Risque : Modéré
+
+Horizon de Temps : 10 ans
+
+Liquidité Requise : Faible
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 5%
+
+Obligations : 35%
+
+Actions (Globales diversifiées) : 50%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 5%
+
+Typologie : ÉQUILIBRÉ-15Y
+
+Objectif : Croissance et revenu
+
+Profil de Risque : Modéré à dynamique
+
+Horizon de Temps : 15 ans
+
+Liquidité Requise : Très faible
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 5%
+
+Obligations : 30%
+
+Actions (Globales diversifiées) : 55%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 5%
+
+Typologie : ÉQUILIBRÉ-30Y
+
+Objectif : Croissance et revenu
+
+Profil de Risque : Modéré à dynamique
+
+Horizon de Temps : 30 ans
+
+Liquidité Requise : Nulle
+
+Allocation Modèle :
+
+Liquidités / Fonds Monétaires : 2%
+
+Obligations : 28%
+
+Actions (Globales diversifiées) : 60%
+
+Immobilier : 5%
+
+Actifs Alternatifs : 5%
+
+Mise en œuvre ETF (cadre français) :
+- Poche actions : ETF actions monde capitalisant en PEA (fiscalité optimale après 5 ans).
+- Poche obligataire : ETF obligations agrégées euro en assurance-vie ou CTO, et/ou fonds en euros pour la partie la plus sécurisée.
+- Poche immobilier : SCPI via assurance-vie pour la liquidité et la fiscalité.
+- Version durable possible : décliner chaque poche en ETF ESG/ISR (indices type MSCI World SRI, Paris-Aligned Benchmark) pour un impact carbone réduit à profil de risque équivalent.
+- Rééquilibrage annuel vers les poids cibles ; utiliser les versements mensuels pour corriger les dérives en priorité.
+
+Vigilance comportementale : l'investisseur équilibré est le plus exposé au "bricolage" de portefeuille (ajouts successifs sans cohérence). Toute nouvelle position doit répondre à la question : quel rôle joue-t-elle dans l'allocation cible écrite ? Si la réponse est floue, s'abstenir.

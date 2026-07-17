@@ -171,7 +171,8 @@ class CFAFrenchEnricher:
             
             # Sauvegarder le fichier enrichi
             with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(enriched_chunks, f, ensure_ascii=False, indent=2)
+                # JSON compact : indispensable pour rester sous les limites Netlify
+                json.dump(enriched_chunks, f, ensure_ascii=False, separators=(',', ':'))
             
             print(f"💾 Sauvegarde: {len(enriched_chunks)} chunks enrichis dans {output_file}")
             

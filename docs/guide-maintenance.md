@@ -1,187 +1,125 @@
-# 🛠️ Guide de Maintenance du Site Web
+# 🛠️ Guide de maintenance RAM Advisor — par module
 
-## 📅 Routine de Maintenance Régulière
-
-### **Quotidienne** (si développement actif)
-- [ ] Sauvegarder les fichiers modifiés
-- [ ] Tester les modifications localement
-- [ ] Vérifier que Live Server est arrêté après usage
-
-### **Hebdomadaire**
-- [ ] Vérifier que le site en ligne fonctionne
-- [ ] Nettoyer les fichiers temporaires
-- [ ] Organiser les nouveaux assets
-
-### **Mensuelle**
-- [ ] Backup complet du projet
-- [ ] Vérifier les performances du site
-- [ ] Mettre à jour la documentation
-- [ ] Vérifier les liens externes
+> Vue d'ensemble du projet : [README.md](../README.md) à la racine.
+> Toutes les commandes se lancent depuis la racine du projet sauf mention contraire.
 
 ---
 
-## 📁 Structure de Fichiers à Maintenir
+## 1. 📈 Performances des portefeuilles (le workflow le plus fréquent)
 
-### **Fichiers de Production** (à ne pas toucher sans raison) :
-```
-✅ index.html          # Page principale
-✅ css/style.css       # Styles du site
-✅ js/script.js        # Fonctionnalités JavaScript
-✅ assets/             # Images et ressources
-✅ pages/              # Pages supplémentaires
-```
+**Source de vérité : `performances/performance_data.xlsx`** (onglet `Feuil1`).
 
-### **Fichiers de Développement** :
-```
-📁 docs/               # Documentation (ce dossier)
-📁 archive/            # Anciennes versions
-📄 README.md           # Documentation principale
-📄 web.code-workspace  # Configuration VS Code
-```
+| Tableau | En-tête | Contenu |
+|---|---|---|
+| 1 | `Depuis` | Performances cumulées par année de départ, en décimal (`0.1234` = +12,34%) |
+| 2 | `Actif` | Pondérations cibles par profil (Actions, Obligations Entreprises, Obligations Gouvernements, Liquidités) |
 
----
+Les 5 colonnes de profils : `Securisé`, `Prudent`, `Equilibre`, `Dynamique`, `Offensif`.
 
-## ✏️ Workflow de Modification
+**Procédure :**
+1. Mettre à jour l'Excel (ajouter/modifier des lignes d'années, ajuster les pondérations).
+2. ```powershell
+   python scripts/update_performance_data.py
+   ```
+   → régénère `js/performance-data.js` (ne JAMAIS éditer ce fichier à la main).
+3. Ouvrir `index.html` en local, vérifier graphique + tableau + tooltips.
+4. `git add`, `git commit`, `git push` → Netlify redéploie.
 
-### **Pour une petite modification** (texte, couleur) :
-1. **Backup** : Copier le fichier avant modification
-2. **Modifier** : Faire le changement
-3. **Tester** : Double-clic sur `index.html`
-4. **Déployer** : Upload sur Netlify si OK
-
-### **Pour une grosse modification** (nouvelle section) :
-1. **Créer une branche** (si Git)
-2. **Développer** avec Live Server
-3. **Tester** sur plusieurs navigateurs
-4. **Merger** et déployer
+> Si `js/performance-data.js` est absent ou invalide, le site retombe sur des données
+> intégrées dans `js/script.js` (fallback) — le site ne casse jamais.
 
 ---
 
-## 🔍 Tests à Effectuer Régulièrement
+## 2. 🤖 Simulateur IA (prompt + allocations)
 
-### **Tests Fonctionnels** :
-- [ ] Tous les liens fonctionnent
-- [ ] Formulaires s'envoient correctement
-- [ ] JavaScript n'a pas d'erreurs (F12 → Console)
-- [ ] Images se chargent
+**Sources de vérité (racine du projet) :**
+- `prompt_template_v3.md` — persona, score d'atypicité, format de réponse.
+- `knowledge_base.txt` — allocations types par objectif + principes de gestion privée.
 
-### **Tests Responsive** :
-- [ ] Mobile (iPhone/Android)
-- [ ] Tablet (iPad)
-- [ ] Desktop (différentes tailles)
+**Règles impératives pour `knowledge_base.txt` :**
+- Chaque section commence par `OBJECTIF : ...` (le code découpe sur cette chaîne).
+- Chaque section doit contenir un mot-clé de filtrage (en MAJUSCULES) :
+  `PRESERVATION`, `REVENU`, `CROISSANCE_MODEREE` (section Équilibré),
+  `CROISSANCE`, `CROISSANCE_AGGRESSIVE` (section Agressive).
+- Correspondance profils → sections servies (2 max par profil) :
+  - Prudent → PRESERVATION + REVENU
+  - Équilibré → REVENU + ÉQUILIBRÉ
+  - Audacieux → CROISSANCE + CROISSANCE AGRESSIVE
 
-### **Tests Performance** :
-- [ ] Temps de chargement < 3 secondes
-- [ ] Images optimisées
-- [ ] CSS/JS minifiés (pour plus tard)
-
----
-
-## 📊 Monitoring du Site
-
-### **Outils Gratuits de Monitoring** :
-1. **Google PageSpeed Insights**
-   - URL : [pagespeed.web.dev](https://pagespeed.web.dev)
-   - Test : Entrer votre URL Netlify
-   - Objectif : Score > 90
-
-2. **GTmetrix**
-   - URL : [gtmetrix.com](https://gtmetrix.com)
-   - Test gratuit de performance
-
-3. **Uptime Robot** (optionnel)
-   - Surveillance 24h/24 du site
-   - Alerte si le site tombe
-
-### **Métriques à surveiller** :
-- Temps de chargement
-- Taille des pages
-- Erreurs JavaScript
-- Accessibilité
-
----
-
-## 🗃️ Stratégie de Backup
-
-### **Backup Automatique** (recommandé) :
+**Après modification :** recopier vers les copies de secours :
 ```powershell
-# Script de backup à lancer 1x/semaine
-$date = Get-Date -Format "yyyy-MM-dd"
-$source = "G:\Drive partagés\BLACKROB\web"
-$destination = "G:\Backups\web-backup-$date"
-Copy-Item -Path $source -Destination $destination -Recurse
+Copy-Item knowledge_base.txt streamlit_app/ -Force
+Copy-Item knowledge_base.txt docs/knowledge/ -Force
+Copy-Item prompt_template_v3.md streamlit_app/ -Force
 ```
 
-### **Backup Manuel** :
-1. Copier tout le dossier `web`
-2. Renommer avec la date : `web-backup-2025-09-05`
-3. Stocker sur un disque externe ou cloud
-
-### **Backup Git** (si utilisé) :
+**Tester avant de pousser :**
 ```powershell
-# Tout est sauvegardé automatiquement sur GitHub
-git push
+# Option A : app Streamlit locale (nécessite GEMINI_API_KEY)
+streamlit run streamlit_app/app.py
+# Option B : notebook de test multi-profils
+# test_clients_diversifies_v2.ipynb
 ```
 
 ---
 
-## 🔧 Outils de Développement Recommandés
+## 3. 🎓 Base RAG CFA (Courses 1 à 5)
 
-### **Extensions VS Code Essentielles** :
-- **Live Server** : Prévisualisation temps réel
-- **Auto Rename Tag** : Renomme les balises HTML automatiquement
-- **Prettier** : Formatage automatique du code
-- **HTML CSS Support** : Autocomplétion améliorée
+**Sources : `docs/knowledge/Course 1..5 *.pdf`** → embeddings dans `netlify/functions/cfa_data/`.
 
-### **Navigateurs pour Tests** :
-- **Chrome/Edge** : Principal développement
-- **Firefox** : Test de compatibilité
-- **Safari** (si possible) : Test mobile iOS
+**Régénérer (après ajout/remplacement d'un PDF) :**
+```powershell
+cd scripts
+python generate_cfa_embeddings.py      # extraction PDF + embeddings (quelques minutes)
+python enrich_cfa_with_french.py       # enrichissement multilingue FR
+```
+- Pour ajouter un nouveau PDF : le déposer dans `docs/knowledge/` et l'ajouter à
+  `DEFAULT_COURSE_PDFS` en tête de `scripts/generate_cfa_embeddings.py`.
+- Dépendances : `pip install -r scripts/requirements.txt` (sentence-transformers, PyPDF2, numpy).
+
+**Contrôles avant push :**
+- Taille de `netlify/functions/cfa_data/` : rester raisonnable (< ~50 Mo au total).
+  Les JSON sont écrits compacts et les embeddings arrondis à 5 décimales pour cela.
+- En cas de dépassement : `cfa_knowledge_embeddings.json` (version non enrichie) peut être
+  exclu du déploiement — la fonction n'utilise que `*_french_enriched.json` quand il existe.
+- Tester une simulation sur le site déployé (préversion Netlify) et vérifier dans les logs
+  de fonction que des chunks CFA sont trouvés (`✅ X chunks CFA ultra-optimisés trouvés`).
 
 ---
 
-## 📝 Documentation des Changements
+## 4. 🌐 Site vitrine (index.html, css, js)
 
-### **Tenir un journal des modifications** :
-```
-Date : 05/09/2025
-Modification : Ajout section "À propos"
-Fichiers modifiés : index.html, css/style.css
-Test effectué : ✅ Chrome, ✅ Mobile
-Déployé : ✅ Netlify
-```
+- `index.html` : page unique v2 (hero → défi → méthode → performances → simulateur → offres → à propos → FAQ → contact).
+- Les **IDs HTML sont contractuels avec `js/script.js`** — ne pas renommer sans adapter le JS :
+  `startYear`, `resetBtn`, `perfChart`, `perfTbody`, `fromYearLbl`, `simulateBtn`, `goal`,
+  `initialAmount`, `monthlyAmount`, `riskProfile`, `timeHorizon`, `simulationResult`,
+  `loadingSpinner`, `resultText`, `postSimCTA`, `mobileMenuBtn`, `mobileMenu`,
+  `accompagnementDonutChart`, et les 5 `tooltip-perf` du tableau (ordre = profils).
+- La FAQ utilise `<details>/<summary>` : aucun JavaScript nécessaire.
+- Tarifs : sections "Offres" dans `index.html` (rechercher `295 €`, `495 €`, `985 €`, `350 €`).
+- Lien de prise de RDV : rechercher `calendly.com/mamy-ramadvisor` (présent en ~8 endroits).
 
-### **Nommer les commits Git** (si utilisé) :
-```
-✅ Bon : "Ajouter section témoignages clients"
-❌ Mauvais : "modif"
-```
-
----
-
-## 🚨 Plan d'Urgence
-
-### **Si le site ne fonctionne plus** :
-1. **Ne pas paniquer** 
-2. **Revenir à la dernière version qui marchait**
-3. **Identifier le problème** (console navigateur)
-4. **Contacter support** si nécessaire
-
-### **Contacts d'urgence** :
-- **Netlify Support** : Via le dashboard
-- **Registrar du domaine** : (OVH, Gandi, etc.)
-- **Votre développeur** : (vous ou aide externe)
+**Test local rapide :** ouvrir `index.html` dans le navigateur (F12 → Console pour les erreurs).
+Le simulateur IA ne fonctionne qu'en environnement Netlify (fonctions serverless) :
+utiliser `netlify dev` ou tester sur la préversion de déploiement.
 
 ---
 
-## 📚 Ressources d'Apprentissage
+## 5. 🚀 Déploiement & urgence
 
-### **Pour améliorer vos compétences** :
-- **HTML/CSS** : [w3schools.com](https://w3schools.com)
-- **JavaScript** : [javascript.info](https://javascript.info)
-- **Git** : [learngitbranching.js.org](https://learngitbranching.js.org)
-- **Design** : [dribbble.com](https://dribbble.com) (inspiration)
+- **Déploiement** : `git push` sur `main` → Netlify build automatique.
+- **Variables Netlify** : `GEMINI_API_KEY` (obligatoire), `GEMINI_MODEL` (optionnel).
+- **Rollback** : dashboard Netlify → Deploys → "Publish deploy" sur une version antérieure,
+  ou `git revert` du commit fautif.
+- **Sauvegardes git** : tags `backup-*` et branches `backup/*`
+  (ex. `backup-pre-v2-20260717` = état avant la refonte v2 de juillet 2026).
 
 ---
 
-*💡 Conseil : Gardez ce guide à portée de main et cochez les tâches au fur et à mesure !*
+## ✅ Checklist avant chaque push
+
+- [ ] Console navigateur sans erreur (F12)
+- [ ] Affichage mobile OK (menu hamburger, CTA flottant, graphiques)
+- [ ] Section performances cohérente avec l'Excel
+- [ ] Liens Calendly et pages ETF/Durabilité fonctionnels
+- [ ] Message de commit descriptif

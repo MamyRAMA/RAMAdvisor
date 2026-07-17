@@ -93,6 +93,9 @@ function initializeInvestmentSimulator() {
                 // Affichage du résultat
                 loadingSpinner.style.display = 'none';
                 resultText.innerHTML = formatInvestmentAdvice(data.advice);
+                // CTA de conversion : proposer l'appel découverte au moment le plus opportun
+                const postSimCTA = document.getElementById('postSimCTA');
+                if (postSimCTA) postSimCTA.classList.remove('hidden');
             } else {
                 throw new Error(data.error || 'Erreur lors de la génération du conseil');
             }
@@ -273,14 +276,20 @@ function initializePerformanceSection() {
     const startYearSelect = document.getElementById('startYear');
     if (!startYearSelect) return; // Si pas de section performances, sortir
 
-    // ==== PONDÉRATIONS INLINE POUR TOOLTIP & EN-TÊTES ====
-    const ALLOC = {
+    // ==== DONNÉES : js/performance-data.js (généré depuis performances/performance_data.xlsx) ====
+    // Fallback intégré ci-dessous si le fichier généré est absent.
+    const EXTERNAL_DATA = (typeof window !== 'undefined' && window.RAM_PERF_DATA) ? window.RAM_PERF_DATA : null;
+
+    const ALLOC_FALLBACK = {
         Securise:  { Actions: 0.03,  ObligationsEntreprises: 0.30, ObligationsGouvernements: 0.47, Liquidites: 0.20 },
         Prudent:   { Actions: 0.24,  ObligationsEntreprises: 0.31, ObligationsGouvernements: 0.35, Liquidites: 0.10 },
         Equilibre: { Actions: 0.45,  ObligationsEntreprises: 0.25, ObligationsGouvernements: 0.25, Liquidites: 0.05 },
         Dynamique: { Actions: 0.725, ObligationsEntreprises: 0.14, ObligationsGouvernements: 0.11, Liquidites: 0.025 },
         Offensif:  { Actions: 0.94,  ObligationsEntreprises: 0.02, ObligationsGouvernements: 0.02, Liquidites: 0.02 }
     };
+    const ALLOC = (EXTERNAL_DATA && EXTERNAL_DATA.alloc && Object.keys(EXTERNAL_DATA.alloc).length > 0)
+        ? EXTERNAL_DATA.alloc
+        : ALLOC_FALLBACK;
 
     // Renseigne les (i) du header de tableau
     document.querySelectorAll('.tooltip-perf').forEach((tip, i) => {
@@ -294,8 +303,8 @@ function initializePerformanceSection() {
         }
     });
 
-    // ==== DONNÉES DE PERFORMANCE INLINE ====
-    const rows = [
+    // ==== DONNÉES DE PERFORMANCE (générées ou fallback intégré) ====
+    const ROWS_FALLBACK = [
         { Annee: 2026, Securise: 0.0064471,   Prudent: 0.01234136,  Equilibre: 0.01829692,  Dynamique: 0.02729146,  Offensif: 0.03543707 },
         { Annee: 2025, Securise: 0.08568205,  Prudent: 0.08131781,  Equilibre: 0.12340154,  Dynamique: 0.17386906,  Offensif: 0.21112693 },
         { Annee: 2024, Securise: 0.08133363,  Prudent: 0.15100089,  Equilibre: 0.22223624,  Dynamique: 0.30726911,  Offensif: 0.36950369 },
@@ -304,7 +313,10 @@ function initializePerformanceSection() {
         { Annee: 2015, Securise: 0.15921548,  Prudent: 0.46446447,  Equilibre: 0.76970817,  Dynamique: 1.11264089,  Offensif: 1.35202102 },
         { Annee: 2010, Securise: 0.46693833,  Prudent: 1.05622609,  Equilibre: 1.62095322,  Dynamique: 2.21278209,  Offensif: 2.60628681 },
         { Annee: 2006, Securise: 0.63821678,  Prudent: 1.13607216,  Equilibre: 1.61470764,  Dynamique: 2.15759698,  Offensif: 2.54789493 }
-    ].sort((a, b) => a.Annee - b.Annee);
+    ];
+    const rows = ((EXTERNAL_DATA && Array.isArray(EXTERNAL_DATA.rows) && EXTERNAL_DATA.rows.length > 0)
+        ? EXTERNAL_DATA.rows.slice()
+        : ROWS_FALLBACK).sort((a, b) => a.Annee - b.Annee);
 
     // ==== CONSTANTES / HELPERS ====
     const PROFILE_KEYS = [

@@ -1,9 +1,15 @@
 {
   "model_name": "sentence-transformers/all-MiniLM-L6-v2",
   "embedding_dim": 384,
-  "total_chunks": 1709,
-  "source_file": "course.pdf",
-  "generated_at": "1757372883.863",
+  "total_chunks": 3536,
+  "source_files": [
+    "Course 1 Foundations of Private Wealth Management Reading Packet.pdf",
+    "Course 2 Wealth Planning and Client Engagement Reading Packet.pdf",
+    "Course 3 Investment and Risk Management for High-Net-Worth Clients Reading Packet.pdf",
+    "Course 4 Topics in Wealth Advisory and Wealth Management Strategies.pdf",
+    "Course 5 Practical Skills in Private Wealth Management Reading Packet.pdf"
+  ],
+  "generated_at": "1784323128.697",
   "categories": [
     "Asset Allocation",
     "Risk Management",

@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
-Script de génération d'embeddings pour le cours CFA Advanced Private Wealth Management
+Script de génération d'embeddings pour les cours CFA Private Wealth Management (Courses 1 à 5)
 Adapté pour RAMAdvisor - Génère des embeddings statiques pour Netlify Functions
 
 USAGE:
     python generate_cfa_embeddings.py
 
+    Traite par défaut les 5 PDFs "Course 1..5" de docs/knowledge/.
+    Après génération, relancer scripts/enrich_cfa_with_french.py pour produire
+    la version enrichie français utilisée par ultra-optimized-cfa-search.js.
+
 SORTIE:
-    - cfa_knowledge_embeddings.json : Embeddings + métadonnées du cours CFA
+    - cfa_knowledge_embeddings.json : Embeddings + métadonnées des cours CFA
     - cfa_embedding_config.json : Configuration du modèle
     - cfa_search_index.json : Index de recherche rapide
 
@@ -17,6 +21,15 @@ OBJECTIF:
 """
 
 import os
+# Évite le conflit protobuf/TensorFlow local : PyTorch suffit pour sentence-transformers
+os.environ.setdefault("USE_TF", "0")
+
+import sys
+# Console Windows en cp1252 : forcer UTF-8 pour les emojis des messages
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 import json
 import re
 from pathlib import Path
@@ -47,23 +60,37 @@ class CFAKnowledgeChunk:
         if self.relevance_keywords is None:
             self.relevance_keywords = []
 
+# Les 5 cours de la base de connaissances (docs/knowledge/)
+DEFAULT_COURSE_PDFS = [
+    "Course 1 Foundations of Private Wealth Management Reading Packet.pdf",
+    "Course 2 Wealth Planning and Client Engagement Reading Packet.pdf",
+    "Course 3 Investment and Risk Management for High-Net-Worth Clients Reading Packet.pdf",
+    "Course 4 Topics in Wealth Advisory and Wealth Management Strategies.pdf",
+    "Course 5 Practical Skills in Private Wealth Management Reading Packet.pdf",
+]
+
 class CFAEmbeddingGenerator:
     """Générateur d'embeddings spécialisé pour la connaissance CFA."""
-    
-    def __init__(self, 
-                 pdf_path: str = "../docs/knowledge/course.pdf",
-                 output_dir: str = "../netlify/functions/cfa_data",
+
+    def __init__(self,
+                 pdf_paths: Optional[List[str]] = None,
+                 output_dir: str = None,
                  model_name: str = "sentence-transformers/all-MiniLM-L6-v2"):
         """
         Initialise le générateur d'embeddings CFA.
-        
+
         Args:
-            pdf_path: Chemin vers le PDF du cours CFA
+            pdf_paths: Liste de chemins vers les PDFs des cours (défaut: Courses 1 à 5)
             output_dir: Répertoire de sortie pour Netlify Functions
             model_name: Modèle Sentence Transformers optimisé
         """
-        self.pdf_path = Path(pdf_path)
-        self.output_dir = Path(output_dir)
+        base_dir = Path(__file__).resolve().parent.parent
+        knowledge_dir = base_dir / "docs" / "knowledge"
+        if pdf_paths is None:
+            self.pdf_paths = [knowledge_dir / name for name in DEFAULT_COURSE_PDFS]
+        else:
+            self.pdf_paths = [Path(p) for p in pdf_paths]
+        self.output_dir = Path(output_dir) if output_dir else base_dir / "netlify" / "functions" / "cfa_data"
         self.model_name = model_name
         
         # Créer le répertoire de sortie
@@ -88,15 +115,15 @@ class CFAEmbeddingGenerator:
             "Alternative Investments": ["alternative", "hedge fund", "private equity", "real estate", "commodities"]
         }
     
-    def extract_text_from_pdf(self) -> List[Dict[str, Any]]:
-        """Extrait le texte du PDF CFA avec optimisations pour le contenu académique."""
+    def extract_text_from_pdf(self, pdf_path: Path) -> List[Dict[str, Any]]:
+        """Extrait le texte d'un PDF CFA avec optimisations pour le contenu académique."""
         text_chunks = []
         try:
-            with open(self.pdf_path, 'rb') as file:
+            with open(pdf_path, 'rb') as file:
                 pdf_reader = PyPDF2.PdfReader(file)
                 total_pages = len(pdf_reader.pages)
-                logger.info(f"Traitement du cours CFA: {total_pages} pages")
-                
+                logger.info(f"Traitement de {pdf_path.name}: {total_pages} pages")
+
                 for page_num, page in enumerate(pdf_reader.pages, 1):
                     text = page.extract_text()
                     if text.strip():
@@ -107,12 +134,11 @@ class CFAEmbeddingGenerator:
                                 'text': text,
                                 'page_number': page_num
                             })
-                            logger.info(f"Page {page_num}/{total_pages}: {len(text)} caractères extraits")
-                        
+
         except Exception as e:
-            logger.error(f"Erreur lors de l'extraction PDF {self.pdf_path}: {e}")
-        
-        logger.info(f"Extraction terminée: {len(text_chunks)} pages valides")
+            logger.error(f"Erreur lors de l'extraction PDF {pdf_path}: {e}")
+
+        logger.info(f"Extraction terminée ({pdf_path.name}): {len(text_chunks)} pages valides")
         return text_chunks
     
     def clean_academic_text(self, text: str) -> str:
@@ -206,42 +232,44 @@ class CFAEmbeddingGenerator:
         return [chunk for chunk in chunks if len(chunk) > 100]
     
     def process_cfa_document(self) -> int:
-        """Traite le document CFA et crée les chunks enrichis."""
-        logger.info(f"Traitement du cours CFA: {self.pdf_path}")
-        
-        if not self.pdf_path.exists():
-            logger.error(f"Fichier PDF CFA non trouvé: {self.pdf_path}")
-            return 0
-        
-        # Extraire le texte du PDF
-        text_data = self.extract_text_from_pdf()
-        
-        if not text_data:
-            logger.error("Aucun texte extrait du PDF CFA")
-            return 0
-        
-        # Traiter chaque page
+        """Traite les documents CFA (Courses 1 à 5) et crée les chunks enrichis."""
         chunk_counter = 0
-        for page_data in text_data:
-            text = page_data['text']
-            page_num = page_data['page_number']
-            
-            # Diviser en chunks intelligents
-            chunks = self.chunk_text_smart(text, chunk_size=450, overlap=80)
-            
-            for i, chunk_text in enumerate(chunks):
-                # Créer le chunk enrichi
-                chunk = CFAKnowledgeChunk(
-                    text=chunk_text,
-                    page_number=page_num,
-                    chunk_index=chunk_counter,
-                    topic_category=self.categorize_chunk(chunk_text),
-                    relevance_keywords=self.extract_keywords(chunk_text)
-                )
-                self.chunks.append(chunk)
-                chunk_counter += 1
-        
-        logger.info(f"Document CFA traité: {len(self.chunks)} chunks créés")
+
+        for pdf_path in self.pdf_paths:
+            if not pdf_path.exists():
+                logger.warning(f"Fichier PDF CFA non trouvé (ignoré): {pdf_path}")
+                continue
+
+            text_data = self.extract_text_from_pdf(pdf_path)
+            if not text_data:
+                logger.warning(f"Aucun texte extrait de {pdf_path.name} (ignoré)")
+                continue
+
+            # Traiter chaque page
+            for page_data in text_data:
+                text = page_data['text']
+                page_num = page_data['page_number']
+
+                # Diviser en chunks intelligents (900 caractères : bon compromis
+                # contexte RAG / taille des fichiers d'embeddings pour Netlify)
+                chunks = self.chunk_text_smart(text, chunk_size=900, overlap=150)
+
+                for chunk_text in chunks:
+                    # Créer le chunk enrichi, en gardant la trace du cours source
+                    chunk = CFAKnowledgeChunk(
+                        text=chunk_text,
+                        source_file=pdf_path.name,
+                        page_number=page_num,
+                        chunk_index=chunk_counter,
+                        topic_category=self.categorize_chunk(chunk_text),
+                        relevance_keywords=self.extract_keywords(chunk_text)
+                    )
+                    self.chunks.append(chunk)
+                    chunk_counter += 1
+
+            logger.info(f"{pdf_path.name}: cumul {len(self.chunks)} chunks")
+
+        logger.info(f"Documents CFA traités: {len(self.chunks)} chunks créés au total")
         return len(self.chunks)
     
     def generate_embeddings(self):
@@ -270,9 +298,10 @@ class CFAEmbeddingGenerator:
             )
             embeddings.extend(batch_embeddings)
         
-        # Assigner les embeddings aux chunks
+        # Assigner les embeddings aux chunks (arrondis à 5 décimales :
+        # réduit fortement la taille des JSON sans perte de pertinence)
         for chunk, embedding in zip(self.chunks, embeddings):
-            chunk.embedding = embedding.tolist()
+            chunk.embedding = [round(float(x), 5) for x in embedding]
         
         logger.info(f"Embeddings CFA générés pour {len(self.chunks)} chunks")
     
@@ -288,7 +317,8 @@ class CFAEmbeddingGenerator:
         
         embeddings_file = self.output_dir / "cfa_knowledge_embeddings.json"
         with open(embeddings_file, 'w', encoding='utf-8') as f:
-            json.dump(embeddings_data, f, ensure_ascii=False, indent=2)
+            # JSON compact : indispensable pour rester sous les limites Netlify
+            json.dump(embeddings_data, f, ensure_ascii=False, separators=(',', ':'))
         logger.info(f"Embeddings sauvegardés: {embeddings_file} ({len(embeddings_data)} chunks)")
         
         # 2. Configuration du modèle
@@ -296,7 +326,7 @@ class CFAEmbeddingGenerator:
             "model_name": self.model_name,
             "embedding_dim": self.embedding_dim,
             "total_chunks": len(self.chunks),
-            "source_file": "course.pdf",
+            "source_files": [p.name for p in self.pdf_paths],
             "generated_at": str(Path(__file__).stat().st_mtime),
             "categories": list(self.topic_keywords.keys())
         }
