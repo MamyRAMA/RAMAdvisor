@@ -108,10 +108,10 @@
                 <h1 class="mt-4 text-4xl md:text-6xl font-bold text-gray-900 leading-tight">La gestion privée, <span class="text-violet-700">sans le ticket d'entrée du million</span>.</h1>
                 <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">RAM Advisor applique à votre patrimoine la même méthode que les banques privées réservent à leurs grands clients : objectifs de vie, allocation sur mesure, portefeuilles ETF à frais réduits. En toute indépendance, pour un tarif fixe et connu d'avance.</p>
                 <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="cta-gradient text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg">Réserver mon appel gratuit</a>
-                    <a href="#simulator" class="text-violet-700 font-semibold py-3 px-8 rounded-full border-2 border-violet-200 hover:border-violet-400 transition text-lg">✨ Tester le simulateur IA</a>
+                    <a href="#simulator" class="cta-gradient text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg">✨ Simuler mon projet en 30 secondes</a>
+                    <a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="text-violet-700 font-semibold py-3 px-8 rounded-full border-2 border-violet-200 hover:border-violet-400 transition text-lg">Réserver mon appel offert</a>
                 </div>
-                <p class="mt-3 text-xs text-gray-500">15 minutes · Sans engagement · Réponse à toutes vos questions</p>
+                <p class="mt-3 text-xs text-gray-500">Simulation gratuite, sans inscription ni email · Appel de 15 min sans engagement</p>
 
                 <!-- Barre de confiance -->
                 <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-sm">
@@ -128,6 +128,43 @@
                         <span class="text-gray-600">~0,2% de frais courants contre ~2% en gestion bancaire classique</span>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- 1bis. Projets de vie : un portefeuille par objectif -->
+        <section id="projets" class="py-16 bg-white border-t border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold section-title">Quel est votre projet ?</h2>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Un bon investissement commence par un objectif, pas par un produit. Choisissez le vôtre : la simulation se pré-remplit automatiquement.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
+                    <button class="project-card" data-goal="Préparer ma retraite et me constituer un complément de revenu pour maintenir mon niveau de vie" data-horizon="20">
+                        <span class="text-3xl">🌅</span>
+                        <span class="font-semibold text-sm text-gray-800 mt-2">Préparer ma retraite</span>
+                    </button>
+                    <button class="project-card" data-goal="Constituer un apport pour acheter ma résidence principale" data-horizon="8">
+                        <span class="text-3xl">🏡</span>
+                        <span class="font-semibold text-sm text-gray-800 mt-2">Acheter un bien</span>
+                    </button>
+                    <button class="project-card" data-goal="Épargner pour financer les études de mes enfants" data-horizon="15">
+                        <span class="text-3xl">🎓</span>
+                        <span class="font-semibold text-sm text-gray-800 mt-2">Études des enfants</span>
+                    </button>
+                    <button class="project-card" data-goal="Faire fructifier un capital disponible plutôt que de le laisser dormir sur des livrets" data-horizon="10">
+                        <span class="text-3xl">📈</span>
+                        <span class="font-semibold text-sm text-gray-800 mt-2">Valoriser un capital</span>
+                    </button>
+                    <button class="project-card" data-goal="Me constituer des revenus complémentaires réguliers grâce à mon épargne" data-horizon="10">
+                        <span class="text-3xl">💶</span>
+                        <span class="font-semibold text-sm text-gray-800 mt-2">Revenus complémentaires</span>
+                    </button>
+                    <button class="project-card" data-goal="Préparer la transmission de mon patrimoine à mes proches dans de bonnes conditions" data-horizon="15">
+                        <span class="text-3xl">🎁</span>
+                        <span class="font-semibold text-sm text-gray-800 mt-2">Transmettre</span>
+                    </button>
+                </div>
+                <p class="text-center text-xs text-gray-500 mt-6">Projet atypique ? Tant mieux — c'est notre spécialité. <a href="#simulator" class="text-violet-700 underline">Décrivez-le librement dans le simulateur</a>.</p>
             </div>
         </section>
 
@@ -435,10 +472,21 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Projection instantanée : gratification immédiate, calcul 100% local -->
+                        <div id="instantProjection" class="hidden bg-gradient-to-r from-violet-50 to-blue-50 border border-violet-200 rounded-lg p-5">
+                            <p class="text-sm text-gray-600 text-center">À ce rythme, votre capital pourrait atteindre dans <span id="projYears" class="font-semibold"></span> ans :</p>
+                            <p class="text-center mt-1"><span id="projValue" class="text-3xl font-extrabold text-violet-700"></span></p>
+                            <p class="text-xs text-gray-500 text-center mt-1">dont <span id="projContrib" class="font-semibold"></span> versés par vous — fourchette estimée : <span id="projRange" class="font-semibold"></span></p>
+                            <div class="relative mt-4" style="height:160px">
+                                <canvas id="projChart"></canvas>
+                            </div>
+                            <p class="text-[10px] text-gray-400 text-center mt-2">Projection illustrative fondée sur des hypothèses de rendement annuel moyen selon votre profil, nette de frais ETF. Non garantie — les marchés fluctuent.</p>
+                        </div>
                         <div>
                             <button id="simulateBtn" class="w-full cta-gradient text-white font-bold py-3 px-8 rounded-lg shadow-md transition-transform transform hover:scale-105 text-lg flex items-center justify-center">
-                                <span>Lancer la simulation</span>
+                                <span>Affiner avec l'analyse IA personnalisée</span>
                             </button>
+                            <p class="text-xs text-gray-500 text-center mt-2">Stratégie détaillée et allocation sur mesure, générée par notre IA entraînée sur les référentiels CFA.</p>
                         </div>
                     </div>
                 </div>
@@ -464,19 +512,122 @@
             </div>
         </section>
 
+        <!-- 5bis. Calculateur de frais : l'argument différenciant face aux banques ET aux robo-advisors -->
+        <section id="frais" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-10">
+                    <p class="section-eyebrow">Le détail que les autres préfèrent ne pas calculer</p>
+                    <h2 class="mt-2 text-3xl font-bold section-title">Combien les frais récurrents vous coûtent vraiment</h2>
+                    <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Banques et plateformes de gestion pilotée prélèvent un pourcentage de votre épargne <strong>chaque année, à vie</strong>. Nous facturons un honoraire fixe, <strong>une fois</strong>. Faites glisser le curseur :</p>
+                </div>
+                <div class="max-w-4xl mx-auto card">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+                        <label class="block">
+                            <span class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Votre capital investi : <span id="feeAmountLbl" class="text-violet-700 text-sm">100 000 €</span></span>
+                            <input type="range" id="feeAmount" min="10000" max="500000" step="10000" value="100000" class="mt-2 w-full accent-violet-700">
+                        </label>
+                        <label class="block">
+                            <span class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Sur une durée de</span>
+                            <select id="feeYears" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 sm:text-sm">
+                                <option value="10">10 ans</option>
+                                <option value="15">15 ans</option>
+                                <option value="20" selected>20 ans</option>
+                                <option value="25">25 ans</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                        <div class="rounded-lg border border-gray-200 p-4 text-center bg-gray-50">
+                            <p class="text-sm font-semibold text-gray-700">Banque traditionnelle</p>
+                            <p class="text-xs text-gray-500">~2,0% de frais / an</p>
+                            <p id="feeBank" class="text-2xl font-extrabold text-gray-700 mt-2"></p>
+                        </div>
+                        <div class="rounded-lg border border-gray-200 p-4 text-center bg-gray-50">
+                            <p class="text-sm font-semibold text-gray-700">Gestion pilotée en ligne</p>
+                            <p class="text-xs text-gray-500">~1,6% de frais / an*</p>
+                            <p id="feeRobo" class="text-2xl font-extrabold text-gray-700 mt-2"></p>
+                        </div>
+                        <div class="rounded-lg border-2 border-violet-400 p-4 text-center bg-violet-50 relative">
+                            <span class="popular-badge">RAM Advisor</span>
+                            <p class="text-sm font-semibold text-violet-900 mt-2">Conseil + ETF en direct</p>
+                            <p class="text-xs text-gray-500">honoraire unique + ~0,25% / an</p>
+                            <p id="feeRam" class="text-2xl font-extrabold text-violet-700 mt-2"></p>
+                        </div>
+                    </div>
+                    <p class="text-center mt-6 text-lg text-gray-800">Écart en votre faveur : <span id="feeSavings" class="font-extrabold text-green-700"></span> <span class="text-sm text-gray-500">par rapport à une banque traditionnelle</span></p>
+                    <p class="text-[10px] text-gray-400 mt-4 leading-relaxed">*Hypothèses illustratives : rendement brut identique de 5%/an pour les trois scénarios ; frais annuels moyens constatés — banque ~2% (fonds actifs + gestion), gestion pilotée en ligne ~1,3 à 1,65% tout compris (grilles publiques 2026 des principaux acteurs), portefeuille ETF en direct ~0,25% + honoraire de conseil unique de 495 €. Projections non garanties, à but pédagogique.</p>
+                </div>
+
+                <!-- Comparatif de positionnement : humain indépendant vs banque vs robo -->
+                <div class="max-w-4xl mx-auto mt-12">
+                    <h3 class="text-xl font-bold section-title text-center mb-6">Banque, robo-advisor, ou conseiller indépendant ?</h3>
+                    <div class="card overflow-x-auto">
+                        <table class="min-w-full text-sm">
+                            <thead>
+                                <tr class="text-gray-500">
+                                    <th class="text-left p-3 font-semibold"></th>
+                                    <th class="text-center p-3 font-semibold">Banque</th>
+                                    <th class="text-center p-3 font-semibold">Robo-advisor</th>
+                                    <th class="text-center p-3 font-semibold text-violet-800">RAM Advisor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <tr class="border-t">
+                                    <td class="p-3 font-medium">Frais récurrents sur votre épargne</td>
+                                    <td class="p-3 text-center">~2% / an</td>
+                                    <td class="p-3 text-center">~1,6% / an</td>
+                                    <td class="p-3 text-center font-semibold text-violet-800">0% — honoraire unique</td>
+                                </tr>
+                                <tr class="border-t bg-gray-50">
+                                    <td class="p-3 font-medium">Qui vous conseille</td>
+                                    <td class="p-3 text-center">Un vendeur de produits maison</td>
+                                    <td class="p-3 text-center">Un algorithme + hotline</td>
+                                    <td class="p-3 text-center font-semibold text-violet-800">Un analyste certifié CFA®, en direct</td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="p-3 font-medium">Personnalisation</td>
+                                    <td class="p-3 text-center">Produits standardisés</td>
+                                    <td class="p-3 text-center">Profils types automatisés</td>
+                                    <td class="p-3 text-center font-semibold text-violet-800">Stratégie écrite sur mesure</td>
+                                </tr>
+                                <tr class="border-t bg-gray-50">
+                                    <td class="p-3 font-medium">Qui détient votre argent</td>
+                                    <td class="p-3 text-center">La banque</td>
+                                    <td class="p-3 text-center">L'assureur partenaire</td>
+                                    <td class="p-3 text-center font-semibold text-violet-800">Vous, sur vos comptes</td>
+                                </tr>
+                                <tr class="border-t">
+                                    <td class="p-3 font-medium">Objectif final</td>
+                                    <td class="p-3 text-center">Vous garder captif</td>
+                                    <td class="p-3 text-center">Encours sous gestion</td>
+                                    <td class="p-3 text-center font-semibold text-violet-800">Votre autonomie</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-gray-500 text-center mt-3">Les gestions pilotées en ligne sont d'excellents produits pour qui veut tout déléguer. Notre pari est différent : vous rendre <strong>propriétaire de votre stratégie</strong>, pour une fraction du coût sur la durée.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- 6. Offers Section -->
-        <section id="offres" class="py-20 bg-gray-50">
+        <section id="offres" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-6">
                     <h2 class="text-3xl font-bold section-title">Deux parcours pour atteindre vos objectifs</h2>
                     <p class="text-gray-600 mt-2">Un accompagnement clé en main, ou l'autonomie complète par la formation. Dans les deux cas : un tarif fixe, connu d'avance, sans frais récurrents cachés.</p>
+                    <p class="mt-3 inline-block text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-full px-4 py-1.5">⏳ Conseiller indépendant unique : le nombre de nouveaux accompagnements est limité chaque mois, pour préserver la qualité du suivi.</p>
                 </div>
 
-                <!-- Ancrage prix : comparaison avec la gestion classique -->
+                <!-- Réassurance sécurité : notre avantage structurel vs banques et robos -->
                 <div class="max-w-3xl mx-auto mb-12">
-                    <div class="card bg-white border-l-4 border-violet-600 text-sm text-gray-700">
-                        <p class="font-semibold text-gray-900 mb-1">💡 Pour situer nos tarifs</p>
-                        <p>Une gestion bancaire classique à ~2% de frais annuels vous coûte <strong>2 000 € par an</strong> pour 100 000 € investis — chaque année, performance ou pas. Chez RAM Advisor, vous payez <strong>une fois</strong> un honoraire fixe, puis votre portefeuille ETF ne supporte plus que ~0,2% de frais courants.</p>
+                    <div class="card bg-gray-50 border-l-4 border-green-600 text-sm text-gray-700">
+                        <p class="font-semibold text-gray-900 mb-2">🔒 Votre argent ne transite jamais par nous</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                            <p>✓ Vos fonds restent sur <strong>vos</strong> comptes (PEA, assurance-vie, CTO), chez le courtier ou l'assureur de votre choix</p>
+                            <p>✓ Nous n'avons aucun accès ni mandat sur vos comptes : vous validez chaque opération vous-même</p>
+                            <p>✓ Vous pouvez arrêter de travailler avec nous à tout moment — votre portefeuille vous suit, intact</p>
+                        </div>
                     </div>
                 </div>
 
@@ -553,7 +704,7 @@
         </section>
 
         <!-- 7. À propos / Crédibilité -->
-        <section id="apropos" class="py-20 bg-white">
+        <section id="apropos" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="max-w-4xl mx-auto card">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -584,7 +735,7 @@
         </section>
 
         <!-- 8. Guides pédagogiques (teaser) -->
-        <section id="guides" class="py-20 bg-gray-50">
+        <section id="guides" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <p class="section-eyebrow">La pédagogie fait partie du conseil</p>
@@ -618,7 +769,7 @@
         </section>
 
         <!-- 9. FAQ -->
-        <section id="faq" class="py-20 bg-white">
+        <section id="faq" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold section-title">Questions fréquentes</h2>
@@ -648,6 +799,10 @@
                     <details class="faq-item">
                         <summary>Est-ce compatible avec l'investissement responsable (ESG) ?</summary>
                         <p>Oui. Titulaire du Certificate in ESG Investing, nous pouvons décliner chaque profil en version durable (ETF ESG/ISR) si c'est important pour vous, en expliquant honnêtement ce que ces labels couvrent — et ce qu'ils ne couvrent pas. Voir notre page <a href="pages/durabilite.html" class="text-violet-700 underline">Durabilité</a>.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Pourquoi vous choisir plutôt qu'un robo-advisor (Yomoni, Nalo, Ramify…) ?</summary>
+                        <p>Les gestions pilotées en ligne sont de bons produits, mais elles prélèvent 1,3% à 1,65% de votre épargne <em>chaque année</em>, proposent des profils standardisés, et votre interlocuteur reste une plateforme. Nous faisons le pari inverse : un honoraire fixe payé une fois, une stratégie écrite réellement sur mesure (y compris pour les projets atypiques), un interlocuteur unique certifié CFA — et à la fin, c'est <strong>vous</strong> qui savez piloter votre patrimoine. Sur 20 ans, la différence de frais se chiffre en dizaines de milliers d'euros (voyez le <a href="#frais" class="text-violet-700 underline">calculateur ci-dessus</a>).</p>
                     </details>
                     <details class="faq-item">
                         <summary>Quelle différence avec un CGP traditionnel ou ma banque ?</summary>

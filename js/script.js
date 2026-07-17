@@ -7,7 +7,153 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDoughnutChart();
     initializeSmoothScroll();
     initializeMobileMenu();
+    initializeProjectCards();
+    initializeInstantProjection();
+    initializeFeeCalculator();
 });
+
+// ======= CARTES PROJETS DE VIE =======
+// Clic sur un projet → pré-remplit l'objectif + l'horizon du simulateur et y défile
+function initializeProjectCards() {
+    const cards = document.querySelectorAll('.project-card');
+    if (!cards.length) return;
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const goalField = document.getElementById('goal');
+            const horizonField = document.getElementById('timeHorizon');
+            if (goalField) goalField.value = card.dataset.goal || '';
+            if (horizonField && card.dataset.horizon) {
+                const opts = Array.from(horizonField.options).map(o => o.value);
+                if (opts.includes(card.dataset.horizon)) horizonField.value = card.dataset.horizon;
+            }
+            const simulator = document.getElementById('simulator');
+            if (simulator) simulator.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Rafraîchir la projection instantanée avec le nouvel horizon
+            document.dispatchEvent(new CustomEvent('ram:refresh-projection'));
+        });
+    });
+}
+
+// ======= PROJECTION INSTANTANÉE (calcul 100% côté client) =======
+// Hypothèses de rendement annuel moyen par profil, nettes de frais ETF (illustratives)
+const PROJECTION_RATES = {
+    conservative: { low: 0.02, mid: 0.03, high: 0.045 },
+    balanced:     { low: 0.03, mid: 0.05, high: 0.065 },
+    aggressive:   { low: 0.04, mid: 0.065, high: 0.085 }
+};
+
+function initializeInstantProjection() {
+    const box = document.getElementById('instantProjection');
+    const initialField = document.getElementById('initialAmount');
+    const monthlyField = document.getElementById('monthlyAmount');
+    const horizonField = document.getElementById('timeHorizon');
+    const profileField = document.getElementById('riskProfile');
+    if (!box || !initialField || !monthlyField || !horizonField || !profileField) return;
+
+    const fmt = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+    let projChart = null;
+
+    function futureValue(initial, monthly, years, annualRate) {
+        const r = annualRate / 12;
+        const n = years * 12;
+        const lump = initial * Math.pow(1 + r, n);
+        const dca = r === 0 ? monthly * n : monthly * (Math.pow(1 + r, n) - 1) / r;
+        return lump + dca;
+    }
+
+    function update() {
+        const initial = parseFloat(initialField.value) || 0;
+        const monthly = parseFloat(monthlyField.value) || 0;
+        const years = parseInt(horizonField.value, 10) || 10;
+        if (initial <= 0 && monthly <= 0) { box.classList.add('hidden'); return; }
+
+        const rates = PROJECTION_RATES[profileField.value] || PROJECTION_RATES.balanced;
+        const mid = futureValue(initial, monthly, years, rates.mid);
+        const low = futureValue(initial, monthly, years, rates.low);
+        const high = futureValue(initial, monthly, years, rates.high);
+        const contrib = initial + monthly * 12 * years;
+
+        box.classList.remove('hidden');
+        document.getElementById('projYears').textContent = years;
+        document.getElementById('projValue').textContent = fmt.format(mid);
+        document.getElementById('projContrib').textContent = fmt.format(contrib);
+        document.getElementById('projRange').textContent = fmt.format(low) + ' – ' + fmt.format(high);
+
+        // Courbe année par année : versements cumulés vs valeur estimée
+        const labels = [], contribSeries = [], valueSeries = [];
+        for (let y = 0; y <= years; y++) {
+            labels.push(y === 0 ? 'Départ' : 'An ' + y);
+            contribSeries.push(Math.round(initial + monthly * 12 * y));
+            valueSeries.push(Math.round(futureValue(initial, monthly, y, rates.mid)));
+        }
+
+        const ctx = document.getElementById('projChart');
+        if (!ctx || typeof Chart === 'undefined') return;
+        if (projChart) projChart.destroy();
+        projChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [
+                    { label: 'Valeur estimée', data: valueSeries, borderColor: '#6D28D9', backgroundColor: 'rgba(109,40,217,0.12)', fill: true, tension: 0.35, pointRadius: 0, borderWidth: 2.5 },
+                    { label: 'Vos versements', data: contribSeries, borderColor: '#9CA3AF', borderDash: [5, 4], fill: false, tension: 0, pointRadius: 0, borderWidth: 1.5 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: true, position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } },
+                    tooltip: { callbacks: { label: (c) => c.dataset.label + ' : ' + fmt.format(c.parsed.y) } }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { maxTicksLimit: 6, font: { size: 9 } } },
+                    y: { ticks: { maxTicksLimit: 4, font: { size: 9 }, callback: (v) => fmt.format(v) }, grid: { color: 'rgba(200,200,200,.2)' } }
+                }
+            }
+        });
+    }
+
+    [initialField, monthlyField, horizonField, profileField].forEach(el => {
+        el.addEventListener('input', update);
+        el.addEventListener('change', update);
+    });
+    document.addEventListener('ram:refresh-projection', update);
+}
+
+// ======= CALCULATEUR D'IMPACT DES FRAIS =======
+// Hypothèse commune : rendement brut 5%/an. Frais : banque 2%/an, gestion pilotée 1,6%/an,
+// RAM Advisor 0,25%/an (ETF) + honoraire unique de 495 €.
+function initializeFeeCalculator() {
+    const amountSlider = document.getElementById('feeAmount');
+    const yearsSelect = document.getElementById('feeYears');
+    if (!amountSlider || !yearsSelect) return;
+
+    const fmt = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+    const GROSS = 0.05;
+    const SCENARIOS = { bank: 0.02, robo: 0.016, ram: 0.0025 };
+    const RAM_ONE_TIME_FEE = 495;
+
+    function update() {
+        const amount = parseFloat(amountSlider.value);
+        const years = parseInt(yearsSelect.value, 10);
+        document.getElementById('feeAmountLbl').textContent = fmt.format(amount);
+
+        const bank = amount * Math.pow(1 + GROSS - SCENARIOS.bank, years);
+        const robo = amount * Math.pow(1 + GROSS - SCENARIOS.robo, years);
+        const ram = (amount - RAM_ONE_TIME_FEE) * Math.pow(1 + GROSS - SCENARIOS.ram, years);
+
+        document.getElementById('feeBank').textContent = fmt.format(bank);
+        document.getElementById('feeRobo').textContent = fmt.format(robo);
+        document.getElementById('feeRam').textContent = fmt.format(ram);
+        document.getElementById('feeSavings').textContent = '+' + fmt.format(ram - bank);
+    }
+
+    amountSlider.addEventListener('input', update);
+    yearsSelect.addEventListener('change', update);
+    update();
+}
 
 // Menu mobile hamburger
 function initializeMobileMenu() {
@@ -113,7 +259,7 @@ function initializeInvestmentSimulator() {
             `;
         } finally {
             simulateBtn.disabled = false;
-            simulateBtn.querySelector('span').textContent = 'Lancer la simulation';
+            simulateBtn.querySelector('span').textContent = "Affiner avec l'analyse IA personnalisée";
         }
     });
 }
