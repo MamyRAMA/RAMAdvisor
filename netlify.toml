@@ -4,6 +4,14 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Fichiers lus par la fonction generate-investment-advice (sinon non inclus dans le bundle)
+[functions]
+  included_files = [
+    "prompt_template_v3.md",
+    "knowledge_base.txt",
+    "netlify/functions/cfa_data/*.json"
+  ]
+
 [[headers]]
   for = "/.netlify/functions/*"
   [headers.values]

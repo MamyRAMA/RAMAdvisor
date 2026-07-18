@@ -243,7 +243,9 @@ function initializeInvestmentSimulator() {
                 const postSimCTA = document.getElementById('postSimCTA');
                 if (postSimCTA) postSimCTA.classList.remove('hidden');
             } else {
-                throw new Error(data.error || 'Erreur lors de la génération du conseil');
+                // Remonter le détail technique (message réel de l'API) pour faciliter le diagnostic
+                const detail = data.details ? ` — ${data.details}` : '';
+                throw new Error((data.error || 'Erreur lors de la génération du conseil') + detail);
             }
 
         } catch (error) {
