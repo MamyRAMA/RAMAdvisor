@@ -9,6 +9,7 @@
   included_files = [
     "prompt_template_v3.md",
     "knowledge_base.txt",
+    "chatbot_knowledge.md",
     "netlify/functions/cfa_data/*.json"
   ]
 
