@@ -97,7 +97,9 @@ function initializeInvestmentSimulator() {
                 const postSimCTA = document.getElementById('postSimCTA');
                 if (postSimCTA) postSimCTA.classList.remove('hidden');
             } else {
-                throw new Error(data.error || 'Erreur lors de la génération du conseil');
+                // Remonter le détail technique (message réel de l'API) pour faciliter le diagnostic
+                const detail = data.details ? ` — ${data.details}` : '';
+                throw new Error((data.error || 'Erreur lors de la génération du conseil') + detail);
             }
 
         } catch (error) {
@@ -118,25 +120,97 @@ function initializeInvestmentSimulator() {
     });
 }
 
-// Fonction pour formater la réponse de Gemini en HTML
+// Formate la réponse markdown de Gemini en HTML.
+// Parseur ligne par ligne : gère titres, gras/italique, listes, règles horizontales
+// et surtout les tableaux markdown (en-tête | séparateur :--- | lignes).
 function formatInvestmentAdvice(advice) {
-    // Convertir le markdown en HTML basique
-    let html = advice
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/### (.*?)$/gm, '<h3 class="text-lg font-semibold text-violet-700 mt-4 mb-2">$1</h3>')
-        .replace(/## (.*?)$/gm, '<h2 class="text-xl font-bold text-violet-800 mt-6 mb-3">$1</h2>')
-        .replace(/# (.*?)$/gm, '<h1 class="text-2xl font-bold text-violet-900 mt-8 mb-4">$1</h1>')
-        .replace(/\n\n/g, '</p><p class="mb-3">')
-        .replace(/\|(.*?)\|/g, '<td class="border px-3 py-2">$1</td>');
+    const lines = String(advice).replace(/\r\n/g, '\n').split('\n');
 
-    // Ajouter les balises de paragraphe
-    html = '<p class="mb-3">' + html + '</p>';
-    
-    // Traitement spécial pour les tableaux
-    if (html.includes('<td')) {
-        html = html.replace(/(<td.*?<\/td>.*?<td.*?<\/td>.*?<td.*?<\/td>)/g, '<tr>$1</tr>');
-        html = html.replace(/(<tr>.*?<\/tr>)/g, '<table class="w-full border-collapse border border-gray-300 my-4">$1</table>');
+    // Formatage « inline » (gras, italique) appliqué au contenu des cellules/paragraphes
+    const inline = (t) => t
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+    // Une ligne de séparation de tableau : | :--- | ---: | :---: |
+    const isTableSeparator = (line) => {
+        if (!line || line.indexOf('|') === -1) return false;
+        const cells = line.trim().replace(/^\|/, '').replace(/\|$/, '').split('|');
+        return cells.length > 0 && cells.every((c) => /^\s*:?-{2,}:?\s*$/.test(c));
+    };
+
+    const splitRow = (line) => {
+        let l = line.trim();
+        if (l.startsWith('|')) l = l.slice(1);
+        if (l.endsWith('|')) l = l.slice(0, -1);
+        return l.split('|').map((c) => c.trim());
+    };
+
+    let html = '';
+    let i = 0;
+    while (i < lines.length) {
+        const raw = lines[i];
+        const line = raw.trim();
+
+        // Tableau : la ligne courante contient des | et la suivante est un séparateur
+        if (line.indexOf('|') !== -1 && i + 1 < lines.length && isTableSeparator(lines[i + 1])) {
+            const header = splitRow(raw);
+            i += 2; // saute en-tête + séparateur
+            const rows = [];
+            while (i < lines.length && lines[i].indexOf('|') !== -1 && lines[i].trim() !== '') {
+                rows.push(splitRow(lines[i]));
+                i++;
+            }
+            let table = '<div class="overflow-x-auto my-4"><table class="w-full border-collapse text-sm">';
+            table += '<thead><tr>' + header.map((h) => `<th class="border border-gray-300 px-3 py-2 text-left bg-violet-50 text-violet-900">${inline(h)}</th>`).join('') + '</tr></thead>';
+            table += '<tbody>' + rows.map((r) => '<tr>' + r.map((c) => `<td class="border border-gray-300 px-3 py-2 align-top">${inline(c)}</td>`).join('') + '</tr>').join('') + '</tbody>';
+            table += '</table></div>';
+            html += table;
+            continue;
+        }
+
+        if (line === '') { i++; continue; }
+
+        // Règle horizontale
+        if (/^(-{3,}|\*{3,}|_{3,})$/.test(line)) { html += '<hr class="my-5 border-gray-200">'; i++; continue; }
+
+        // Titres
+        if (/^###\s+/.test(line)) { html += `<h3 class="text-lg font-semibold text-violet-700 mt-4 mb-2">${inline(line.replace(/^###\s+/, ''))}</h3>`; i++; continue; }
+        if (/^##\s+/.test(line)) { html += `<h2 class="text-xl font-bold text-violet-800 mt-6 mb-3">${inline(line.replace(/^##\s+/, ''))}</h2>`; i++; continue; }
+        if (/^#\s+/.test(line)) { html += `<h1 class="text-2xl font-bold text-violet-900 mt-6 mb-4">${inline(line.replace(/^#\s+/, ''))}</h1>`; i++; continue; }
+
+        // Liste à puces
+        if (/^[-*]\s+/.test(line)) {
+            let items = '';
+            while (i < lines.length && /^\s*[-*]\s+/.test(lines[i]) && !/^(-{3,})$/.test(lines[i].trim())) {
+                items += `<li class="mb-1">${inline(lines[i].trim().replace(/^[-*]\s+/, ''))}</li>`;
+                i++;
+            }
+            html += `<ul class="list-disc list-inside mb-3 space-y-1">${items}</ul>`;
+            continue;
+        }
+
+        // Liste numérotée
+        if (/^\d+\.\s+/.test(line)) {
+            let items = '';
+            while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) {
+                items += `<li class="mb-1">${inline(lines[i].trim().replace(/^\d+\.\s+/, ''))}</li>`;
+                i++;
+            }
+            html += `<ol class="list-decimal list-inside mb-3 space-y-1">${items}</ol>`;
+            continue;
+        }
+
+        // Paragraphe : regroupe les lignes jusqu'à une ligne vide ou un nouveau bloc
+        let para = line;
+        i++;
+        while (i < lines.length) {
+            const n = lines[i].trim();
+            if (n === '' || /^(#{1,3}\s|[-*]\s|\d+\.\s)/.test(n) || /^(-{3,}|\*{3,}|_{3,})$/.test(n) ||
+                (n.indexOf('|') !== -1 && i + 1 < lines.length && isTableSeparator(lines[i + 1]))) break;
+            para += ' ' + n;
+            i++;
+        }
+        html += `<p class="mb-3">${inline(para)}</p>`;
     }
 
     return html;
