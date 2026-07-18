@@ -175,6 +175,148 @@ header {
     font-weight: 700;
 }
 
+/* ---------- Académie / articles pédagogiques ---------- */
+
+/* Badges de métadonnées d'article (niveau, temps de lecture) */
+.article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.meta-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.85rem;
+    border-radius: 9999px;
+    background: #F3F4F6;
+    color: #4B5563;
+    border: 1px solid #E5E7EB;
+}
+
+.meta-badge.level-1 { background: #ECFDF5; color: #047857; border-color: #A7F3D0; }
+.meta-badge.level-2 { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
+.meta-badge.level-3 { background: #FDF4FF; color: #A21CAF; border-color: #F5D0FE; }
+
+/* Encadré "Ce que vous allez apprendre" */
+.takeaways-box {
+    background: #F5F3FF;
+    border: 1px solid #DDD6FE;
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+}
+
+.takeaways-box h2 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6D28D9;
+    margin-bottom: 0.6rem;
+}
+
+.takeaways-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.takeaways-box li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.4rem;
+}
+
+.takeaways-box li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #7C3AED;
+    font-weight: 700;
+}
+
+/* Navigation précédent/suivant du parcours */
+.course-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.course-nav a {
+    flex: 1;
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.course-nav a:hover {
+    border-color: #8B5CF6;
+    box-shadow: 0 8px 20px rgba(109, 40, 217, 0.15);
+}
+
+.course-nav .nav-dir {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9CA3AF;
+}
+
+.course-nav .nav-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4C1D95;
+    margin-top: 0.25rem;
+}
+
+/* Numéro d'étape du parcours (hub Académie) */
+.course-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #6D28D9 0%, #8B5CF6 100%);
+    color: white;
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+/* Boutons du quiz d'orientation (hub Académie) */
+.quiz-opt {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 0.875rem;
+    color: #374151;
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 0.5rem;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.quiz-opt:hover {
+    border-color: #8B5CF6;
+    background: #F5F3FF;
+    color: #4C1D95;
+}
+
 /* Cartes projets de vie (pré-remplissent le simulateur) */
 .project-card {
     display: flex;
