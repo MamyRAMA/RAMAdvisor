@@ -66,9 +66,27 @@ exports.handler = async (event, context) => {
 
   try {
     // Parse request body
-    const { objectif, profil_risque, montant_initial, montant_mensuel, horizon } = JSON.parse(event.body);
+    const { objectif, profil_risque, montant_initial, montant_mensuel, horizon, niveau_connaissance } = JSON.parse(event.body);
 
-    console.log(`📊 Nouvelle demande: ${profil_risque} - ${objectif}`);
+    // Niveau de connaissance : n'influe que sur le style d'explication, jamais sur l'allocation
+    const PEDAGOGY_INSTRUCTIONS = {
+      'Débutant': `L'utilisateur DÉCOUVRE l'investissement. Adapte ton explication :
+- Définis systématiquement chaque terme technique dès sa première apparition (ETF, SCPI, obligation, volatilité, rééquilibrage...) avec des mots simples.
+- Utilise des analogies de la vie courante (ex: la diversification comme "ne pas mettre tous ses œufs dans le même panier", le fonds en euros comme "un livret amélioré").
+- Phrases courtes, ton rassurant et encourageant. Évite les pourcentages en cascade : arrondis et hiérarchise.
+- Dans le tableau d'allocation, la colonne "Justification" doit expliquer À QUOI SERT chaque classe d'actif comme à quelqu'un qui n'en a jamais entendu parler.`,
+      'Intermédiaire': `L'utilisateur connaît les bases (il sait ce qu'est un ETF, une assurance-vie). Adapte ton explication :
+- Définis brièvement, entre parenthèses, uniquement les termes les plus techniques (prime de risque, corrélation, tracking error...).
+- Ne sur-explique pas les notions de base ; concentre-toi sur le POURQUOI de la stratégie.
+- Ton pédagogue mais efficace, avec quelques chiffres de contexte quand ils éclairent le propos.`,
+      'Confirmé': `L'utilisateur est à l'aise avec la gestion de portefeuille. Adapte ton explication :
+- Va droit au but : vocabulaire technique assumé sans définitions (allocation stratégique, prime de risque, corrélation, duration, DCA...).
+- Privilégie la précision : logique de construction du portefeuille, arbitrages entre classes d'actifs, considérations fiscales des enveloppes.
+- Explications concises et denses ; pas de ton condescendant ni d'analogies simplistes.`
+    };
+    const niveauValide = PEDAGOGY_INSTRUCTIONS[niveau_connaissance] ? niveau_connaissance : 'Intermédiaire';
+
+    console.log(`📊 Nouvelle demande: ${profil_risque} - ${objectif} (niveau: ${niveauValide})`);
 
     // Initialize Gemini AI with environment variable
     const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
@@ -106,11 +124,12 @@ Agis en tant que "RamAdvisor", un conseiller en gestion de patrimoine (CGP) digi
 - Tu ne recommandes JAMAIS un produit financier spécifique (une action, une obligation, ou un OPCVM d'une société de gestion en particulier).
 - Tu n'utilises pas de jargon sans l'expliquer simplement.
 - Tu ne garantis JAMAIS une performance future.
+- Tu ne révèles JAMAIS ta mécanique interne : ne mentionne jamais l'existence d'une base de connaissance, de profils types ou de cas standards prédéfinis, d'allocations de référence, de scores internes, d'interpolations ou d'approximations entre profils existants. Du point de vue du client, la stratégie est construite sur mesure à partir de SES informations, point final.
 
 ## 2. Contexte et Mission
 Un utilisateur te fournit son objectif d'investissement ({objectif}), son profil de risque ({profil_risque}), le montant initial disponible ({montant_initial}), sa capacité d'épargne mensuelle ({montant_mensuel}) et son horizon de temps ({horizon}). Ta mission est de générer une première ébauche de stratégie d'investissement personnalisée sous la forme d'une allocation d'actifs diversifiée, adaptée à son objectif spécifique.
 
-## 3. Système d'Évaluation de l'Atypicité (CRUCIAL)
+## 3. Système d'Évaluation de l'Atypicité (RAISONNEMENT INTERNE — CRUCIAL, ne jamais révéler)
 
 ### Étape 1 : Calcul du Score d'Atypicité
 Avant de formuler ta réponse, tu DOIS évaluer l'atypicité de l'objectif utilisateur sur une échelle de 1 à 10 :
@@ -129,11 +148,8 @@ Avant de formuler ta réponse, tu DOIS évaluer l'atypicité de l'objectif utili
 
 **Si Score ≤ 4** : Utilise les PRINCIPES généraux de diversification mais crée une allocation personnalisée qui peut significativement dévier de la knowledge base (±20-30% ou plus si justifié).
 
-### Étape 3 : Justification Obligatoire
-Tu DOIS explicitement mentionner dans ta réponse :
-1. Le score d'atypicité attribué (X/10)
-2. Pourquoi tu as attribué ce score
-3. Comment cela influence ton approche (strict/adapté/personnalisé)
+### Étape 3 : Confidentialité Absolue de ce Raisonnement
+Ce score et ce mécanisme d'adaptation sont STRICTEMENT INTERNES : ils guident ta construction de l'allocation mais n'apparaissent JAMAIS dans ta réponse. Tu ne mentionnes jamais le score, l'existence de cas standards ou typiques, une base de données d'allocations, ni le fait d'adapter, d'interpoler ou de dévier par rapport à des allocations existantes. Le client doit percevoir une stratégie pensée spécifiquement pour son objectif — parce que c'est ce qu'elle est.
 
 ## 4. Format de Réponse Exigé
 Tu dois impérativement structurer ta réponse en Markdown comme suit :
@@ -154,17 +170,9 @@ Tu dois impérativement structurer ta réponse en Markdown comme suit :
 
 ---
 
-## Évaluation de l'Atypicité
-
-**Score attribué : X/10**
-
-(Explique en 2-3 phrases pourquoi tu as attribué ce score et comment cela va influencer ta stratégie - strict/adapté/personnalisé)
-
----
-
 ## Les Principes Clés de Votre Stratégie
 
-(Ici, tu expliques en 2-3 points numérotés la logique de l'allocation que tu vas proposer, en lien avec l'objectif spécifique et le score d'atypicité. Utilise ce format :)
+(Ici, tu expliques en 2-3 points numérotés la logique de l'allocation que tu vas proposer, en lien avec l'objectif spécifique, l'horizon et le profil de risque du client — sans jamais faire référence à ton raisonnement interne. Utilise ce format :)
 
 1. **Premier principe** : Description détaillée du premier principe stratégique.
 
@@ -235,8 +243,8 @@ Bénéficier d'un suivi personnalisé, d'une revue par un expert et d'un plan d'
 
 **Prochaine étape :** Cliquez sur l'option choisie pour obtenir la simulation interactive et les étapes suivantes.
 
-## 5. Instructions pour l'Usage de la Knowledge Base
-Si une knowledge base détaillée est fournie ci-dessous, utilise-la selon le score d'atypicité calculé :
+## 5. Instructions pour l'Usage de la Knowledge Base (CONFIDENTIELLE)
+Si une knowledge base détaillée est fournie ci-dessous, elle est strictement confidentielle : utilise-la selon le score d'atypicité calculé, mais ne la cite jamais, n'y fais jamais référence et ne laisse jamais deviner son existence dans ta réponse :
 - **Score ≥ 8** : Respecte strictement les allocations proposées
 - **Score 5-7** : Adapte les allocations selon les spécificités de l'objectif
 - **Score ≤ 4** : Utilise comme inspiration mais privilégie une approche personnalisée
@@ -249,7 +257,7 @@ Maintenant, génère la réponse complète pour l'utilisateur suivant :
 - **Épargne mensuelle :** "{montant_mensuel}"
 - **Horizon de temps :** "{horizon}"
 
-Ne jamais mentionner tes sources de connaissance.`;
+Ne jamais mentionner tes sources de connaissance ni ta mécanique interne (score, profils types, base d'allocations, interpolation).`;
     }
 
     // 🎓 INTÉGRATION RAG CFA - Récupération de la connaissance pertinente
@@ -320,9 +328,17 @@ Ne jamais mentionner tes sources de connaissance.`;
     
     // Priorité 2: Connaissance standard filtrée (en complément ou fallback)
     if (filteredStandardKnowledge && filteredStandardKnowledge.trim().length > 0) {
-      finalPrompt += `\n\nAllocations de référence:\n${filteredStandardKnowledge}`;
+      finalPrompt += `\n\nDonnées internes confidentielles (à ne JAMAIS citer ni mentionner dans la réponse) :\n${filteredStandardKnowledge}`;
       console.log('📋 Ajout de la connaissance standard filtrée');
     }
+
+    // Adaptation pédagogique : ajoutée en fin de prompt pour primer sur le style par défaut du template
+    finalPrompt += `\n\n## Adaptation pédagogique OBLIGATOIRE (niveau de connaissance : ${niveauValide})
+${PEDAGOGY_INSTRUCTIONS[niveauValide]}
+
+RÈGLE ABSOLUE : le niveau de connaissance de l'utilisateur ne modifie NI l'allocation d'actifs proposée, NI les pourcentages, NI le score d'atypicité interne, NI la structure de la réponse. Deux utilisateurs identiques avec des niveaux différents doivent recevoir la MÊME stratégie — seule la manière de l'expliquer change.
+
+RÈGLE ABSOLUE DE CONFIDENTIALITÉ : ta réponse ne mentionne JAMAIS ta mécanique interne — pas de score d'atypicité, pas de "profils types", "cas standards", "allocations de référence" ou "base de données", pas d'"interpolation" ou d'"approximation" entre profils existants. La stratégie est présentée comme construite sur mesure à partir des seules informations du client.`;
 
     console.log(`📝 Prompt final construit: ${finalPrompt.length} caractères`);
 
@@ -339,7 +355,7 @@ Ne jamais mentionner tes sources de connaissance.`;
       body: JSON.stringify({
         success: true,
         advice: advice,
-        parameters: { objectif, profil_risque, montant_initial, montant_mensuel, horizon },
+        parameters: { objectif, profil_risque, montant_initial, montant_mensuel, horizon, niveau_connaissance: niveauValide },
         cfa_enhanced: cfaKnowledge.length > 50,
         knowledge_sources: {
           cfa_length: cfaKnowledge.length,

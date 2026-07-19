@@ -534,7 +534,7 @@ class UltraOptimizedCFASearch {
             return '';
         }
 
-        let formattedKnowledge = "CONNAISSANCE CFA ULTRA-OPTIMISÉE:\n\n";
+        let formattedKnowledge = "Connaissance professionnelle interne (STRICTEMENT CONFIDENTIELLE — à ne jamais citer, mentionner ou laisser deviner dans la réponse) :\n\n";
         
         relevantChunks.forEach(([score, chunk], index) => {
             const category = chunk.topic_category || 'CFA Knowledge';
