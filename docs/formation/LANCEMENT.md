@@ -42,7 +42,7 @@ Checklist manuelle :
 3. Sans ces variables, le formulaire « accès perdu » renvoie vers contact@ramadvisor.fr (fonctionnel mais manuel).
 
 ### c. Déploiement
-- Merger `feat/chatbot-pedagogique` dans `main` (déploiement Netlify automatique).
+- Cette branche de refonte contient déjà tout le nécessaire (fonctions + contenus + refonte UI) : la déployer telle quelle sur Netlify suffit pour les tests (mode démo sans variables Stripe). Pour la production finale : merger la branche retenue dans `main` (déploiement automatique).
 - `netlify.toml` inclut déjà `netlify/functions/formation_data/*` dans `included_files`.
 - Vérifier en preview Netlify (sans variables Stripe, la preview reste en mode démo — c'est voulu).
 
