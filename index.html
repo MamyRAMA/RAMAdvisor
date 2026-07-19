@@ -25,7 +25,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -55,7 +55,7 @@
     }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2R4TVLS"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -102,28 +102,36 @@
     <!-- Main Content Flow -->
     <main>
         <!-- 1. Hero Section -->
-        <section class="bg-white">
-            <div class="container mx-auto px-6 pt-20 pb-16 text-center">
+        <section class="surface-hero has-decor">
+            <div class="decor decor-hero" aria-hidden="true">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="ring"></div>
+            </div>
+            <div class="container mx-auto px-6 pt-20 pb-24 text-center relative">
                 <p class="section-eyebrow">Conseil en investissement indépendant · Honoraires fixes · Zéro rétrocession</p>
-                <h1 class="mt-4 text-4xl md:text-6xl font-bold text-gray-900 leading-tight">La gestion privée, <span class="text-violet-700">sans le ticket d'entrée du million</span>.</h1>
+                <h1 class="mt-5 text-4xl md:text-6xl font-bold text-gray-900 leading-tight">La gestion privée, <span class="text-violet-700">sans le ticket d'entrée du million</span>.</h1>
                 <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">RAM Advisor applique à votre patrimoine la même méthode que les banques privées réservent à leurs grands clients : objectifs de vie, allocation sur mesure, portefeuilles ETF à frais réduits. Avec un interlocuteur unique et 100% indépendant, pour un tarif fixe et connu d'avance.</p>
-                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#simulator" class="cta-gradient text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg">✨ Simuler mon projet en 30 secondes</a>
-                    <a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="text-violet-700 font-semibold py-3 px-8 rounded-full border-2 border-violet-200 hover:border-violet-400 transition text-lg">Réserver mon appel gratuit</a>
+                <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#simulator" class="cta-gradient text-white font-bold py-3 px-8 rounded-full text-lg">Simuler mon projet en 30 secondes</a>
+                    <a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="btn-ghost py-3 px-8 rounded-full text-lg">Réserver mon appel gratuit</a>
                 </div>
                 <p class="mt-3 text-xs text-gray-500">Simulation gratuite, sans inscription ni email · Appel de 15 min sans engagement</p>
 
-                <!-- Barre de confiance -->
-                <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-sm">
+                <!-- Barre de confiance : pastilles flottantes -->
+                <div class="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-sm">
                     <div class="trust-item">
+                        <span class="icon-chip mx-auto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg></span>
                         <span class="font-bold text-violet-800">CFA® &amp; CAIA® charterholder, certifié AMF</span>
                         <span class="text-gray-600">Le niveau d'exigence des grandes institutions</span>
                     </div>
                     <div class="trust-item">
+                        <span class="icon-chip mx-auto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg></span>
                         <span class="font-bold text-violet-800">100% indépendant</span>
                         <span class="text-gray-600">Rémunéré uniquement par vous, jamais par les produits</span>
                     </div>
                     <div class="trust-item">
+                        <span class="icon-chip mx-auto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 6.5 6.5 4-4L21 18"/><path d="M15 18h6v-6"/></svg></span>
                         <span class="font-bold text-violet-800">ETF à frais réduits</span>
                         <span class="text-gray-600">~0,2% de frais courants contre ~2% en gestion bancaire classique</span>
                     </div>
@@ -132,35 +140,35 @@
         </section>
 
         <!-- 1bis. Projets de vie : un portefeuille par objectif -->
-        <section id="projets" class="py-16 bg-white border-t border-gray-100">
+        <section id="projets" class="py-16 surface-raised">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-10">
+                <div class="text-center section-head mb-10">
                     <h2 class="text-3xl font-bold section-title">Quel est votre projet ?</h2>
-                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Un bon investissement commence par un objectif, pas par un produit. Choisissez le vôtre : la simulation se pré-remplit automatiquement.</p>
+                    <p class="text-gray-600 mt-3 lede">Un bon investissement commence par un objectif, pas par un produit. Choisissez le vôtre : la simulation se pré-remplit automatiquement.</p>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
                     <button class="project-card" data-goal="Préparer ma retraite et me constituer un complément de revenu pour maintenir mon niveau de vie" data-horizon="20">
-                        <span class="text-3xl">🌅</span>
+                        <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="m4.9 8.9 1.4 1.4"/><path d="M2 16h2"/><path d="M20 16h2"/><path d="m17.7 10.3 1.4-1.4"/><path d="M16 16a4 4 0 0 0-8 0"/><path d="M2 20h20"/></svg></span>
                         <span class="font-semibold text-sm text-gray-800 mt-2">Préparer ma retraite</span>
                     </button>
                     <button class="project-card" data-goal="Constituer un apport pour acheter ma résidence principale" data-horizon="8">
-                        <span class="text-3xl">🏡</span>
+                        <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 21v-6h6v6"/></svg></span>
                         <span class="font-semibold text-sm text-gray-800 mt-2">Acheter un bien</span>
                     </button>
                     <button class="project-card" data-goal="Épargner pour financer les études de mes enfants" data-horizon="15">
-                        <span class="text-3xl">🎓</span>
+                        <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/><path d="M22 9v4"/></svg></span>
                         <span class="font-semibold text-sm text-gray-800 mt-2">Études des enfants</span>
                     </button>
                     <button class="project-card" data-goal="Faire fructifier un capital disponible plutôt que de le laisser dormir sur des livrets" data-horizon="10">
-                        <span class="text-3xl">📈</span>
+                        <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 17 6.5-6.5 4 4L21 6"/><path d="M15 6h6v6"/></svg></span>
                         <span class="font-semibold text-sm text-gray-800 mt-2">Valoriser un capital</span>
                     </button>
                     <button class="project-card" data-goal="Me constituer des revenus complémentaires réguliers grâce à mon épargne" data-horizon="10">
-                        <span class="text-3xl">💶</span>
+                        <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg></span>
                         <span class="font-semibold text-sm text-gray-800 mt-2">Revenus complémentaires</span>
                     </button>
                     <button class="project-card" data-goal="Préparer la transmission de mon patrimoine à mes proches dans de bonnes conditions" data-horizon="15">
-                        <span class="text-3xl">🎁</span>
+                        <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8"/><rect x="2" y="7" width="20" height="5" rx="1"/><path d="M12 22V7"/><path d="M12 7H8.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h3.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>
                         <span class="font-semibold text-sm text-gray-800 mt-2">Transmettre</span>
                     </button>
                 </div>
@@ -168,41 +176,48 @@
             </div>
         </section>
 
-        <!-- 2. Le Défi -->
-        <section class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="card max-w-3xl mx-auto text-center">
-                    <h2 class="text-2xl font-bold section-title">Votre banque ne vous dit pas tout</h2>
-                    <div class="mt-6 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
-                        <div class="stat-number">71%</div>
-                        <p class="text-xl md:text-2xl font-semibold text-left max-w-xs text-gray-700">des Français pensent que les placements en actions sont « réservés à des gens qui s'y connaissent suffisamment ».</p>
+        <!-- 2. Le Constat -->
+        <section class="py-20 surface-tint has-decor">
+            <div class="decor decor-side" aria-hidden="true">
+                <div class="orb orb-1"></div>
+            </div>
+            <div class="container mx-auto px-6 relative">
+                <div class="text-center section-head mb-8">
+                    <p class="section-eyebrow">Le constat</p>
+                    <h2 class="mt-3 text-3xl font-bold section-title">Votre banque ne vous dit pas tout</h2>
+                </div>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 max-w-3xl mx-auto text-center md:text-left">
+                    <div class="stat-number">71%</div>
+                    <p class="text-xl md:text-2xl font-semibold max-w-md text-gray-700">des Français pensent que les placements en actions sont « réservés à des gens qui s'y connaissent suffisamment ».</p>
+                </div>
+                <p class="text-xs text-gray-500 mt-4 text-center">Source : <a href="https://www.amf-france.org/sites/institutionnel/files/private/2025-01/barometre-amf-2024-octobre-2024-version-publiable_0.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-violet-700">Baromètre AMF de l'épargne et de l'investissement 2024</a>, p. 41</p>
+                <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto text-left text-sm">
+                    <div class="pain-point">
+                        <span class="icon-chip mb-3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.7 5.1A9.8 9.8 0 0 1 12 5c7 0 10 7 10 7a15.5 15.5 0 0 1-1.7 2.7"/><path d="M6.6 6.6A13.5 13.5 0 0 0 2 12s3 7 10 7a9.7 9.7 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 1 0 4.2 4.2"/><path d="m2 2 20 20"/></svg></span>
+                        <p class="font-semibold text-gray-900">Des frais invisibles</p>
+                        <p class="text-gray-600 mt-1">2% de frais annuels sur 100 000 € = plus de 60 000 € de rendement perdus en 20 ans.</p>
                     </div>
-                    <p class="text-xs text-gray-500 mt-3">Source : <a href="https://www.amf-france.org/sites/institutionnel/files/private/2025-01/barometre-amf-2024-octobre-2024-version-publiable_0.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-violet-700">Baromètre AMF de l'épargne et de l'investissement 2024</a>, p. 41</p>
-                    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-left text-sm">
-                        <div class="pain-point">
-                            <p class="font-semibold text-gray-900">💸 Des frais invisibles</p>
-                            <p class="text-gray-600 mt-1">2% de frais annuels sur 100 000 € = plus de 60 000 € de rendement perdus en 20 ans.</p>
-                        </div>
-                        <div class="pain-point">
-                            <p class="font-semibold text-gray-900">🎭 Des conseils intéressés</p>
-                            <p class="text-gray-600 mt-1">Un "conseiller" rémunéré par les produits qu'il vend n'est pas votre conseiller : c'est un vendeur.</p>
-                        </div>
-                        <div class="pain-point">
-                            <p class="font-semibold text-gray-900">🚪 La vraie gestion privée est fermée</p>
-                            <p class="text-gray-600 mt-1">L'accompagnement patrimonial sérieux commence souvent à 1 M€ d'encours. Et en dessous ?</p>
-                        </div>
+                    <div class="pain-point">
+                        <span class="icon-chip mb-3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15 9-6 6"/><path d="M9.5 9.5h.01"/><path d="M14.5 14.5h.01"/></svg></span>
+                        <p class="font-semibold text-gray-900">Des conseils intéressés</p>
+                        <p class="text-gray-600 mt-1">Un "conseiller" rémunéré par les produits qu'il vend n'est pas votre conseiller : c'est un vendeur.</p>
+                    </div>
+                    <div class="pain-point">
+                        <span class="icon-chip mb-3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+                        <p class="font-semibold text-gray-900">La vraie gestion privée est fermée</p>
+                        <p class="text-gray-600 mt-1">L'accompagnement patrimonial sérieux commence souvent à 1 M€ d'encours. Et en dessous ?</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 3. Notre Méthode (processus de gestion privée démocratisé) -->
-        <section id="methode" class="py-20 bg-white">
+        <section id="methode" class="py-24 surface-base">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
+                <div class="text-center section-head mb-12">
                     <p class="section-eyebrow">La méthode des banques privées, appliquée à votre échelle</p>
-                    <h2 class="mt-2 text-3xl font-bold section-title">Un processus patrimonial complet, en 4 étapes</h2>
-                    <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Pas de produit miracle : une démarche structurée, celle enseignée dans les référentiels internationaux de gestion de fortune (CFA Institute), adaptée aux patrimoines de 10 000 € à 500 000 €.</p>
+                    <h2 class="mt-3 text-3xl font-bold section-title">Un processus patrimonial complet, en 4 étapes</h2>
+                    <p class="text-gray-600 mt-3 lede">Pas de produit miracle : une démarche structurée, celle enseignée dans les référentiels internationaux de gestion de fortune (CFA Institute), adaptée aux patrimoines de 10 000 € à 500 000 €.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
                     <div class="card method-step">
@@ -227,20 +242,20 @@
                     </div>
                 </div>
 
-                <!-- Philosophie condensée -->
-                <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-5xl mb-3">🎯</div>
+                <!-- Philosophie condensée : items épurés, sans boîtes -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="plain-item">
+                        <span class="icon-chip icon-chip-lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
                         <h3 class="text-lg font-bold section-title">Alignement total</h3>
                         <p class="mt-2 text-gray-600 text-sm">Honoraires fixes payés par vous seul. Aucune commission sur les produits recommandés : notre seul intérêt est le vôtre.</p>
                     </div>
-                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-5xl mb-3">🔍</div>
+                    <div class="plain-item">
+                        <span class="icon-chip icon-chip-lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
                         <h3 class="text-lg font-bold section-title">Transparence radicale</h3>
                         <p class="mt-2 text-gray-600 text-sm">ETF liquides et lisibles, frais affichés, méthodologie documentée. Vous savez toujours où va votre argent, et pourquoi.</p>
                     </div>
-                    <div class="card text-center hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-5xl mb-3">🌱</div>
+                    <div class="plain-item">
+                        <span class="icon-chip icon-chip-lg" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
                         <h3 class="text-lg font-bold section-title">Long terme &amp; discipline</h3>
                         <p class="mt-2 text-gray-600 text-sm">La performance vient de la discipline, pas des paris. Nous vous aidons aussi à tenir le cap dans les baisses de marché — c'est là que tout se joue.</p>
                     </div>
@@ -257,16 +272,17 @@
         </section>
 
         <!-- 4. Section Performances -->
-        <section id="performances" class="py-20 bg-gray-50">
+        <section id="performances" class="py-24 surface-raised">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold section-title">Nos Performances</h2>
-                    <p class="text-gray-600 mt-2">Performances cumulées de nos cinq profils d'investissement, du plus défensif au plus offensif.</p>
+                <div class="text-center section-head mb-12">
+                    <p class="section-eyebrow">Des résultats mesurés</p>
+                    <h2 class="mt-3 text-3xl font-bold section-title">Nos Performances</h2>
+                    <p class="text-gray-600 mt-3 lede">Performances cumulées de nos cinq profils d'investissement, du plus défensif au plus offensif.</p>
                 </div>
 
                 <div class="max-w-6xl mx-auto space-y-6">
-                    <!-- Graphique -->
-                    <div class="card">
+                    <!-- Graphique : l'objet vedette de la section -->
+                    <div class="card card-float">
                         <div class="flex items-center justify-between mb-4">
                             <h3 id="chartTitle" class="text-xl font-bold text-gray-800">Performances cumulées depuis <span id='fromYearLbl'></span></h3>
                             <span class="text-xs text-gray-500">*Données illustratives*</span>
@@ -369,7 +385,7 @@
 
                     <!-- CTA unique après preuve de performances (tous écrans) -->
                     <div class="mt-8">
-                        <div class="card bg-gradient-to-r from-violet-50 to-blue-50 border-l-4 border-violet-600">
+                        <div class="cta-panel">
                             <div class="flex flex-col sm:flex-row items-start justify-between gap-6">
                                 <div class="flex-1">
                                     <h4 class="text-lg font-bold text-gray-900 mb-2">Quel profil correspond à vos objectifs ?</h4>
@@ -403,14 +419,19 @@
         </section>
 
         <!-- 5. Gemini Investment Simulator Section -->
-        <section id="simulator" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold section-title">✨ Simulez votre projet d'investissement</h2>
-                    <p class="text-gray-600 mt-2">Notre IA, nourrie des grands principes internationaux de la gestion de fortune, construit une première stratégie adaptée à votre objectif. Gratuit et immédiat.</p>
+        <section id="simulator" class="py-24 surface-tint has-decor">
+            <div class="decor decor-side" aria-hidden="true">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+            </div>
+            <div class="container mx-auto px-6 relative">
+                <div class="text-center section-head mb-12">
+                    <p class="section-eyebrow">Simulateur</p>
+                    <h2 class="mt-3 text-3xl font-bold section-title">Simulez votre projet d'investissement</h2>
+                    <p class="text-gray-600 mt-3 lede">Notre IA, nourrie des grands principes internationaux de la gestion de fortune, construit une première stratégie adaptée à votre objectif. Gratuit et immédiat.</p>
                     <p class="text-xs text-gray-500 mt-3">Sans inscription, sans email, sans engagement.</p>
                 </div>
-                <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                <div class="max-w-2xl mx-auto card-float p-8">
                     <div class="space-y-6">
                         <div>
                             <label for="goal" class="block text-sm font-medium text-gray-700">Votre objectif</label>
@@ -451,7 +472,7 @@
                             </div>
                         </div>
                         <!-- Projection instantanée : gratification immédiate, calcul 100% local -->
-                        <div id="instantProjection" class="hidden bg-gradient-to-r from-violet-50 to-blue-50 border border-violet-200 rounded-lg p-5">
+                        <div id="instantProjection" class="hidden cta-panel p-5">
                             <p class="text-sm text-gray-600 text-center">À ce rythme, votre capital pourrait atteindre dans <span id="projYears" class="font-semibold"></span> ans :</p>
                             <p class="text-center mt-1"><span id="projValue" class="text-3xl font-extrabold text-violet-700"></span></p>
                             <p class="text-xs text-gray-500 text-center mt-1">dont <span id="projContrib" class="font-semibold"></span> versés par vous — fourchette estimée : <span id="projRange" class="font-semibold"></span></p>
@@ -468,7 +489,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="simulationResult" class="hidden mt-8 max-w-2xl mx-auto bg-violet-50 p-6 rounded-xl border border-violet-200">
+                <div id="simulationResult" class="hidden mt-8 max-w-2xl mx-auto card">
                     <div id="loadingSpinner" class="flex items-center justify-center">
                         <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-violet-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -491,12 +512,12 @@
         </section>
 
         <!-- 5bis. Calculateur de frais : l'argument différenciant face aux banques ET aux robo-advisors -->
-        <section id="frais" class="py-20 bg-gray-50">
+        <section id="frais" class="py-24 surface-raised">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-10">
+                <div class="text-center section-head mb-10">
                     <p class="section-eyebrow">Le détail que les autres préfèrent ne pas calculer</p>
-                    <h2 class="mt-2 text-3xl font-bold section-title">Combien les frais récurrents vous coûtent vraiment</h2>
-                    <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Banques et plateformes de gestion pilotée prélèvent un pourcentage de votre épargne <strong>chaque année, à vie</strong>. Nous facturons un honoraire fixe, <strong>une fois</strong>. Faites glisser le curseur :</p>
+                    <h2 class="mt-3 text-3xl font-bold section-title">Combien les frais récurrents vous coûtent vraiment</h2>
+                    <p class="text-gray-600 mt-3 lede">Banques et plateformes de gestion pilotée prélèvent un pourcentage de votre épargne <strong>chaque année, à vie</strong>. Nous facturons un honoraire fixe, <strong>une fois</strong>. Faites glisser le curseur :</p>
                 </div>
                 <div class="max-w-4xl mx-auto card">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
@@ -589,18 +610,22 @@
         </section>
 
         <!-- 6. Offers Section -->
-        <section id="offres" class="py-20 bg-white">
+        <section id="offres" class="py-24 surface-base">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-6">
-                    <h2 class="text-3xl font-bold section-title">Deux parcours pour atteindre vos objectifs</h2>
-                    <p class="text-gray-600 mt-2">Un accompagnement clé en main, ou l'autonomie complète par la formation. Dans les deux cas : un tarif fixe, connu d'avance, sans frais récurrents cachés.</p>
-                    <p class="mt-3 inline-block text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-full px-4 py-1.5">⏳ Conseiller indépendant unique : le nombre de nouveaux accompagnements est limité chaque mois, pour préserver la qualité du suivi.</p>
+                <div class="text-center section-head mb-6">
+                    <p class="section-eyebrow">Nos offres</p>
+                    <h2 class="mt-3 text-3xl font-bold section-title">Deux parcours pour atteindre vos objectifs</h2>
+                    <p class="text-gray-600 mt-3 lede">Un accompagnement clé en main, ou l'autonomie complète par la formation. Dans les deux cas : un tarif fixe, connu d'avance, sans frais récurrents cachés.</p>
+                    <p class="mt-4 inline-block text-xs font-semibold text-amber-800 bg-amber-50 border border-amber-200 rounded-full px-4 py-1.5">Conseiller indépendant unique : le nombre de nouveaux accompagnements est limité chaque mois, pour préserver la qualité du suivi.</p>
                 </div>
 
                 <!-- Réassurance sécurité : notre avantage structurel vs banques et robos -->
                 <div class="max-w-3xl mx-auto mb-12">
-                    <div class="card bg-gray-50 border-l-4 border-green-600 text-sm text-gray-700">
-                        <p class="font-semibold text-gray-900 mb-2">🔒 Votre argent ne transite jamais par nous</p>
+                    <div class="card text-sm text-gray-700">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="icon-chip" style="color:#047857;background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border-color:#A7F3D0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+                            <p class="font-semibold text-gray-900">Votre argent ne transite jamais par nous</p>
+                        </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                             <p>✓ Vos fonds restent sur <strong>vos</strong> comptes (PEA, assurance-vie, CTO), chez le courtier ou l'assureur de votre choix</p>
                             <p>✓ Nous n'avons aucun accès ni mandat sur vos comptes : vous validez chaque opération vous-même</p>
@@ -611,7 +636,7 @@
 
                 <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
                     <div class="card flex flex-col relative offer-highlight">
-                        <span class="popular-badge">⭐ Le plus choisi</span>
+                        <span class="popular-badge">Le plus choisi</span>
                         <h3 class="text-2xl font-bold text-violet-800 mb-4">Investissement Accompagné</h3>
                         <p class="text-gray-700 mb-6 flex-grow">Pour un passage à l'action rapide et sécurisé. Nous construisons ensemble votre portefeuille, prêt à être déployé.</p>
                         <div class="mb-8 flex-grow flex flex-col justify-center">
@@ -621,7 +646,7 @@
                             </div>
                         </div>
                         <div class="space-y-4">
-                            <div class="bg-gray-50 p-4 rounded-lg border">
+                            <div class="pack-box">
                                 <h4 class="font-semibold text-gray-800">Pack "Stratégie &amp; Lancement"</h4>
                                 <ul class="check-list mt-2">
                                     <li>Diagnostic patrimonial et profil de risque</li>
@@ -630,7 +655,7 @@
                                 </ul>
                                 <div class="text-right text-xl font-bold text-violet-700 mt-2">295 €</div>
                             </div>
-                            <div class="bg-violet-50 p-4 rounded-lg border-2 border-violet-300">
+                            <div class="pack-box pack-box-featured">
                                 <h4 class="font-semibold text-gray-800">Pack "Projet Clé en Main"</h4>
                                 <ul class="check-list mt-2">
                                     <li>Tout le pack Stratégie &amp; Lancement</li>
@@ -639,7 +664,7 @@
                                 </ul>
                                 <div class="text-right mt-2"><span class="text-xl font-bold text-violet-700">495 €</span></div>
                             </div>
-                            <div class="bg-gray-100 p-4 rounded-lg border border-gray-300 opacity-75">
+                            <div class="pack-box opacity-75">
                                 <h4 class="font-semibold text-gray-500">Pack "Premium" — suivi annuel complet</h4>
                                 <p class="text-gray-400 text-sm mt-1 italic">Liste d'attente — réservé en priorité aux clients existants</p>
                                 <div class="text-right text-xl text-gray-400 mt-2"><span class="font-normal">à partir de</span> <span class="font-bold">985 €</span></div>
@@ -652,24 +677,24 @@
                         <h3 class="text-2xl font-bold text-violet-800 mb-4">Coaching Financier Autonomie</h3>
                         <p class="text-gray-700 mb-6 flex-grow">Devenez le seul maître de vos finances grâce à un programme complet en 4 sessions pour tout maîtriser.</p>
                         <div class="mb-8 flex-grow flex flex-col justify-center space-y-3">
-                            <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                            <div class="pack-box">
                                 <p class="font-semibold text-violet-800">Session 1 : Les Fondations</p>
                                 <p class="text-sm text-gray-600">Budget, épargne de précaution et psychologie de l'investisseur.</p>
                             </div>
-                            <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                            <div class="pack-box">
                                 <p class="font-semibold text-violet-800">Session 2 : L'Écosystème</p>
                                 <p class="text-sm text-gray-600">Actions, ETFs et enveloppes fiscales (PEA, assurance-vie, CTO).</p>
                             </div>
-                            <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                            <div class="pack-box">
                                 <p class="font-semibold text-violet-800">Session 3 : La Stratégie</p>
                                 <p class="text-sm text-gray-600">Construire son allocation d'actifs personnelle.</p>
                             </div>
-                            <div class="bg-violet-50 border border-violet-200 p-3 rounded-lg">
+                            <div class="pack-box">
                                 <p class="font-semibold text-violet-800">Session 4 : La Pratique</p>
                                 <p class="text-sm text-gray-600">Passage d'ordres, suivi de portefeuille et rééquilibrage.</p>
                             </div>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-lg border mt-auto">
+                        <div class="pack-box mt-auto">
                             <h4 class="font-semibold text-gray-800">Cycle de Coaching Individuel</h4>
                             <p class="text-gray-600 text-sm mt-1">Programme complet en 4 sessions individuelles d'une heure — un savoir-faire pour toute la vie.</p>
                             <div class="text-right text-xl font-bold text-violet-700 mt-2">350 €</div>
@@ -681,7 +706,7 @@
 
                 <!-- Offre d'entrée : formation en ligne 45 € (marchepied vers le coaching) -->
                 <div class="max-w-5xl mx-auto mt-10">
-                    <div class="card bg-violet-50 border border-violet-200 md:flex items-center gap-6">
+                    <div class="card-float p-8 md:flex items-center gap-6">
                         <div class="flex-grow">
                             <p class="text-xs font-semibold uppercase tracking-wide text-violet-700">Pas encore prêt·e pour un accompagnement ?</p>
                             <h3 class="text-xl font-bold text-gray-900 mt-1">Formation en ligne « Les Fondamentaux de l'Investisseur » — 45 €</h3>
@@ -694,7 +719,7 @@
         </section>
 
         <!-- 7. À propos / Crédibilité -->
-        <section id="apropos" class="py-20 bg-gray-50">
+        <section id="apropos" class="py-20 surface-raised">
             <div class="container mx-auto px-6">
                 <div class="max-w-4xl mx-auto card">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -732,7 +757,7 @@
              (avec l'accord écrit du client — prénom + initiale suffisent). Ne jamais publier de faux avis
              (pratique commerciale trompeuse, art. L121-2 Code de la consommation).
 
-        <section id="temoignages" class="py-20 bg-white">
+        <section id="temoignages" class="py-20 surface-raised">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold section-title">Ils ont repris la main sur leur épargne</h2>
@@ -759,28 +784,31 @@
         -->
 
         <!-- 8. Guides pédagogiques (teaser) -->
-        <section id="guides" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
+        <section id="guides" class="py-24 surface-tint has-decor">
+            <div class="decor decor-side" aria-hidden="true">
+                <div class="orb orb-1"></div>
+            </div>
+            <div class="container mx-auto px-6 relative">
+                <div class="text-center section-head mb-12">
                     <p class="section-eyebrow">La pédagogie fait partie du conseil</p>
-                    <h2 class="mt-2 text-3xl font-bold section-title">L'Académie RAM Advisor : apprenez avant d'investir</h2>
-                    <p class="text-gray-600 mt-3 max-w-2xl mx-auto">Le programme d'une formation en gestion de fortune, condensé en <strong>8 guides gratuits sur 3 niveaux</strong> — sans jargon, sans inscription. Un investisseur qui comprend tient ses positions et évite les pièges.</p>
+                    <h2 class="mt-3 text-3xl font-bold section-title">L'Académie RAM Advisor : apprenez avant d'investir</h2>
+                    <p class="text-gray-600 mt-3 lede">Le programme d'une formation en gestion de fortune, condensé en <strong>8 guides gratuits sur 3 niveaux</strong> — sans jargon, sans inscription. Un investisseur qui comprend tient ses positions et évite les pièges.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    <a href="pages/enveloppes-fiscales.html" class="card block hover:shadow-xl transition-shadow duration-300 group">
-                        <div class="text-4xl mb-3">📦</div>
+                    <a href="pages/enveloppes-fiscales.html" class="card card-link block group">
+                        <span class="icon-chip icon-chip-lg mb-3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v8a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4A2 2 0 0 1 21 8z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
                         <h3 class="text-lg font-bold section-title group-hover:underline">PEA, Assurance-vie, CTO, PER : quelle enveloppe ?</h3>
                         <p class="mt-2 text-gray-600 text-sm">La même stratégie peut rapporter des milliers d'euros de plus — ou de moins — selon la « boîte » fiscale choisie.</p>
                         <p class="mt-3 text-violet-700 font-semibold text-sm">Lire le guide →</p>
                     </a>
-                    <a href="pages/profils-de-risque.html" class="card block hover:shadow-xl transition-shadow duration-300 group">
-                        <div class="text-4xl mb-3">⚖️</div>
+                    <a href="pages/profils-de-risque.html" class="card card-link block group">
+                        <span class="icon-chip icon-chip-lg mb-3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span>
                         <h3 class="text-lg font-bold section-title group-hover:underline">Quel est votre vrai profil de risque ?</h3>
                         <p class="mt-2 text-gray-600 text-sm">Les 3 dimensions que les questionnaires bancaires ne mesurent pas, et les 5 profils RAM Advisor décortiqués.</p>
                         <p class="mt-3 text-violet-700 font-semibold text-sm">Lire le guide →</p>
                     </a>
-                    <a href="pages/erreurs-investisseur.html" class="card block hover:shadow-xl transition-shadow duration-300 group">
-                        <div class="text-4xl mb-3">🧠</div>
+                    <a href="pages/erreurs-investisseur.html" class="card card-link block group">
+                        <span class="icon-chip icon-chip-lg mb-3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
                         <h3 class="text-lg font-bold section-title group-hover:underline">Les 7 erreurs qui ruinent les particuliers</h3>
                         <p class="mt-2 text-gray-600 text-sm">L'écart comportemental coûte 1 à 2% de rendement par an. Les pièges les plus chers, et leurs antidotes.</p>
                         <p class="mt-3 text-violet-700 font-semibold text-sm">Lire le guide →</p>
@@ -792,8 +820,8 @@
 
                 <!-- Capture newsletter : même formulaire Netlify que l'Académie (form-name "newsletter") -->
                 <div class="max-w-2xl mx-auto mt-12">
-                    <div class="card bg-gradient-to-r from-violet-50 to-blue-50 border-l-4 border-violet-600 text-center">
-                        <h3 class="text-xl font-bold section-title">📬 La Lettre Patrimoine</h3>
+                    <div class="card-float p-8 text-center">
+                        <h3 class="text-xl font-bold section-title">La Lettre Patrimoine</h3>
                         <p class="mt-2 text-gray-700 text-sm max-w-xl mx-auto">Un email par mois, maximum : un concept de gestion de fortune expliqué simplement, un point marchés sans sensationnalisme, et les nouveaux guides en avant-première. Zéro spam, désinscription en un clic.</p>
                         <form id="newsletterForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-5 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                             <input type="hidden" name="form-name" value="newsletter">
@@ -810,11 +838,12 @@
         </section>
 
         <!-- 9. FAQ -->
-        <section id="faq" class="py-20 bg-gray-50">
+        <section id="faq" class="py-24 surface-raised">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold section-title">Questions fréquentes</h2>
-                    <p class="text-gray-600 mt-2">Les réponses honnêtes aux questions que vous vous posez (à raison) avant de nous confier vos projets.</p>
+                <div class="text-center section-head mb-12">
+                    <p class="section-eyebrow">On vous répond</p>
+                    <h2 class="mt-3 text-3xl font-bold section-title">Questions fréquentes</h2>
+                    <p class="text-gray-600 mt-3 lede">Les réponses honnêtes aux questions que vous vous posez (à raison) avant de nous confier vos projets.</p>
                 </div>
                 <div class="max-w-3xl mx-auto space-y-4">
                     <details class="faq-item">
@@ -854,25 +883,28 @@
         </section>
 
         <!-- 10. CTA Section -->
-        <section id="contact" class="bg-violet-800">
-            <div class="container mx-auto px-6 py-20">
-                <div class="card bg-violet-700 text-white text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl font-bold">Votre Parcours Commence Ici</h2>
-                    <p class="mt-4 text-lg text-violet-200 max-w-2xl mx-auto">15 minutes pour faire le point sur vos projets, gratuitement et sans engagement. Au pire, vous repartez avec une vision plus claire de votre situation. Au mieux, avec un plan.</p>
-                    <div class="mt-8">
-                        <a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" class="bg-white text-violet-800 font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg inline-block">Réserver mon appel gratuit</a>
-                    </div>
-                    <p class="mt-4 text-sm text-violet-200">Ou écrivez-nous : <a href="mailto:contact@ramadvisor.fr" class="underline">contact@ramadvisor.fr</a></p>
+        <section id="contact" class="surface-deep has-decor">
+            <div class="decor decor-side" aria-hidden="true">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+            </div>
+            <div class="container mx-auto px-6 py-24 relative text-center">
+                <p class="section-eyebrow">Premier pas</p>
+                <h2 class="mt-3 text-3xl md:text-4xl font-bold text-white font-display">Votre parcours commence ici</h2>
+                <p class="mt-4 text-lg text-violet-200 max-w-2xl mx-auto">15 minutes pour faire le point sur vos projets, gratuitement et sans engagement. Au pire, vous repartez avec une vision plus claire de votre situation. Au mieux, avec un plan.</p>
+                <div class="mt-8">
+                    <a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" class="bg-white text-violet-800 font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105 text-lg inline-block">Réserver mon appel gratuit</a>
                 </div>
+                <p class="mt-4 text-sm text-violet-200">Ou écrivez-nous : <a href="mailto:contact@ramadvisor.fr" class="underline">contact@ramadvisor.fr</a></p>
             </div>
         </section>
     </main>
 
     <!-- Bouton CTA Flottant Mobile (Sticky Bottom) -->
-    <div id="mobileCTA" class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white shadow-2xl border-t-4 border-violet-600 px-4 py-3 transform transition-transform duration-300">
+    <div id="mobileCTA" class="fixed bottom-0 left-0 right-0 z-40 md:hidden mobile-bar px-4 py-3 transform transition-transform duration-300">
         <div class="flex items-center justify-between gap-3">
             <div class="flex-1">
-                <p class="text-xs font-semibold text-gray-900">🚀 Prenez le contrôle</p>
+                <p class="text-xs font-semibold text-gray-900">Prenez le contrôle</p>
                 <p class="text-xs text-gray-600">Appel gratuit • Sans engagement</p>
             </div>
             <a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="cta-gradient text-white font-bold py-3 px-5 rounded-full shadow-lg text-sm whitespace-nowrap">
@@ -882,7 +914,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white pb-24 md:pb-8">
+    <footer class="site-footer text-white pb-24 md:pb-8">
         <div class="container mx-auto px-6 py-10">
             <!-- Navigation footer : maillage interne + parcours de secours -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
@@ -903,7 +935,7 @@
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Académie</p>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="pages/formation.html" class="text-gray-300 hover:text-white font-semibold">⭐ Formation en ligne (45 €)</a></li>
+                        <li><a href="pages/formation.html" class="text-gray-300 hover:text-white font-semibold">Formation en ligne (45 €)</a></li>
                         <li><a href="pages/guides.html" class="text-gray-300 hover:text-white">Tous les guides</a></li>
                         <li><a href="pages/enveloppes-fiscales.html" class="text-gray-300 hover:text-white">PEA, AV, CTO, PER</a></li>
                         <li><a href="pages/etf.html" class="text-gray-300 hover:text-white">Comprendre les ETF</a></li>
@@ -914,8 +946,8 @@
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Contact</p>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white">📅 Réserver un appel gratuit</a></li>
-                        <li><a href="mailto:contact@ramadvisor.fr" class="text-gray-300 hover:text-white">✉️ contact@ramadvisor.fr</a></li>
+                        <li><a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white">Réserver un appel gratuit</a></li>
+                        <li><a href="mailto:contact@ramadvisor.fr" class="text-gray-300 hover:text-white">contact@ramadvisor.fr</a></li>
                         <li><a href="https://fr.linkedin.com/in/mamy-rama-cfa-caia-esg" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white">LinkedIn</a></li>
                     </ul>
                 </div>

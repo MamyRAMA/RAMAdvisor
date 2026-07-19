@@ -15,13 +15,13 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2R4TVLS"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -57,8 +57,13 @@
 
     <main>
         <!-- Hero -->
-        <section class="py-16 md:py-20 bg-white">
-            <div class="container mx-auto px-6 max-w-4xl text-center">
+        <section class="surface-hero has-decor py-16 md:py-20">
+            <div class="decor decor-hero" aria-hidden="true">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="ring"></div>
+            </div>
+            <div class="container mx-auto px-6 max-w-4xl text-center relative">
                 <p class="section-eyebrow">Formation 100 % en ligne · 6 modules · quiz · attestation</p>
                 <h1 class="text-3xl md:text-5xl font-black text-gray-900 mt-3 leading-tight">Les Fondamentaux de l'Investisseur</h1>
                 <p class="mt-5 text-lg text-gray-700 max-w-2xl mx-auto">Les concepts enseignés aux professionnels de la gestion d'actifs, traduits en français clair et appliqués à <strong>votre contexte : PEA, assurance-vie, ETF, fiscalité française</strong>. Sans jargon inutile, sans promesse de trading, sans prérequis.</p>
@@ -72,11 +77,11 @@
         </section>
 
         <!-- Pour qui / pas pour qui -->
-        <section class="py-14 bg-gray-50">
+        <section class="py-14 surface-base">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="card">
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">✅ Cette formation est faite pour vous si…</h2>
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Cette formation est faite pour vous si…</h2>
                         <ul class="check-list space-y-2 text-gray-700">
                             <li>Votre épargne dort sur des livrets et vous savez que c'est un problème</li>
                             <li>Vous voulez comprendre <em>avant</em> d'agir — pas suivre des « tips » aveuglément</li>
@@ -85,8 +90,8 @@
                             <li>Vous voulez éviter les frais et pièges qui coûtent des dizaines de milliers d'euros</li>
                         </ul>
                     </div>
-                    <div class="card bg-gray-50 border">
-                        <h2 class="text-xl font-bold text-gray-900 mb-4">🚫 Elle n'est pas faite pour vous si…</h2>
+                    <div class="card">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Elle n'est pas faite pour vous si…</h2>
                         <ul class="space-y-2 text-gray-600 list-disc pl-5">
                             <li>Vous cherchez des recommandations personnalisées (« que faire de MES 30 000 € ? ») — c'est l'objet du <a href="../index.html#offres" class="text-violet-700 underline">coaching individuel</a>, pas d'une formation en ligne</li>
                             <li>Vous voulez apprendre le trading court terme ou « battre le marché »</li>
@@ -98,12 +103,12 @@
         </section>
 
         <!-- Programme -->
-        <section id="programme" class="py-16 bg-white">
+        <section id="programme" class="py-20 surface-raised">
             <div class="container mx-auto px-6 max-w-4xl">
-                <div class="text-center mb-10">
+                <div class="text-center section-head mb-10">
                     <p class="section-eyebrow">≈ 5 à 6 heures au total, à votre rythme</p>
-                    <h2 class="text-3xl font-bold section-title mt-2">Le programme : 6 modules progressifs</h2>
-                    <p class="mt-3 text-gray-600 max-w-2xl mx-auto">Chaque module combine un socle accessible à tous, des encadrés « 🎓 Pour aller plus loin » pour les profils avancés, des actions concrètes, et un quiz de validation qui déverrouille le module suivant.</p>
+                    <h2 class="text-3xl font-bold section-title mt-3">Le programme : 6 modules progressifs</h2>
+                    <p class="mt-3 text-gray-600 lede">Chaque module combine un socle accessible à tous, des encadrés « Pour aller plus loin » pour les profils avancés, des actions concrètes, et un quiz de validation qui déverrouille le module suivant.</p>
                 </div>
                 <div class="space-y-4">
                     <div class="card flex gap-5 items-start">
@@ -153,7 +158,7 @@
         </section>
 
         <!-- Ce que vous obtenez + limites -->
-        <section class="py-14 bg-gray-50">
+        <section class="py-16 surface-tint">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="card">
@@ -182,14 +187,15 @@
         </section>
 
         <!-- Articulation avec le coaching -->
-        <section class="py-16 bg-white">
+        <section class="py-20 surface-raised">
             <div class="container mx-auto px-6 max-w-4xl">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold section-title">Votre parcours vers l'autonomie</h2>
-                    <p class="mt-3 text-gray-600">La formation est la première marche — pas un substitut au coaching.</p>
+                <div class="text-center section-head mb-10">
+                    <p class="section-eyebrow">Et après ?</p>
+                    <h2 class="mt-3 text-3xl font-bold section-title">Votre parcours vers l'autonomie</h2>
+                    <p class="mt-3 text-gray-600 lede">La formation est la première marche — pas un substitut au coaching.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="card border-2 border-violet-300">
+                    <div class="card-float p-6 border-2 border-violet-300">
                         <p class="text-xs font-semibold uppercase tracking-wide text-violet-700">Étape 1 · vous êtes ici</p>
                         <h3 class="font-bold text-gray-900 mt-2">Formation — 45 €</h3>
                         <p class="text-sm text-gray-600 mt-2">Comprendre : les concepts, les instruments, les enveloppes, la méthode. Savoir généraliste, en autonomie.</p>
@@ -209,7 +215,7 @@
         </section>
 
         <!-- CTA final + récupération d'accès -->
-        <section class="py-16 bg-gray-50">
+        <section class="py-20 surface-base">
             <div class="container mx-auto px-6 max-w-3xl text-center">
                 <h2 class="text-3xl font-bold section-title">Commencez aujourd'hui</h2>
                 <p class="mt-3 text-gray-600">45 € une fois. Accès immédiat après paiement, pendant 1 an. Moins que les frais annuels cachés que ce contenu vous apprendra à éliminer.</p>
@@ -219,27 +225,27 @@
         </section>
 
         <!-- FAQ -->
-        <section class="py-16 bg-white">
+        <section class="py-20 surface-raised">
             <div class="container mx-auto px-6 max-w-3xl">
                 <h2 class="text-2xl font-bold section-title text-center mb-8">Questions fréquentes</h2>
                 <div class="space-y-4">
-                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                    <details class="faq-item">
                         <summary class="font-semibold cursor-pointer text-gray-900">Faut-il des connaissances préalables ?</summary>
                         <p class="mt-3 text-gray-600 text-sm">Aucune. La formation part de zéro et chaque module contient des encadrés « Pour aller plus loin » pour ceux qui veulent creuser. Quel que soit votre parcours académique ou professionnel, le texte est écrit en français clair, chaque terme technique est expliqué.</p>
                     </details>
-                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                    <details class="faq-item">
                         <summary class="font-semibold cursor-pointer text-gray-900">Combien de temps ai-je accès au contenu ?</summary>
                         <p class="mt-3 text-gray-600 text-sm">1 an à compter de l'achat — largement le temps de suivre les 6 modules (5-6 h) et d'y revenir. Si votre accès expire, écrivez-nous : nous le renouvelons gratuitement sur simple demande.</p>
                     </details>
-                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                    <details class="faq-item">
                         <summary class="font-semibold cursor-pointer text-gray-900">Allez-vous me dire quoi acheter ?</summary>
                         <p class="mt-3 text-gray-600 text-sm">Non, et c'est volontaire : une formation en ligne identique pour tous ne peut pas — et ne doit pas — faire de recommandations individuelles. Vous apprendrez la méthode complète pour décider vous-même. Pour une stratégie personnalisée, c'est le rôle du coaching individuel et du Pack Stratégie &amp; Lancement.</p>
                     </details>
-                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                    <details class="faq-item">
                         <summary class="font-semibold cursor-pointer text-gray-900">Puis-je me faire rembourser ?</summary>
                         <p class="mt-3 text-gray-600 text-sm">S'agissant d'un contenu numérique à accès immédiat, vous renoncez expressément au droit de rétractation légal de 14 jours au moment du paiement (art. L221-28 du Code de la consommation). En cas de problème réel, écrivez-nous : nous trouvons toujours une solution raisonnable.</p>
                     </details>
-                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                    <details class="faq-item">
                         <summary class="font-semibold cursor-pointer text-gray-900">J'ai perdu mon accès, comment le récupérer ?</summary>
                         <div class="mt-3 text-gray-600 text-sm">
                             <p>Saisissez l'email utilisé lors du paiement : nous vous renvoyons un lien d'accès.</p>
@@ -256,7 +262,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white pb-24 md:pb-8">
+    <footer class="site-footer text-white pb-24 md:pb-8">
         <div class="container mx-auto px-6 py-10">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
                 <div class="col-span-2 md:col-span-1">
@@ -276,7 +282,7 @@
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Académie</p>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="formation.html" class="text-gray-300 hover:text-white font-semibold">⭐ Formation (45 €)</a></li>
+                        <li><a href="formation.html" class="text-gray-300 hover:text-white font-semibold">Formation (45 €)</a></li>
                         <li><a href="guides.html" class="text-gray-300 hover:text-white">Tous les guides</a></li>
                         <li><a href="enveloppes-fiscales.html" class="text-gray-300 hover:text-white">PEA, AV, CTO, PER</a></li>
                         <li><a href="etf.html" class="text-gray-300 hover:text-white">Comprendre les ETF</a></li>
@@ -286,8 +292,8 @@
                 <div>
                     <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Contact</p>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white">📅 Réserver un appel gratuit</a></li>
-                        <li><a href="mailto:contact@ramadvisor.fr" class="text-gray-300 hover:text-white">✉️ contact@ramadvisor.fr</a></li>
+                        <li><a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white">Réserver un appel gratuit</a></li>
+                        <li><a href="mailto:contact@ramadvisor.fr" class="text-gray-300 hover:text-white">contact@ramadvisor.fr</a></li>
                         <li><a href="https://fr.linkedin.com/in/mamy-rama-cfa-caia-esg" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white">LinkedIn</a></li>
                     </ul>
                 </div>
