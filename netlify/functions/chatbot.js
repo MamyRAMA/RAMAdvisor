@@ -24,7 +24,7 @@ const CALENDLY = "https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-off
 const ALLOWED_LINKS = new Set([
   "#methode", "#performances", "#simulator", "#frais", "#offres",
   "#apropos", "#guides", "#faq", "#contact",
-  "pages/guides.html", "pages/commencer-a-investir.html", "pages/etf.html",
+  "pages/guides.html", "pages/formation.html", "pages/commencer-a-investir.html", "pages/etf.html",
   "pages/enveloppes-fiscales.html", "pages/profils-de-risque.html",
   "pages/interets-composes.html", "pages/reequilibrage-portefeuille.html",
   "pages/durabilite.html", "pages/erreurs-investisseur.html",

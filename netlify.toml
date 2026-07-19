@@ -10,7 +10,8 @@
     "prompt_template_v3.md",
     "knowledge_base.txt",
     "chatbot_knowledge.md",
-    "netlify/functions/cfa_data/*.json"
+    "netlify/functions/cfa_data/*.json",
+    "netlify/functions/formation_data/*"
   ]
 
 [[headers]]

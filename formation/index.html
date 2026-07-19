@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W2R4TVLS');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Ma formation – Les Fondamentaux de l'Investisseur | RAM Advisor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Boîtes pédagogiques du contenu de formation */
+        .f-box { border-radius: 0.75rem; padding: 1rem 1.25rem; margin: 1.25rem 0; font-size: 0.95rem; }
+        .f-box p { margin: 0.4rem 0; }
+        .f-box ul, .f-box ol { margin: 0.5rem 0 0.25rem 1.25rem; }
+        .f-key    { background: #f5f3ff; border-left: 4px solid #7c3aed; }
+        .f-adv    { background: #eff6ff; border-left: 4px solid #2563eb; }
+        .f-ex     { background: #f0fdf4; border-left: 4px solid #16a34a; }
+        .f-action { background: #fffbeb; border-left: 4px solid #d97706; }
+        .f-limit  { background: #fef2f2; border-left: 4px solid #dc2626; }
+        .f-formula { text-align: center; font-weight: 600; background: #f9fafb; border: 1px dashed #d1d5db; border-radius: 0.5rem; padding: 0.75rem; margin: 1rem 0; }
+        .f-small { font-size: 0.8rem; color: #6b7280; }
+        #moduleContent h2 { font-size: 1.4rem; font-weight: 800; color: #111827; margin: 2rem 0 0.75rem; }
+        #moduleContent h3 { font-size: 1.1rem; font-weight: 700; color: #1f2937; margin: 1.25rem 0 0.5rem; }
+        #moduleContent p { margin: 0.6rem 0; line-height: 1.7; color: #374151; }
+        #moduleContent ul, #moduleContent ol { margin: 0.6rem 0 0.6rem 1.5rem; line-height: 1.7; color: #374151; }
+        #moduleContent ul { list-style: disc; }
+        #moduleContent ol { list-style: decimal; }
+        #moduleContent li { margin: 0.35rem 0; }
+        #moduleContent a { color: #6d28d9; text-decoration: underline; }
+        #moduleContent table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+        #moduleContent th, #moduleContent td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; text-align: left; }
+        #moduleContent th { background: #f9fafb; font-weight: 700; }
+        .quiz-option { display: block; border: 2px solid #e5e7eb; border-radius: 0.6rem; padding: 0.6rem 0.9rem; margin: 0.4rem 0; cursor: pointer; transition: border-color .15s; }
+        .quiz-option:hover { border-color: #a78bfa; }
+        .quiz-option.selected { border-color: #7c3aed; background: #f5f3ff; }
+        .quiz-option.correct { border-color: #16a34a; background: #f0fdf4; }
+        .quiz-option.wrong { border-color: #dc2626; background: #fef2f2; }
+        @media print {
+            body * { visibility: hidden; }
+            #attestation, #attestation * { visibility: visible; }
+            #attestation { position: absolute; inset: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2R4TVLS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-violet-800">RAM Advisor</a>
+            <div class="flex items-center gap-4">
+                <div id="globalProgress" class="hidden items-center gap-2 md:flex">
+                    <div class="w-40 h-2 bg-gray-200 rounded-full overflow-hidden"><div id="globalProgressBar" class="h-full bg-violet-600 rounded-full transition-all" style="width:0%"></div></div>
+                    <span id="globalProgressLabel" class="text-xs text-gray-500"></span>
+                </div>
+                <button id="btnSommaire" class="hidden text-violet-700 font-semibold text-sm hover:text-violet-900">← Sommaire</button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="demoBanner" class="hidden bg-amber-100 border-b border-amber-300 text-amber-900 text-sm text-center py-2 px-4">
+        Mode DÉMONSTRATION — accès de test sans paiement (Stripe non configuré sur cet environnement).
+    </div>
+
+    <main class="container mx-auto px-6 py-10 max-w-3xl">
+
+        <!-- Écran 1 : pas d'accès -->
+        <section id="viewGate" class="hidden text-center py-10">
+            <h1 class="text-2xl font-bold text-gray-900">Accès à la formation</h1>
+            <p id="gateMessage" class="mt-4 text-gray-600">Vérification de votre accès…</p>
+            <div id="gateActions" class="hidden mt-8 space-y-4">
+                <a href="../pages/formation.html" class="inline-block cta-gradient text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-[1.02] transition">Découvrir et acheter la formation (45 €)</a>
+                <p class="text-sm text-gray-500">Déjà inscrit·e sur un autre appareil ? <a href="../pages/formation.html#recoverForm" class="text-violet-700 underline">Récupérer mon accès par email</a></p>
+            </div>
+        </section>
+
+        <!-- Écran 2 : sommaire -->
+        <section id="viewDashboard" class="hidden">
+            <p class="section-eyebrow">Votre formation</p>
+            <h1 class="text-3xl font-black text-gray-900 mt-1">Les Fondamentaux de l'Investisseur</h1>
+            <p class="mt-3 text-gray-600">Suivez les modules dans l'ordre : chaque quiz validé (6/8 minimum) déverrouille le suivant. Votre progression est enregistrée sur cet appareil.</p>
+            <div id="moduleList" class="mt-8 space-y-4"></div>
+            <div id="certBlock" class="hidden mt-8"></div>
+            <div class="mt-10 card bg-violet-50 border border-violet-200 text-sm text-gray-700">
+                <p><strong>Rappel des limites de ce produit</strong> — contenu identique pour tous, aucune recommandation individuelle, aucun accompagnement humain. Contenu éducatif : ne constitue pas un conseil en investissement ; investir comporte un risque de perte en capital. Pour une stratégie personnalisée : <a href="../index.html#offres" class="text-violet-700 underline font-semibold">Coaching Financier Autonomie</a>.</p>
+            </div>
+        </section>
+
+        <!-- Écran 3 : lecture d'un module -->
+        <section id="viewModule" class="hidden">
+            <p class="section-eyebrow" id="moduleEyebrow"></p>
+            <h1 class="text-3xl font-black text-gray-900 mt-1" id="moduleTitle"></h1>
+            <p class="mt-2 text-sm text-gray-500" id="moduleObjective"></p>
+            <article id="moduleContent" class="mt-6"></article>
+
+            <div id="quizBlock" class="mt-10 card border-2 border-violet-200">
+                <h2 class="text-xl font-bold text-gray-900">Quiz de validation <span class="text-sm font-normal text-gray-500">(6 bonnes réponses sur 8 requises)</span></h2>
+                <div id="quizQuestions" class="mt-4 space-y-6"></div>
+                <button id="btnSubmitQuiz" class="mt-6 cta-gradient text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-[1.02] transition w-full">Valider mes réponses</button>
+                <div id="quizResult" class="hidden mt-4 text-center font-semibold"></div>
+            </div>
+        </section>
+
+        <!-- Attestation (impression) -->
+        <section id="attestation" class="hidden"></section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-sm text-gray-400">
+            <p>&copy; 2026 RAM Advisor — Contenu éducatif, ne constitue pas un conseil en investissement. Investir comporte des risques de perte en capital.</p>
+            <p class="mt-1"><a href="../index.html" class="underline hover:text-white">Retour au site</a> · <a href="mailto:contact@ramadvisor.fr" class="underline hover:text-white">contact@ramadvisor.fr</a></p>
+        </div>
+    </footer>
+
+    <script src="../js/formation-app.js"></script>
+</body>
+</html>

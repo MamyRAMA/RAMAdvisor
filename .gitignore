@@ -1,3 +1,12 @@
 
 __pycache__/
 *.pyc
+
+# Local Netlify folder
+.netlify
+
+# CFA materials — copyright protected, never commit
+docs/courses/
+
+# Deno lock (dependencies)
+deno.lock
