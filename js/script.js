@@ -10,7 +10,41 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeProjectCards();
     initializeInstantProjection();
     initializeFeeCalculator();
+    initializeNewsletterForm();
 });
+
+// ======= NEWSLETTER (Lettre Patrimoine) =======
+// Soumission AJAX vers Netlify Forms (pas de redirection → pas de 404).
+// Le formulaire (#newsletterForm, form-name "newsletter") existe sur index.html et pages/guides.html.
+function initializeNewsletterForm() {
+    const nlForm = document.getElementById('newsletterForm');
+    if (!nlForm) return;
+
+    nlForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = nlForm.querySelector('button[type="submit"]');
+        const thanks = document.getElementById('newsletterThanks');
+        const errEl = document.getElementById('newsletterError');
+        if (errEl) errEl.classList.add('hidden');
+        if (btn) { btn.disabled = true; btn.textContent = 'Envoi…'; }
+
+        const data = new URLSearchParams(new FormData(nlForm)).toString();
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: data
+        })
+        .then(function (resp) {
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            nlForm.classList.add('hidden');
+            if (thanks) { thanks.classList.remove('hidden'); }
+        })
+        .catch(function () {
+            if (btn) { btn.disabled = false; btn.textContent = "S'inscrire"; }
+            if (errEl) errEl.classList.remove('hidden');
+        });
+    });
+}
 
 // ======= CARTES PROJETS DE VIE =======
 // Clic sur un projet → pré-remplit l'objectif + l'horizon du simulateur et y défile
