@@ -218,6 +218,39 @@ function initializeInvestmentSimulator() {
 
     if (!simulateBtn) return; // Protection si l'élément n'existe pas
 
+    // Réglette « niveau de connaissance » : n'influe que sur le style d'explication de l'IA
+    const knowledgeSlider = document.getElementById('knowledgeLevel');
+    const knowledgeDesc = document.getElementById('knowledgeDesc');
+    const knowledgeLabels = document.querySelectorAll('.knowledge-label');
+    const KNOWLEDGE_LEVELS = {
+        1: { label: 'Débutant', desc: "L'analyse expliquera chaque notion simplement, avec des comparaisons de la vie courante et sans jargon." },
+        2: { label: 'Intermédiaire', desc: "L'analyse définira les termes techniques au passage, sans revenir sur les bases que vous connaissez déjà." },
+        3: { label: 'Confirmé', desc: "L'analyse ira droit au but, avec le vocabulaire technique de la gestion de portefeuille." }
+    };
+
+    function updateKnowledgeUI() {
+        if (!knowledgeSlider) return;
+        const level = KNOWLEDGE_LEVELS[knowledgeSlider.value] || KNOWLEDGE_LEVELS[2];
+        if (knowledgeDesc) knowledgeDesc.textContent = level.desc;
+        knowledgeLabels.forEach((btn) => {
+            const active = btn.dataset.level === knowledgeSlider.value;
+            btn.classList.toggle('text-violet-700', active);
+            btn.classList.toggle('font-semibold', active);
+            btn.classList.toggle('text-gray-500', !active);
+        });
+    }
+
+    if (knowledgeSlider) {
+        knowledgeSlider.addEventListener('input', updateKnowledgeUI);
+        knowledgeLabels.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                knowledgeSlider.value = btn.dataset.level;
+                updateKnowledgeUI();
+            });
+        });
+        updateKnowledgeUI();
+    }
+
     simulateBtn.addEventListener('click', async () => {
         // Récupération des valeurs du formulaire
         const goal = document.getElementById('goal').value;
@@ -253,7 +286,8 @@ function initializeInvestmentSimulator() {
                 profil_risque: riskMapping[riskProfile] || 'Équilibré',
                 montant_initial: `${initialAmount}€`,
                 montant_mensuel: `${monthlyAmount}€`,
-                horizon: `${timeHorizon} ans`
+                horizon: `${timeHorizon} ans`,
+                niveau_connaissance: (KNOWLEDGE_LEVELS[knowledgeSlider && knowledgeSlider.value] || KNOWLEDGE_LEVELS[2]).label
             };
 
             console.log('📊 Envoi des paramètres au site:', params);

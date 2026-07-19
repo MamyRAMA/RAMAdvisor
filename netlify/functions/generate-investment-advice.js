@@ -66,9 +66,27 @@ exports.handler = async (event, context) => {
 
   try {
     // Parse request body
-    const { objectif, profil_risque, montant_initial, montant_mensuel, horizon } = JSON.parse(event.body);
+    const { objectif, profil_risque, montant_initial, montant_mensuel, horizon, niveau_connaissance } = JSON.parse(event.body);
 
-    console.log(`📊 Nouvelle demande: ${profil_risque} - ${objectif}`);
+    // Niveau de connaissance : n'influe que sur le style d'explication, jamais sur l'allocation
+    const PEDAGOGY_INSTRUCTIONS = {
+      'Débutant': `L'utilisateur DÉCOUVRE l'investissement. Adapte ton explication :
+- Définis systématiquement chaque terme technique dès sa première apparition (ETF, SCPI, obligation, volatilité, rééquilibrage...) avec des mots simples.
+- Utilise des analogies de la vie courante (ex: la diversification comme "ne pas mettre tous ses œufs dans le même panier", le fonds en euros comme "un livret amélioré").
+- Phrases courtes, ton rassurant et encourageant. Évite les pourcentages en cascade : arrondis et hiérarchise.
+- Dans le tableau d'allocation, la colonne "Justification" doit expliquer À QUOI SERT chaque classe d'actif comme à quelqu'un qui n'en a jamais entendu parler.`,
+      'Intermédiaire': `L'utilisateur connaît les bases (il sait ce qu'est un ETF, une assurance-vie). Adapte ton explication :
+- Définis brièvement, entre parenthèses, uniquement les termes les plus techniques (prime de risque, corrélation, tracking error...).
+- Ne sur-explique pas les notions de base ; concentre-toi sur le POURQUOI de la stratégie.
+- Ton pédagogue mais efficace, avec quelques chiffres de contexte quand ils éclairent le propos.`,
+      'Confirmé': `L'utilisateur est à l'aise avec la gestion de portefeuille. Adapte ton explication :
+- Va droit au but : vocabulaire technique assumé sans définitions (allocation stratégique, prime de risque, corrélation, duration, DCA...).
+- Privilégie la précision : logique de construction du portefeuille, arbitrages entre classes d'actifs, considérations fiscales des enveloppes.
+- Explications concises et denses ; pas de ton condescendant ni d'analogies simplistes.`
+    };
+    const niveauValide = PEDAGOGY_INSTRUCTIONS[niveau_connaissance] ? niveau_connaissance : 'Intermédiaire';
+
+    console.log(`📊 Nouvelle demande: ${profil_risque} - ${objectif} (niveau: ${niveauValide})`);
 
     // Initialize Gemini AI with environment variable
     const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
@@ -324,6 +342,12 @@ Ne jamais mentionner tes sources de connaissance.`;
       console.log('📋 Ajout de la connaissance standard filtrée');
     }
 
+    // Adaptation pédagogique : ajoutée en fin de prompt pour primer sur le style par défaut du template
+    finalPrompt += `\n\n## Adaptation pédagogique OBLIGATOIRE (niveau de connaissance : ${niveauValide})
+${PEDAGOGY_INSTRUCTIONS[niveauValide]}
+
+RÈGLE ABSOLUE : le niveau de connaissance de l'utilisateur ne modifie NI l'allocation d'actifs proposée, NI les pourcentages, NI le score d'atypicité, NI la structure de la réponse. Deux utilisateurs identiques avec des niveaux différents doivent recevoir la MÊME stratégie — seule la manière de l'expliquer change.`;
+
     console.log(`📝 Prompt final construit: ${finalPrompt.length} caractères`);
 
     // Call Gemini API
@@ -339,7 +363,7 @@ Ne jamais mentionner tes sources de connaissance.`;
       body: JSON.stringify({
         success: true,
         advice: advice,
-        parameters: { objectif, profil_risque, montant_initial, montant_mensuel, horizon },
+        parameters: { objectif, profil_risque, montant_initial, montant_mensuel, horizon, niveau_connaissance: niveauValide },
         cfa_enhanced: cfaKnowledge.length > 50,
         knowledge_sources: {
           cfa_length: cfaKnowledge.length,

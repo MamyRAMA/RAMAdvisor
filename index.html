@@ -450,6 +450,17 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Réglette de connaissance : adapte le style d'explication de l'analyse IA, jamais l'allocation proposée -->
+                        <div>
+                            <label for="knowledgeLevel" class="block text-sm font-medium text-gray-700">Votre niveau de connaissance en investissement</label>
+                            <input type="range" id="knowledgeLevel" name="knowledgeLevel" min="1" max="3" step="1" value="2" class="mt-3 block w-full accent-violet-700 cursor-pointer" aria-describedby="knowledgeDesc">
+                            <div class="flex justify-between text-xs mt-1">
+                                <button type="button" class="knowledge-label text-gray-500 hover:text-violet-700 transition-colors" data-level="1">Débutant</button>
+                                <button type="button" class="knowledge-label text-gray-500 hover:text-violet-700 transition-colors" data-level="2">Intermédiaire</button>
+                                <button type="button" class="knowledge-label text-gray-500 hover:text-violet-700 transition-colors" data-level="3">Confirmé</button>
+                            </div>
+                            <p id="knowledgeDesc" class="text-xs text-violet-700 bg-violet-50 rounded-md px-3 py-2 mt-2"></p>
+                        </div>
                         <!-- Projection instantanée : gratification immédiate, calcul 100% local -->
                         <div id="instantProjection" class="hidden bg-gradient-to-r from-violet-50 to-blue-50 border border-violet-200 rounded-lg p-5">
                             <p class="text-sm text-gray-600 text-center">À ce rythme, votre capital pourrait atteindre dans <span id="projYears" class="font-semibold"></span> ans :</p>
