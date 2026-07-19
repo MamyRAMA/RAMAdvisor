@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W2R4TVLS');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation en ligne : Les Fondamentaux de l'Investisseur (45 €) – RAM Advisor</title>
+    <meta name="description" content="Formation d'initiation à l'investissement pour particuliers : 6 modules, quiz, attestation. La rigueur des professionnels de la gestion, adaptée au contexte français (PEA, assurance-vie, ETF). 45 €.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2R4TVLS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="text-2xl font-bold text-violet-800">RAM Advisor</a>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="../index.html#offres" class="text-gray-600 hover:text-violet-800">Nos Offres</a>
+                    <a href="../index.html#performances" class="text-gray-600 hover:text-violet-800">Performances</a>
+                    <a href="guides.html" class="text-gray-600 hover:text-violet-800">Académie</a>
+                    <a href="formation.html" class="text-violet-800 font-semibold">Formation</a>
+                    <a href="../index.html#contact" class="cta-gradient text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Contact</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-violet-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-2 space-y-2">
+                <a href="../index.html#offres" class="block text-gray-600 hover:text-violet-800 py-2">Nos Offres</a>
+                <a href="../index.html#performances" class="block text-gray-600 hover:text-violet-800 py-2">Performances</a>
+                <a href="guides.html" class="block text-gray-600 hover:text-violet-800 py-2">Académie</a>
+                <a href="formation.html" class="block text-violet-800 font-semibold py-2">Formation</a>
+                <a href="../index.html#contact" class="block text-gray-600 hover:text-violet-800 py-2">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <p class="section-eyebrow">Formation 100 % en ligne · 6 modules · quiz · attestation</p>
+                <h1 class="text-3xl md:text-5xl font-black text-gray-900 mt-3 leading-tight">Les Fondamentaux de l'Investisseur</h1>
+                <p class="mt-5 text-lg text-gray-700 max-w-2xl mx-auto">Les concepts enseignés aux professionnels de la gestion d'actifs, traduits en français clair et appliqués à <strong>votre contexte : PEA, assurance-vie, ETF, fiscalité française</strong>. Sans jargon inutile, sans promesse de trading, sans prérequis.</p>
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button data-checkout class="cta-gradient text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-[1.02] transition text-lg">Accéder à la formation — 45 €</button>
+                    <a href="#programme" class="text-violet-700 font-semibold underline decoration-2 underline-offset-4 hover:text-violet-900">Voir le programme détaillé</a>
+                </div>
+                <p id="checkoutError" class="hidden mt-3 text-sm text-red-600"></p>
+                <p class="mt-4 text-xs text-gray-500">Paiement sécurisé par Stripe · Accès immédiat pendant 1 an · Conçue par un professionnel certifié CFA® et CAIA®</p>
+            </div>
+        </section>
+
+        <!-- Pour qui / pas pour qui -->
+        <section class="py-14 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">✅ Cette formation est faite pour vous si…</h2>
+                        <ul class="check-list space-y-2 text-gray-700">
+                            <li>Votre épargne dort sur des livrets et vous savez que c'est un problème</li>
+                            <li>Vous voulez comprendre <em>avant</em> d'agir — pas suivre des « tips » aveuglément</li>
+                            <li>Vous partez de zéro ou presque, quel que soit votre parcours</li>
+                            <li>Vous cherchez une méthode long terme, pas des « coups » de trading</li>
+                            <li>Vous voulez éviter les frais et pièges qui coûtent des dizaines de milliers d'euros</li>
+                        </ul>
+                    </div>
+                    <div class="card bg-gray-50 border">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">🚫 Elle n'est pas faite pour vous si…</h2>
+                        <ul class="space-y-2 text-gray-600 list-disc pl-5">
+                            <li>Vous cherchez des recommandations personnalisées (« que faire de MES 30 000 € ? ») — c'est l'objet du <a href="../index.html#offres" class="text-violet-700 underline">coaching individuel</a>, pas d'une formation en ligne</li>
+                            <li>Vous voulez apprendre le trading court terme ou « battre le marché »</li>
+                            <li>Vous attendez des promesses de rendement — il n'y en aura aucune</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programme -->
+        <section id="programme" class="py-16 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-10">
+                    <p class="section-eyebrow">≈ 5 à 6 heures au total, à votre rythme</p>
+                    <h2 class="text-3xl font-bold section-title mt-2">Le programme : 6 modules progressifs</h2>
+                    <p class="mt-3 text-gray-600 max-w-2xl mx-auto">Chaque module combine un socle accessible à tous, des encadrés « 🎓 Pour aller plus loin » pour les profils avancés, des actions concrètes, et un quiz de validation qui déverrouille le module suivant.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="card flex gap-5 items-start">
+                        <div class="w-10 h-10 shrink-0 rounded-full bg-violet-100 text-violet-800 font-bold flex items-center justify-center">1</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Les fondations <span class="text-sm font-normal text-gray-500">· ≈ 45 min</span></h3>
+                            <p class="text-gray-600 text-sm mt-1">L'inflation, la machine des intérêts composés, taux réel vs nominal, et les 3 prérequis à vérifier avant d'investir le premier euro.</p>
+                        </div>
+                    </div>
+                    <div class="card flex gap-5 items-start">
+                        <div class="w-10 h-10 shrink-0 rounded-full bg-violet-100 text-violet-800 font-bold flex items-center justify-center">2</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Risque et rendement <span class="text-sm font-normal text-gray-500">· ≈ 50 min</span></h3>
+                            <p class="text-gray-600 text-sm mt-1">Ce qu'est vraiment le risque, pourquoi il est la source du rendement, la diversification (« le seul repas gratuit ») et l'effet de l'horizon.</p>
+                        </div>
+                    </div>
+                    <div class="card flex gap-5 items-start">
+                        <div class="w-10 h-10 shrink-0 rounded-full bg-violet-100 text-violet-800 font-bold flex items-center justify-center">3</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Les classes d'actifs et les ETF <span class="text-sm font-normal text-gray-500">· ≈ 60 min</span></h3>
+                            <p class="text-gray-600 text-sm mt-1">Actions, obligations, immobilier, or… Pourquoi la gestion indicielle bat 85-90 % des professionnels, et comment lire un ETF comme un pro.</p>
+                        </div>
+                    </div>
+                    <div class="card flex gap-5 items-start">
+                        <div class="w-10 h-10 shrink-0 rounded-full bg-violet-100 text-violet-800 font-bold flex items-center justify-center">4</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Les enveloppes françaises <span class="text-sm font-normal text-gray-500">· ≈ 50 min</span></h3>
+                            <p class="text-gray-600 text-sm mt-1">PEA, assurance-vie, CTO, PER : fiscalité, plafonds, cas d'usage, ordre de priorité. Le module le plus rentable de la formation.</p>
+                        </div>
+                    </div>
+                    <div class="card flex gap-5 items-start">
+                        <div class="w-10 h-10 shrink-0 rounded-full bg-violet-100 text-violet-800 font-bold flex items-center justify-center">5</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Construire son portefeuille <span class="text-sm font-normal text-gray-500">· ≈ 60 min</span></h3>
+                            <p class="text-gray-600 text-sm mt-1">Objectifs, profil de risque, allocation d'actifs, rééquilibrage — et la rédaction de votre politique d'investissement personnelle, comme les institutionnels.</p>
+                        </div>
+                    </div>
+                    <div class="card flex gap-5 items-start">
+                        <div class="w-10 h-10 shrink-0 rounded-full bg-violet-100 text-violet-800 font-bold flex items-center justify-center">6</div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Psychologie et passage à l'action <span class="text-sm font-normal text-gray-500">· ≈ 55 min</span></h3>
+                            <p class="text-gray-600 text-sm mt-1">Les 6 biais qui coûtent le plus cher, les leçons des krachs, l'automatisation (DCA) et votre plan d'action en 30 jours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ce que vous obtenez + limites -->
+        <section class="py-14 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Ce qui est inclus pour 45 €</h2>
+                        <ul class="check-list space-y-2 text-gray-700">
+                            <li>6 modules écrits et structurés (~5-6 h), accès 1 an</li>
+                            <li>2 niveaux de lecture : socle « Essentiel » + encadrés avancés</li>
+                            <li>6 quiz corrigés et expliqués (48 questions)</li>
+                            <li>Trame de politique d'investissement personnelle à remplir</li>
+                            <li>Plan d'action en 30 jours + attestation de suivi</li>
+                            <li>Remise de 45 € sur le Coaching Autonomie après validation</li>
+                        </ul>
+                    </div>
+                    <div class="card bg-amber-50 border-l-4 border-amber-400">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Nos limites, dites franchement</h2>
+                        <ul class="space-y-2 text-gray-700 list-disc pl-5 text-sm">
+                            <li><strong>Aucune personnalisation</strong> : le contenu est le même pour tous.</li>
+                            <li><strong>Aucune recommandation individuelle</strong> : pas de « quel ETF acheter », pas de conseil sur votre situation.</li>
+                            <li><strong>Aucun accompagnement humain</strong> : c'est une formation autonome, sans support individuel.</li>
+                            <li><strong>Contenu éducatif</strong> : ne constitue pas un conseil en investissement ; investir comporte un risque de perte en capital.</li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-4">Ces trois limites sont précisément ce que lève le <a href="../index.html#offres" class="text-violet-700 underline font-semibold">Coaching Financier Autonomie</a> (4 sessions individuelles).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articulation avec le coaching -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold section-title">Votre parcours vers l'autonomie</h2>
+                    <p class="mt-3 text-gray-600">La formation est la première marche — pas un substitut au coaching.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="card border-2 border-violet-300">
+                        <p class="text-xs font-semibold uppercase tracking-wide text-violet-700">Étape 1 · vous êtes ici</p>
+                        <h3 class="font-bold text-gray-900 mt-2">Formation — 45 €</h3>
+                        <p class="text-sm text-gray-600 mt-2">Comprendre : les concepts, les instruments, les enveloppes, la méthode. Savoir généraliste, en autonomie.</p>
+                    </div>
+                    <div class="card">
+                        <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">Étape 2</p>
+                        <h3 class="font-bold text-gray-900 mt-2">Coaching Autonomie — 350 €</h3>
+                        <p class="text-sm text-gray-600 mt-2">Appliquer à VOTRE situation : 4 sessions individuelles pour construire votre stratégie personnelle. <span class="text-violet-700 font-semibold">Remise de 45 € pour les diplômés de la formation.</span></p>
+                    </div>
+                    <div class="card">
+                        <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">Alternative clé en main</p>
+                        <h3 class="font-bold text-gray-900 mt-2">Investissement Accompagné — dès 295 €</h3>
+                        <p class="text-sm text-gray-600 mt-2">Nous construisons le portefeuille avec vous : diagnostic, politique d'investissement écrite, allocation sur mesure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA final + récupération d'accès -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-3xl text-center">
+                <h2 class="text-3xl font-bold section-title">Commencez aujourd'hui</h2>
+                <p class="mt-3 text-gray-600">45 € une fois. Accès immédiat après paiement, pendant 1 an. Moins que les frais annuels cachés que ce contenu vous apprendra à éliminer.</p>
+                <button data-checkout class="mt-6 cta-gradient text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:scale-[1.02] transition text-lg">Accéder à la formation — 45 €</button>
+                <p class="mt-6 text-sm text-gray-500">Déjà inscrit·e ? <a href="../formation/index.html" class="text-violet-700 underline font-semibold">Reprendre ma formation</a></p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="text-2xl font-bold section-title text-center mb-8">Questions fréquentes</h2>
+                <div class="space-y-4">
+                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                        <summary class="font-semibold cursor-pointer text-gray-900">Faut-il des connaissances préalables ?</summary>
+                        <p class="mt-3 text-gray-600 text-sm">Aucune. La formation part de zéro et chaque module contient des encadrés « Pour aller plus loin » pour ceux qui veulent creuser. Quel que soit votre parcours académique ou professionnel, le texte est écrit en français clair, chaque terme technique est expliqué.</p>
+                    </details>
+                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                        <summary class="font-semibold cursor-pointer text-gray-900">Combien de temps ai-je accès au contenu ?</summary>
+                        <p class="mt-3 text-gray-600 text-sm">1 an à compter de l'achat — largement le temps de suivre les 6 modules (5-6 h) et d'y revenir. Si votre accès expire, écrivez-nous : nous le renouvelons gratuitement sur simple demande.</p>
+                    </details>
+                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                        <summary class="font-semibold cursor-pointer text-gray-900">Allez-vous me dire quoi acheter ?</summary>
+                        <p class="mt-3 text-gray-600 text-sm">Non, et c'est volontaire : une formation en ligne identique pour tous ne peut pas — et ne doit pas — faire de recommandations individuelles. Vous apprendrez la méthode complète pour décider vous-même. Pour une stratégie personnalisée, c'est le rôle du coaching individuel et du Pack Stratégie &amp; Lancement.</p>
+                    </details>
+                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                        <summary class="font-semibold cursor-pointer text-gray-900">Puis-je me faire rembourser ?</summary>
+                        <p class="mt-3 text-gray-600 text-sm">S'agissant d'un contenu numérique à accès immédiat, vous renoncez expressément au droit de rétractation légal de 14 jours au moment du paiement (art. L221-28 du Code de la consommation). En cas de problème réel, écrivez-nous : nous trouvons toujours une solution raisonnable.</p>
+                    </details>
+                    <details class="faq-item bg-gray-50 rounded-lg border p-4">
+                        <summary class="font-semibold cursor-pointer text-gray-900">J'ai perdu mon accès, comment le récupérer ?</summary>
+                        <div class="mt-3 text-gray-600 text-sm">
+                            <p>Saisissez l'email utilisé lors du paiement : nous vous renvoyons un lien d'accès.</p>
+                            <form id="recoverForm" class="mt-3 flex flex-col sm:flex-row gap-2">
+                                <input type="email" id="recoverEmail" required placeholder="votre@email.fr" class="border rounded-lg px-3 py-2 flex-grow">
+                                <button type="submit" class="bg-violet-100 text-violet-800 font-semibold px-4 py-2 rounded-lg hover:bg-violet-200 transition">Recevoir mon lien</button>
+                            </form>
+                            <p id="recoverMsg" class="hidden mt-2 text-sm"></p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pb-24 md:pb-8">
+        <div class="container mx-auto px-6 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                <div class="col-span-2 md:col-span-1">
+                    <p class="text-lg font-bold text-white">RAM Advisor</p>
+                    <p class="text-sm text-gray-400 mt-2">La méthode de la gestion privée, appliquée à votre patrimoine par un conseiller indépendant — un interlocuteur unique, pas une plateforme.</p>
+                </div>
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Explorer</p>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="../index.html#methode" class="text-gray-300 hover:text-white">Notre Méthode</a></li>
+                        <li><a href="../index.html#performances" class="text-gray-300 hover:text-white">Performances</a></li>
+                        <li><a href="../index.html#offres" class="text-gray-300 hover:text-white">Nos Offres &amp; Tarifs</a></li>
+                        <li><a href="../index.html#simulator" class="text-gray-300 hover:text-white">Simulateur</a></li>
+                        <li><a href="../index.html#faq" class="text-gray-300 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Académie</p>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="formation.html" class="text-gray-300 hover:text-white font-semibold">⭐ Formation (45 €)</a></li>
+                        <li><a href="guides.html" class="text-gray-300 hover:text-white">Tous les guides</a></li>
+                        <li><a href="enveloppes-fiscales.html" class="text-gray-300 hover:text-white">PEA, AV, CTO, PER</a></li>
+                        <li><a href="etf.html" class="text-gray-300 hover:text-white">Comprendre les ETF</a></li>
+                        <li><a href="erreurs-investisseur.html" class="text-gray-300 hover:text-white">Les 7 erreurs à éviter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Contact</p>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://calendly.com/mamy-ramadvisor/ram-advisor-1er-appel-offert-clone" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white">📅 Réserver un appel gratuit</a></li>
+                        <li><a href="mailto:contact@ramadvisor.fr" class="text-gray-300 hover:text-white">✉️ contact@ramadvisor.fr</a></li>
+                        <li><a href="https://fr.linkedin.com/in/mamy-rama-cfa-caia-esg" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center max-w-2xl mx-auto">
+                <p>&copy; 2026 RAM Advisor. Tous droits réservés.</p>
+                <p class="text-sm text-gray-400 mt-2">Contenu pédagogique à titre informatif — ne constitue pas un conseil financier personnalisé. Investir comporte des risques de perte en capital.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/chatbot.js" defer></script>
+    <script>
+    // Achat + récupération d'accès (fonctions Netlify)
+    (function () {
+        var API = '/.netlify/functions';
+        var errEl = document.getElementById('checkoutError');
+
+        document.querySelectorAll('[data-checkout]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var original = btn.textContent;
+                btn.disabled = true;
+                btn.textContent = 'Redirection vers le paiement…';
+                if (errEl) errEl.classList.add('hidden');
+                fetch(API + '/formation-checkout', { method: 'POST' })
+                    .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+                    .then(function (res) {
+                        if (!res.ok) throw new Error(res.d.error || 'Erreur');
+                        if (res.d.demo && res.d.token) {
+                            // Environnement sans Stripe : accès de démonstration.
+                            localStorage.setItem('formation_token', res.d.token);
+                            window.location.href = '../formation/index.html?demo=1';
+                        } else if (res.d.url) {
+                            window.location.href = res.d.url;
+                        } else { throw new Error('Réponse inattendue'); }
+                    })
+                    .catch(function (e) {
+                        btn.disabled = false;
+                        btn.textContent = original;
+                        if (errEl) {
+                            errEl.textContent = e.message + ' — vous pouvez aussi nous écrire à contact@ramadvisor.fr';
+                            errEl.classList.remove('hidden');
+                        }
+                    });
+            });
+        });
+
+        var recoverForm = document.getElementById('recoverForm');
+        if (recoverForm) {
+            recoverForm.addEventListener('submit', function (ev) {
+                ev.preventDefault();
+                var msg = document.getElementById('recoverMsg');
+                var email = document.getElementById('recoverEmail').value;
+                msg.classList.remove('hidden');
+                msg.textContent = 'Vérification…';
+                fetch(API + '/formation-access', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'recover', email: email })
+                })
+                    .then(function (r) { return r.json(); })
+                    .then(function (d) {
+                        if (d.ok && d.mailer) {
+                            msg.textContent = 'Si un achat existe pour cet email, un lien d\'accès vient de vous être envoyé. Pensez à vérifier vos spams.';
+                        } else {
+                            msg.textContent = 'Écrivez-nous à contact@ramadvisor.fr avec votre email d\'achat : nous vous renvoyons votre accès sous 24 h.';
+                        }
+                    })
+                    .catch(function () {
+                        msg.textContent = 'Erreur — écrivez-nous à contact@ramadvisor.fr, nous vous renvoyons votre accès sous 24 h.';
+                    });
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

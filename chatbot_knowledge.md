@@ -77,6 +77,19 @@ Session 4 La Pratique (passage d'ordres, suivi, rééquilibrage).
 
 Nombre de nouveaux accompagnements limité chaque mois (conseiller indépendant unique).
 
+**Offre d'entrée — Formation en ligne « Les Fondamentaux de l'Investisseur » — 45 €**
+LIEN: pages/formation.html
+Formation 100 % en ligne et en autonomie : 6 modules progressifs (~5-6 h au total),
+quiz de validation corrigés, deux niveaux de lecture (essentiel + approfondissement),
+trame de politique d'investissement personnelle, attestation de suivi. Adaptée à tous
+les niveaux, contexte 100 % français (PEA, assurance-vie, CTO, PER, ETF). Accès 1 an,
+paiement sécurisé Stripe, accès immédiat après paiement.
+Limites explicites (à rappeler si on demande) : aucune personnalisation, aucune
+recommandation individuelle, aucun accompagnement humain — c'est un produit
+d'initiation ; pour du sur-mesure, orienter vers le coaching ou les packs.
+Les diplômés de la formation bénéficient d'une remise de 45 € sur le Coaching
+Financier Autonomie.
+
 ---
 
 ## 4. Les frais — comment RAM Advisor se compare

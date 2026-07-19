@@ -1,0 +1,302 @@
+{
+  "1": [
+    {
+      "q": "Avec une inflation de 2 % par an, que deviennent 10 000 € laissés 30 ans sur un compte courant ?",
+      "options": ["Ils gardent leur pouvoir d'achat : 10 000 € restent 10 000 €", "Ils perdent environ 10 % de pouvoir d'achat", "Ils perdent près de la moitié de leur pouvoir d'achat", "Ils gagnent de la valeur car les prix des placements baissent"],
+      "answer": 2,
+      "explain": "À 2 % d'inflation, le pouvoir d'achat est divisé par (1,02)^30 ≈ 1,81 : vos 10 000 € n'achètent plus que l'équivalent d'environ 5 520 € d'aujourd'hui."
+    },
+    {
+      "q": "Qu'est-ce que la capitalisation (intérêts composés) ?",
+      "options": ["Le fait de recevoir des intérêts fixes chaque année", "Le fait que les intérêts produisent eux-mêmes des intérêts", "Une technique réservée aux gros patrimoines", "Un type de compte bancaire rémunéré"],
+      "answer": 1,
+      "explain": "Chaque année, les gains passés travaillent à leur tour : la croissance devient exponentielle, pas linéaire. C'est le concept central de toute la finance."
+    },
+    {
+      "q": "D'après la règle de 72, en combien d'années un capital placé à 6 % par an double-t-il ?",
+      "options": ["6 ans", "24 ans", "12 ans", "18 ans"],
+      "answer": 2,
+      "explain": "72 ÷ 6 = 12 ans. Ce raccourci mental permet de comparer instantanément des taux entre eux."
+    },
+    {
+      "q": "Léa investit 200 €/mois de 25 à 35 ans puis s'arrête ; Marc investit 200 €/mois de 35 à 65 ans. À 7 %/an, qui a le plus à 65 ans ?",
+      "options": ["Marc, car il a versé trois fois plus", "Léa, car ses versements ont composé plus longtemps", "Égalité approximative", "Impossible à dire sans connaître l'inflation"],
+      "answer": 1,
+      "explain": "Léa termine avec ≈ 260 000 € contre ≈ 235 000 € pour Marc, en ayant versé trois fois moins : les 10 années d'avance pèsent plus que 30 ans de versements supplémentaires."
+    },
+    {
+      "q": "Un livret rapporte 2 % alors que l'inflation est de 2 %. Quel est votre enrichissement réel ?",
+      "options": ["2 % par an", "4 % par an", "0 % : le pouvoir d'achat fait du surplace", "Cela dépend du montant placé"],
+      "answer": 2,
+      "explain": "Taux réel ≈ taux nominal − inflation = 0 %. Seul le rendement réel (après inflation), net de frais, mesure un enrichissement véritable."
+    },
+    {
+      "q": "Sur 30 ans, des frais annuels de 2 % sur un placement qui rapporte 6 % brut confisquent environ…",
+      "options": ["2 % du capital final", "10 % du capital final", "45 % du capital final", "60 % du capital final"],
+      "answer": 2,
+      "explain": "Les frais se composent comme les gains, mais contre vous : l'écart entre capitaliser à 6 % et à 4 % pendant 30 ans représente environ 45 % du capital final."
+    },
+    {
+      "q": "Quelle est la taille recommandée de l'épargne de précaution avant d'investir ?",
+      "options": ["1 mois de salaire", "3 à 6 mois de dépenses courantes, sur un support disponible et sans risque", "20 % du patrimoine, placés en actions", "Aucune : investir tout, le plus tôt possible"],
+      "answer": 1,
+      "explain": "3 à 6 mois de dépenses (plus pour des revenus irréguliers), sur livrets. Son rôle : absorber les imprévus sans jamais vendre vos investissements au mauvais moment."
+    },
+    {
+      "q": "Vous avez un crédit renouvelable à 15 % et 5 000 € disponibles. Que faire en priorité ?",
+      "options": ["Investir en actions, qui rapportent plus sur le long terme", "Rembourser le crédit : c'est un rendement garanti de 15 %", "Garder les 5 000 € en liquide", "Moitié remboursement, moitié actions, pour diversifier"],
+      "answer": 1,
+      "explain": "Rembourser une dette à 15 % équivaut à un placement garanti à 15 % — aucun placement n'offre cela. Toute dette au-dessus de ~5-6 % se traite avant d'investir."
+    }
+  ],
+  "2": [
+    {
+      "q": "En finance, le « risque » désigne précisément…",
+      "options": ["La certitude de perdre de l'argent", "L'incertitude sur le rendement futur d'un placement", "Le fait d'investir en bourse plutôt qu'en livret", "Les frais cachés d'un placement"],
+      "answer": 1,
+      "explain": "Le risque est l'incertitude sur le résultat, mesurée notamment par la volatilité. Il n'est pas synonyme de perte : il est la matière première du rendement."
+    },
+    {
+      "q": "Quelle est la différence essentielle entre une fluctuation temporaire et une perte permanente ?",
+      "options": ["Il n'y en a pas : une baisse est une perte", "La fluctuation concerne un actif diversifié qui peut se reconstituer ; la perte permanente détruit le capital (faillite, actif sans valeur)", "La perte permanente ne concerne que l'immobilier", "La fluctuation ne concerne que les obligations"],
+      "answer": 1,
+      "explain": "Un portefeuille mondial qui chute en krach s'est historiquement toujours reconstitué ; une entreprise en faillite, jamais. La gestion sérieuse accepte la première et élimine la seconde par la diversification."
+    },
+    {
+      "q": "Après une baisse de 50 %, quelle hausse faut-il pour revenir au point de départ ?",
+      "options": ["+50 %", "+75 %", "+100 %", "+150 %"],
+      "answer": 2,
+      "explain": "100 € → 50 € ; il faut doubler (+100 %) pour revenir à 100 €. Les pourcentages ne s'additionnent pas — c'est pourquoi les grosses pertes coûtent disproportionnément cher."
+    },
+    {
+      "q": "Pourquoi les actions rapportent-elles durablement plus que les livrets ?",
+      "options": ["Parce que les banques centrales le garantissent", "Parce que l'actionnaire porte l'incertitude résiduelle de l'entreprise et exige une prime pour cela", "Parce que les actions montent tous les ans", "C'est faux : livrets et actions rapportent pareil sur le long terme"],
+      "answer": 1,
+      "explain": "C'est la prime de risque : personne n'accepterait d'être payé en dernier, sans garantie, sans espérance de gain supérieure. Elle n'est pas garantie chaque année — c'est précisément pour cela qu'elle existe."
+    },
+    {
+      "q": "Un placement vous promet un rendement élevé sans risque. Que devez-vous en conclure ?",
+      "options": ["C'est une opportunité à saisir vite", "C'est probablement un produit réservé aux professionnels", "C'est le signe le plus fiable d'une arnaque ou d'un risque caché", "C'est normal si le placement est immobilier"],
+      "answer": 2,
+      "explain": "Le couple rendement/risque est indissociable : un rendement élevé « sans risque » signifie un risque que l'on vous cache. C'est le détecteur d'arnaque le plus fiable qui existe."
+    },
+    {
+      "q": "Quel risque la diversification élimine-t-elle ?",
+      "options": ["Le risque de marché (krachs, récessions)", "Le risque spécifique (faillite d'une entreprise, accident d'un secteur)", "Tous les risques", "Aucun : elle réduit seulement les frais"],
+      "answer": 1,
+      "explain": "Dans un panier de milliers d'entreprises, l'accident individuel devient négligeable — et ce risque n'étant pas rémunéré, le porter est une erreur pure. Le risque de marché, lui, subsiste : c'est lui que la prime de risque paie."
+    },
+    {
+      "q": "Pourquoi investir massivement dans les actions de son propre employeur est-il doublement risqué ?",
+      "options": ["Parce que c'est interdit par la loi", "Parce que les actions d'employeur sont toujours surévaluées", "Parce qu'on cumule risque spécifique non rémunéré et corrélation avec son propre revenu", "Ce n'est pas risqué : on connaît bien l'entreprise"],
+      "answer": 2,
+      "explain": "Si l'entreprise va mal, vous risquez de perdre votre emploi ET votre épargne en même temps. « Bien connaître » l'entreprise ne protège pas : c'est une concentration, pas une information."
+    },
+    {
+      "q": "Historiquement, comment le risque d'un portefeuille mondial d'actions évolue-t-il avec l'horizon de placement ?",
+      "options": ["Il est identique à 1 an et à 20 ans", "À 20 ans et plus, les périodes perdantes deviennent historiquement très rares et les rendements annualisés se resserrent", "Il augmente avec le temps : plus on attend, plus on risque un krach", "Les actions deviennent sans risque après 5 ans"],
+      "answer": 1,
+      "explain": "Sur 1 an, tout est possible (−40 % à +50 %) ; sur 20 ans, les bonnes années ont historiquement noyé les mauvaises. D'où la règle : pas d'actions pour un besoin à moins de 5 ans — et pas de garantie pour autant."
+    }
+  ],
+  "3": [
+    {
+      "q": "Quelles sont les deux briques essentielles d'un patrimoine financier de particulier ?",
+      "options": ["Or et cryptomonnaies", "Actions (moteur) et obligations/fonds euros (amortisseur)", "Livrets et immobilier de défiscalisation", "Produits structurés et private equity"],
+      "answer": 1,
+      "explain": "Les actions apportent le rendement de long terme, les obligations et le fonds en euros amortissent les chocs. Le reste (or, cryptos, exotique) est au mieux accessoire."
+    },
+    {
+      "q": "Quand les taux d'intérêt montent, le prix des obligations existantes…",
+      "options": ["Monte", "Baisse", "Ne bouge pas", "Dépend uniquement de l'émetteur"],
+      "answer": 1,
+      "explain": "Une obligation qui paie 2 % perd de l'attrait quand le marché offre 4 % : son prix baisse jusqu'à ce que son rendement rejoigne le marché. C'est mécanique — et c'est ce qui a surpris les épargnants en 2022."
+    },
+    {
+      "q": "Sur 10-15 ans, quelle proportion des fonds en gestion active fait moins bien que son indice de référence, frais déduits ?",
+      "options": ["Environ 15 %", "Environ 50 %", "Environ 85-90 %", "Aucun : les professionnels battent le marché"],
+      "answer": 2,
+      "explain": "C'est l'un des résultats les plus documentés de la finance. La raison est arithmétique : la moyenne des gérants avant frais EST le marché ; après 2 % de frais, elle est en dessous."
+    },
+    {
+      "q": "Qu'est-ce qu'un ETF ?",
+      "options": ["Une action d'entreprise technologique", "Un fonds coté en bourse qui réplique un indice à bas coût", "Un produit dérivé à effet de levier", "Un compte d'épargne réglementé"],
+      "answer": 1,
+      "explain": "Un ETF est un fonds indiciel coté : en une transaction, vous détenez une fraction de centaines ou milliers d'entreprises, pour 0,1 à 0,4 % de frais annuels."
+    },
+    {
+      "q": "Un ETF « capitalisant » …",
+      "options": ["Verse les dividendes en cash chaque trimestre", "Réinvestit automatiquement les dividendes dans le fonds", "Garantit le capital investi", "Est réservé aux professionnels"],
+      "answer": 1,
+      "explain": "Le capitalisant réinvestit les dividendes : idéal en phase d'accumulation, et fiscalement efficace en CTO puisqu'aucun dividende imposable n'est distribué en cours de route."
+    },
+    {
+      "q": "Pourquoi le label UCITS est-il important pour un investisseur français ?",
+      "options": ["Il garantit un rendement minimum", "Il indique un fonds régulé européen : actifs ségrégués, règles de diversification, information normalisée", "Il supprime la fiscalité sur les gains", "Il signifie que le fonds est géré activement"],
+      "answer": 1,
+      "explain": "UCITS est le standard de protection européen. Il n'élimine pas le risque de marché, mais encadre la structure du fonds — c'est le prérequis à exiger."
+    },
+    {
+      "q": "Un ETF est-il par nature un placement risqué ?",
+      "options": ["Oui, tous les ETF sont spéculatifs", "Non : l'ETF est un emballage — son risque est celui de l'indice qu'il contient", "Non, un ETF est garanti en capital", "Oui, sauf les ETF à effet de levier"],
+      "answer": 1,
+      "explain": "Un ETF obligations court terme est prudent, un ETF actions émergentes est agité, un ETF à levier ×3 est à proscrire. L'emballage lui-même est transparent, liquide et bon marché — juger le contenu, pas le contenant."
+    },
+    {
+      "q": "Sur 30 ans à 200 €/mois avec un marché à 7 %, quel est l'ordre de grandeur de l'écart final entre 0,3 % et 2,2 % de frais annuels ?",
+      "options": ["Environ 2 000 €", "Environ 10 000 €", "Environ 70 000 €", "Aucun écart : les frais sont prélevés sur les gains"],
+      "answer": 2,
+      "explain": "≈ 232 000 € contre ≈ 162 000 € : les frais composent contre vous exactement comme les gains composent pour vous. C'est le seul paramètre de vos placements garanti à 100 %."
+    }
+  ],
+  "4": [
+    {
+      "q": "Qu'est-ce que le PFU (« flat tax »), le régime fiscal de référence des gains financiers en France ?",
+      "options": ["17,2 % au total", "30 % : 12,8 % d'impôt + 17,2 % de prélèvements sociaux", "45 % pour tous les contribuables", "0 % en dessous de 10 000 € de gains"],
+      "answer": 1,
+      "explain": "Le PFU de 30 % s'applique par défaut (notamment en CTO). Chaque enveloppe fiscale se juge à sa capacité à faire mieux que ce régime de référence."
+    },
+    {
+      "q": "Quel est l'avantage fiscal du PEA après 5 ans de détention ?",
+      "options": ["Exonération totale, impôt et prélèvements sociaux compris", "Les gains ne supportent plus que les 17,2 % de prélèvements sociaux, au lieu de 30 %", "Les versements deviennent déductibles du revenu", "Le plafond de versement disparaît"],
+      "answer": 1,
+      "explain": "Après 5 ans, exonération d'impôt sur le revenu : il ne reste que les prélèvements sociaux. Et tant qu'on ne retire pas, les arbitrages internes ne déclenchent aucune fiscalité."
+    },
+    {
+      "q": "Pourquoi conseille-t-on d'ouvrir un PEA « même avec 50 € » ?",
+      "options": ["Parce que les petits versements rapportent plus", "Parce que le délai fiscal de 5 ans court dès l'ouverture du plan, pas depuis les versements", "Parce que c'est obligatoire avant 30 ans", "Parce que les frais baissent avec l'ancienneté"],
+      "answer": 1,
+      "explain": "« Prendre date » : chaque mois d'attente repousse d'autant la maturité fiscale du plan. Même logique pour l'assurance-vie et son seuil de 8 ans."
+    },
+    {
+      "q": "Comment des ETF « monde » peuvent-ils être logés dans un PEA, en principe réservé aux actions européennes ?",
+      "options": ["Grâce à une dérogation fiscale demandée à l'administration", "Via la réplication synthétique : le fonds détient un panier européen et échange sa performance contre celle de l'indice mondial", "C'est impossible : le PEA n'accepte que le CAC 40", "En passant par une assurance-vie luxembourgeoise"],
+      "answer": 1,
+      "explain": "L'ETF synthétique détient des titres européens (éligibilité PEA) et « swape » leur performance contre celle du MSCI World ou du S&P 500. Légal, régulé UCITS, et central dans les stratégies françaises."
+    },
+    {
+      "q": "L'argent placé en assurance-vie est-il bloqué 8 ans ?",
+      "options": ["Oui, tout retrait est impossible avant 8 ans", "Oui, sauf accord de l'assureur", "Non : un rachat est possible à tout moment — 8 ans n'est qu'un seuil fiscal avantageux", "Non, mais les retraits avant 8 ans sont taxés à 75 %"],
+      "answer": 2,
+      "explain": "Légende tenace : l'argent reste disponible en permanence. Après 8 ans, la fiscalité des rachats devient simplement plus douce (abattement annuel de 4 600 €/9 200 € de gains, puis 24,7 %)."
+    },
+    {
+      "q": "Quel atout successoral majeur offre l'assurance-vie pour les primes versées avant 70 ans ?",
+      "options": ["Aucun : l'assurance-vie entre dans la succession normale", "Jusqu'à 152 500 € transmis hors succession par bénéficiaire désigné", "Une exonération totale sans limite de montant", "Un abattement de 4 600 € par héritier"],
+      "answer": 1,
+      "explain": "Chaque bénéficiaire librement désigné peut recevoir jusqu'à 152 500 € hors droits de succession (primes versées avant 70 ans) — le joyau successoral du système français."
+    },
+    {
+      "q": "Pour quel profil le PER individuel est-il le plus pertinent ?",
+      "options": ["Un jeune actif non imposable", "Un contribuable à taux marginal élevé (30-45 %) acceptant le blocage jusqu'à la retraite", "Toute personne ayant déjà un livret A", "Un retraité de 70 ans"],
+      "answer": 1,
+      "explain": "La déduction des versements vaut d'autant plus que le taux marginal est haut, et le gain vient du différentiel de taux entre activité et retraite. À 11 % de TMI, la carotte est maigre et le blocage coûte cher."
+    },
+    {
+      "q": "Quel ordre de priorité type pour un résident français qui débute ?",
+      "options": ["CTO d'abord, pour la liberté totale", "PER d'abord, pour la déduction fiscale", "Épargne de précaution → prendre date PEA + assurance-vie → PEA pour les actions long terme", "Cryptomonnaies puis immobilier"],
+      "answer": 2,
+      "explain": "Précaution d'abord (non négociable), puis ouvrir tôt les enveloppes pour lancer les compteurs fiscaux, puis prioriser le PEA pour la poche actions. PER et CTO viennent en complément selon TMI et plafonds."
+    }
+  ],
+  "5": [
+    {
+      "q": "Par quoi commence la construction d'un portefeuille selon la méthode professionnelle ?",
+      "options": ["Par le choix des meilleurs ETF", "Par les objectifs : montant, horizon, priorité de chaque projet", "Par l'ouverture d'un compte chez le courtier le moins cher", "Par l'analyse des tendances du marché"],
+      "answer": 1,
+      "explain": "« Pour quoi faire ? » précède toujours « quoi acheter ? ». Un placement n'est jamais bon dans l'absolu — seulement adapté ou non à un objectif daté."
+    },
+    {
+      "q": "Quelles sont les trois dimensions du profil de risque ?",
+      "options": ["Âge, revenu, patrimoine", "Capacité (objective), tolérance (psychologique), besoin (lié aux objectifs)", "Prudent, équilibré, dynamique", "Court terme, moyen terme, long terme"],
+      "answer": 1,
+      "explain": "Capacité : ce que votre situation peut absorber. Tolérance : ce que vos nerfs supportent. Besoin : ce que vos objectifs exigent. C'est la plus basse des trois qui commande."
+    },
+    {
+      "q": "Un investisseur a une capacité et un besoin de risque élevés, mais a paniqué et tout vendu au dernier krach. Que faire ?",
+      "options": ["Ignorer la panique passée : les chiffres priment", "Caler l'allocation sur sa tolérance réelle : mieux vaut 60 % d'actions tenues 25 ans que 90 % abandonnées au premier orage", "Ne plus jamais investir en actions", "Confier l'argent à un gérant actif"],
+      "answer": 1,
+      "explain": "Le meilleur portefeuille du monde ne sert à rien si son détenteur le vend en panique. L'allocation optimale sur le papier n'est pas l'allocation optimale pour la personne."
+    },
+    {
+      "q": "Quelle décision explique l'essentiel de la variabilité de performance d'un portefeuille selon la recherche financière ?",
+      "options": ["Le choix des titres individuels", "Le timing des achats et ventes", "La répartition entre classes d'actifs (allocation)", "Le choix du courtier"],
+      "answer": 2,
+      "explain": "L'allocation d'actifs domine très largement la sélection de titres et le timing. Le ratio actions/obligations que vous choisissez pèse plus que tout ce que vous ferez ensuite."
+    },
+    {
+      "q": "Comment choisir sa famille d'allocation (prudent, équilibré, dynamique, offensif) ?",
+      "options": ["Prendre la plus offensive : elle rapporte le plus", "Choisir celle dont on peut encaisser la chute maximale exprimée en euros sur son patrimoine réel, sans vendre", "Suivre celle de ses proches", "Prendre équilibré par défaut"],
+      "answer": 1,
+      "explain": "« −35 % » est abstrait ; « −70 000 € sur mes 200 000 € » ne l'est pas. Le critère de choix est la chute maximale que vous pouvez regarder en face sans trahir votre stratégie."
+    },
+    {
+      "q": "Qu'est-ce qu'une politique d'investissement personnelle (PIP) ?",
+      "options": ["Un contrat signé avec sa banque", "Un document d'une page, écrit à froid, fixant objectifs, allocation, règles de conduite et interdits", "Une liste de titres recommandés par un conseiller", "Un questionnaire réglementaire obligatoire"],
+      "answer": 1,
+      "explain": "C'est la version particulier de l'Investment Policy Statement des institutionnels : décider à froid pour ne pas avoir à décider sous stress. Une stratégie non écrite est une humeur."
+    },
+    {
+      "q": "Après une forte hausse des actions, votre portefeuille 60/40 est devenu 68/32. Que dit votre discipline ?",
+      "options": ["Laisser courir : la tendance est favorable", "Rééquilibrer vers 60/40 : vendre un peu d'actions ou diriger les versements vers l'autre poche", "Passer à 80/20 pour profiter du momentum", "Tout vendre : après la hausse vient la baisse"],
+      "answer": 1,
+      "explain": "Le rééquilibrage ramène le risque à votre choix initial et vous fait mécaniquement vendre haut / acheter bas. En phase d'épargne, le faire via les versements évite fiscalité et frais."
+    },
+    {
+      "q": "Quelle est la méthode de rééquilibrage la plus efficace fiscalement en phase d'épargne ?",
+      "options": ["Vendre chaque mois ce qui a monté", "Diriger chaque versement mensuel vers la classe d'actifs sous-pondérée", "Tout vendre et tout racheter une fois par an", "Ne jamais rééquilibrer"],
+      "answer": 1,
+      "explain": "Rééquilibrer par les versements ne déclenche ni fiscalité ni frais de transaction, puisqu'on ne vend rien — on achète simplement ce qui est en retard sur sa cible."
+    }
+  ],
+  "6": [
+    {
+      "q": "Pourquoi l'investisseur particulier moyen gagne-t-il durablement moins que les fonds qu'il détient ?",
+      "options": ["Parce que les fonds mentent sur leurs performances", "À cause de ses entrées et sorties au mauvais moment, dictées par les émotions", "À cause des impôts uniquement", "Parce qu'il ne choisit pas les bons fonds"],
+      "answer": 1,
+      "explain": "L'écart mesuré (souvent 1 à 2 points par an) vient du comportement : acheter après la hausse, vendre dans la panique. Le principal risque d'un portefeuille, c'est son détenteur."
+    },
+    {
+      "q": "Qu'est-ce que l'aversion aux pertes ?",
+      "options": ["Le refus rationnel de tout risque", "Le fait qu'une perte fait environ deux fois plus mal qu'un gain équivalent ne fait plaisir", "La peur des frais bancaires", "Une stratégie de protection du capital"],
+      "answer": 1,
+      "explain": "Ce câblage pousse à vendre en panique dans les baisses et, symétriquement, à s'accrocher indéfiniment aux positions perdantes « pour ne pas concrétiser la perte »."
+    },
+    {
+      "q": "« J'ai acheté à 100 €, j'attends que ça remonte à 100 € pour vendre. » Quel biais est à l'œuvre ?",
+      "options": ["Le biais de confirmation", "L'ancrage : le prix d'achat est une information sans pertinence pour le marché", "La comptabilité mentale", "L'excès de confiance"],
+      "answer": 1,
+      "explain": "Le marché ignore votre prix d'achat. La seule question valide : « au prix d'aujourd'hui, ce placement a-t-il sa place dans mon allocation ? »"
+    },
+    {
+      "q": "Que nous apprend l'histoire des bulles et des krachs ?",
+      "options": ["Qu'un bon analyste peut les prédire", "Qu'ils sont normaux (environ une grosse baisse par décennie), imprévisibles, et déjà intégrés dans les rendements de long terme", "Qu'il faut sortir du marché au premier signe de baisse", "Qu'ils ne concernent que les marchés émergents"],
+      "answer": 1,
+      "explain": "Les chutes de 30-50 % font partie du contrat. Les rater en tentant de les éviter coûte généralement plus cher que les subir : les meilleures journées de bourse se nichent au cœur des paniques."
+    },
+    {
+      "q": "En phase d'épargne (versements mensuels), un krach boursier est…",
+      "options": ["Une catastrophe qui doit faire suspendre les versements", "Le signal qu'il faut changer de stratégie", "Plutôt une opportunité : les mêmes versements achètent plus de parts à prix réduit", "La preuve que les actions ne conviennent pas aux particuliers"],
+      "answer": 2,
+      "explain": "À 30 ans, on devrait statistiquement souhaiter des marchés bas pendant ses années d'accumulation. Suspendre les versements en baisse est exactement l'erreur comportementale à éviter."
+    },
+    {
+      "q": "Qu'est-ce que le DCA (versement programmé) et pourquoi est-il si efficace ?",
+      "options": ["Une technique de trading rapide", "Investir une somme fixe à date fixe, automatiquement : plus de décision à prendre, donc plus de place pour les biais", "Un produit financier à capital garanti", "Une méthode pour prédire les points bas du marché"],
+      "answer": 1,
+      "explain": "L'automatisation est la défense structurelle la plus efficace contre tous les biais : elle exécute la stratégie décidée à froid, y compris — surtout — les mois où l'actualité pousse à la trahir."
+    },
+    {
+      "q": "À quelle fréquence un investisseur de long terme discipliné devrait-il consulter son portefeuille ?",
+      "options": ["Plusieurs fois par jour, pour réagir vite", "Une fois par semaine minimum", "1 à 4 fois par an, avec un seul rendez-vous annuel de rééquilibrage et de révision", "Jamais"],
+      "answer": 2,
+      "explain": "La volatilité quotidienne est du bruit qui nourrit l'aversion aux pertes. Un rendez-vous annuel (rééquilibrage, frais, versements, relecture de la PIP) suffit à une stratégie passive."
+    },
+    {
+      "q": "Quelle phrase résume le mieux la philosophie de toute cette formation ?",
+      "options": ["Acheter bas, vendre haut, le plus souvent possible", "Suivre les recommandations des meilleurs analystes", "Le temps passé investi bat le timing du marché : commencer tôt, diversifier large, payer peu, tenir un cap écrit", "Attendre la prochaine crise pour investir massivement"],
+      "answer": 2,
+      "explain": "Les quatre piliers : capitalisation (module 1), diversification (modules 2-3), frais et enveloppes optimisés (modules 3-4), discipline écrite et automatisée (modules 5-6)."
+    }
+  ]
+}

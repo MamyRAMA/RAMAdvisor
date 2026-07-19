@@ -1,0 +1,53 @@
+{
+  "id": "fondamentaux-v1",
+  "title": "Les Fondamentaux de l'Investisseur",
+  "tagline": "Les fondamentaux enseignés aux professionnels de la gestion, traduits pour l'investisseur particulier français.",
+  "price": 45,
+  "currency": "EUR",
+  "passThreshold": 6,
+  "questionsPerQuiz": 8,
+  "modules": [
+    {
+      "id": 1,
+      "title": "Les fondations",
+      "duration": "≈ 45 min",
+      "objective": "Comprendre pourquoi investir n'est pas optionnel, maîtriser la mécanique des intérêts composés et vérifier vos prérequis avant le premier euro investi.",
+      "sections": ["Pourquoi investir : l'inflation ne vous attend pas", "La machine à intérêts composés", "Taux nominal, taux réel, frais : ce qui compte vraiment", "Avant d'investir : les 3 prérequis", "Passage à l'action"]
+    },
+    {
+      "id": 2,
+      "title": "Risque et rendement",
+      "duration": "≈ 50 min",
+      "objective": "Savoir ce qu'est réellement le risque, pourquoi il est la source du rendement, et comment la diversification et l'horizon le transforment.",
+      "sections": ["Le risque, ce n'est pas ce que vous croyez", "Mesurer le rendement (et ne pas se faire piéger)", "La prime de risque : pourquoi les actions rapportent plus", "La diversification, le seul repas gratuit", "Le temps transforme le risque", "Passage à l'action"]
+    },
+    {
+      "id": 3,
+      "title": "Les classes d'actifs et les ETF",
+      "duration": "≈ 60 min",
+      "objective": "Faire le tour des grandes classes d'actifs, comprendre pourquoi la gestion indicielle a gagné, et savoir lire un ETF comme un professionnel.",
+      "sections": ["Le panorama des classes d'actifs", "Les obligations, sans jargon", "Gestion active ou indicielle : le verdict des données", "L'ETF décodé", "Les frais : le seul paramètre garanti", "Passage à l'action"]
+    },
+    {
+      "id": 4,
+      "title": "Les enveloppes françaises",
+      "duration": "≈ 50 min",
+      "objective": "Choisir entre PEA, assurance-vie, CTO et PER selon vos projets : plafonds, fiscalité, cas d'usage et ordre de priorité.",
+      "sections": ["Pourquoi l'enveloppe compte autant que le contenu", "Le PEA : le champion des actions", "L'assurance-vie : le couteau suisse", "Le CTO : la liberté totale", "Le PER : la retraite, avec des menottes dorées", "Quel ordre de priorité ? Cas types", "Passage à l'action"]
+    },
+    {
+      "id": 5,
+      "title": "Construire son portefeuille",
+      "duration": "≈ 60 min",
+      "objective": "Passer des briques à l'édifice : définir vos objectifs, votre profil de risque et votre allocation, puis rédiger votre politique d'investissement personnelle.",
+      "sections": ["Un portefeuille commence par des objectifs", "Votre profil de risque : capacité, tolérance, besoin", "L'allocation d'actifs : la décision à 90 %", "Votre politique d'investissement personnelle (PIP)", "Le rééquilibrage : votre discipline automatique", "Passage à l'action"]
+    },
+    {
+      "id": 6,
+      "title": "Psychologie et passage à l'action",
+      "duration": "≈ 55 min",
+      "objective": "Identifier les biais qui coûtent le plus cher aux particuliers, s'en protéger par l'automatisation, et lancer votre plan d'action en 30 jours.",
+      "sections": ["Votre cerveau n'a pas été conçu pour investir", "Les 6 biais qui coûtent le plus cher", "Bulles, krachs et ce qu'il faut en retenir", "Les erreurs classiques du particulier", "Automatiser : le DCA et l'hygiène de suivi", "Votre plan d'action en 30 jours"]
+    }
+  ]
+}
